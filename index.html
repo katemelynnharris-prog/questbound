@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Questbound</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div id="app" class="app-shell">
+    <header class="topbar">
+      <div class="brand">Questbound</div>
+      <div class="topbar-actions">
+        <span id="sessionLabel" class="muted"></span>
+        <button id="signOutBtn" class="ghost hidden">Sign out</button>
+      </div>
+    </header>
+
+    <main>
+      <section id="authView" class="auth-wrap">
+        <div class="panel auth-panel">
+          <p class="eyebrow">PRIVATE GUILD ACCESS</p>
+          <h1>Enter Questbound</h1>
+          <p class="muted">Your player identity controls what you can see. Secret and private quest content is never exposed to the other player unless deliberately shared.</p>
+          <form id="authForm" class="stack">
+            <label>Email<input id="email" type="email" autocomplete="email" required /></label>
+            <label>Password<input id="password" type="password" autocomplete="current-password" required /></label>
+            <button type="submit">Sign in</button>
+          </form>
+          <p id="authMessage" class="status"></p>
+        </div>
+      </section>
+
+      <section id="guildGate" class="auth-wrap hidden">
+        <div class="panel auth-panel">
+          <p class="eyebrow">GUILD INVITATION REQUIRED</p>
+          <h1>Your account is valid, but it is not linked to the Questbound Guild yet.</h1>
+          <p class="muted">This is intentional. A signed-in stranger still cannot see Guild data until their user ID is explicitly enrolled.</p>
+        </div>
+      </section>
+
+      <section id="gameView" class="hidden">
+        <div id="campaignStrip" class="campaign-strip"></div>
+        <nav id="mainNav" class="main-nav"></nav>
+        <div id="screen" class="screen"></div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
