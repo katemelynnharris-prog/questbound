@@ -1,5 +1,6 @@
 const SUPABASE_URL = 'https://zzvqruhfgjocnwffavcb.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_-nq-Po_ytT0E6uM8vmp1zw_FPftRDVN';
+const APP_URL = 'https://katemelynnharris-prog.github.io/questbound/';
 const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 const $ = (s) => document.querySelector(s);
@@ -82,7 +83,7 @@ function renderAdmin(){ screen.innerHTML=`<section class="hero"><p class="eyebro
 let authMode='signin';
 authForm.insertAdjacentHTML('beforeend','<button type="button" id="toggleAuth" class="ghost">Need an account? Create one</button>');
 $('#toggleAuth').onclick=()=>{authMode=authMode==='signin'?'signup':'signin';$('#toggleAuth').textContent=authMode==='signin'?'Need an account? Create one':'Already have an account? Sign in';authForm.querySelector('button[type=submit]').textContent=authMode==='signin'?'Sign in':'Create account';};
-authForm.onsubmit=async e=>{e.preventDefault();authMessage.textContent='';const email=$('#email').value.trim(),password=$('#password').value;const result=authMode==='signin'?await sb.auth.signInWithPassword({email,password}):await sb.auth.signUp({email,password});if(result.error){authMessage.textContent=result.error.message;return;}if(authMode==='signup'&&!result.data.session){authMessage.textContent='Account created. Check your email if confirmation is required, then sign in.';return;}location.reload();};
+authForm.onsubmit=async e=>{e.preventDefault();authMessage.textContent='';const email=$('#email').value.trim(),password=$('#password').value;const result=authMode==='signin'?await sb.auth.signInWithPassword({email,password}):await sb.auth.signUp({email,password,options:{emailRedirectTo:APP_URL}});if(result.error){authMessage.textContent=result.error.message;return;}if(authMode==='signup'&&!result.data.session){authMessage.textContent='Account created. Check your email, then return to Questbound and sign in.';return;}location.reload();};
 signOutBtn.onclick=async()=>{await sb.auth.signOut();location.reload();};
 sb.auth.onAuthStateChange((_event,session)=>{if(!session&&state.session)location.reload();});
 boot();
