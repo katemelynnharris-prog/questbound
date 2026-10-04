@@ -3,7 +3,7 @@
 function qbApplyBrandArtV18(){
   const brand=document.querySelector('.brand');
   if(brand&&!brand.querySelector('img.qb-brand-logo')){
-    brand.innerHTML='<img class="qb-brand-logo" src="./assets/questbound-logo.PNG" alt="Questbound">';
+    brand.innerHTML='<img class="qb-brand-logo" src="./assets/questbound-logo.png?v=18.1" alt="Questbound">';
   }
 }
 
