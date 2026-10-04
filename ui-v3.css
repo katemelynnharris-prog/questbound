@@ -1,0 +1,50 @@
+/* Questbound UI v3 — parity/density corrections from authenticated beta screenshots. */
+#screen.qb-v3-wait{opacity:0!important;pointer-events:none!important;transition:none!important}
+
+/* Keep paired Home cards only as tall as their own content. */
+.home-two{align-items:start!important}
+.home-two>.card{height:auto!important;min-height:0!important}
+.home-two:has(> :only-child){grid-template-columns:1fr!important}
+
+/* Six Campaign milestones stay on one row. On narrow screens the row scrolls instead of wrapping. */
+.chapter-grid{grid-template-columns:repeat(6,minmax(150px,1fr))!important;overflow-x:auto;padding-bottom:.18rem;scrollbar-width:thin}
+.chapter{min-width:150px!important}
+.campaign-home{overflow:hidden}
+.qb-victory-callout{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:1rem;padding:.95rem 1rem;border:1px solid #907335;background:linear-gradient(135deg,#241f11,#13160f);border-radius:10px}
+.qb-victory-callout h3{font-family:var(--serif);font-size:1.5rem;color:#f0d891;margin:.08rem 0 .32rem}.qb-victory-callout p{margin:0;color:#aaa391;max-width:720px}.qb-victory-callout button{white-space:nowrap;font-weight:800}
+.qb-victory-modal{position:fixed;inset:0;z-index:240;background:rgba(0,0,0,.82);display:grid;place-items:center;padding:1rem;backdrop-filter:blur(6px)}
+.qb-victory-card{width:min(520px,100%);text-align:center;border:1px solid #a5853e;background:radial-gradient(circle at 50% -5%,rgba(226,190,87,.19),transparent 19rem),linear-gradient(145deg,#181c14,#0d100c);border-radius:18px;padding:2rem;box-shadow:0 35px 100px #000}.qb-victory-card h2{font-family:var(--serif);font-size:2.65rem;color:#f0d98e;margin:.2rem 0 .55rem}.qb-victory-card p{color:#aaa392;line-height:1.55}.qb-victory-mark{font-size:3rem;margin:.4rem}.qb-victory-card button{margin:.35rem .25rem}
+.qb-start-campaign{margin-top:.8rem;text-align:center;padding:1.25rem!important}.qb-start-campaign h2{font-size:1.8rem}.qb-start-campaign p{max-width:720px;margin:.5rem auto 1rem;color:#9d998d}
+
+/* Weekly card is 2-up on the first row, then Road March spans the full card. */
+.weekly-card{align-items:start!important}
+.weekly-card>.weekly-block{min-height:0!important;height:auto!important}
+.weekly-card>.road-block{grid-column:1/-1!important;border-top:1px solid var(--line);border-right:0!important;min-height:0!important}
+
+/* Guild: one Treasury panel, then a dense 2x2 shared-system dashboard. */
+.qb-guild-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin:.8rem 0;align-items:start}
+.qb-guild-grid>.card{margin:0!important;min-height:0!important;height:auto!important}
+#qbUnifiedTreasury{width:100%;min-height:0!important}
+
+/* Gauntlet target controls. */
+.qb-gauntlet-actions{display:flex;gap:.4rem;flex-wrap:wrap;margin-left:auto}.qb-gauntlet-actions button{padding:.42rem .58rem;font-size:.66rem}
+.watch-row:has(.qb-gauntlet-actions){flex-wrap:wrap}
+
+/* V20/V24 beta console, grouped rather than one long vertical column. */
+.qb-admin-tool-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}.qb-admin-tool-head h3{font-size:1.45rem;margin:.08rem 0 .3rem;color:#e7d7ae}
+.qb-v20-tools{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.48rem;margin:.75rem 0}
+.qb-v20-tools button{min-height:48px;padding:.55rem .45rem;font-size:.72rem;line-height:1.25}
+.qb-danger-tools button{border-color:#524038}.qb-danger-tools .danger{border-color:#74423d;color:#e5a099!important;background:#1c1010}
+
+/* Character item actions stay compact. */
+.qb-pack-actions button[data-qb-use]{font-weight:800;border-color:#a78339;background:linear-gradient(180deg,#3b321d,#282115)}
+
+/* General density adjustments seen in screenshots. */
+.fate-card{align-self:start!important}
+.quest-watch-card,.qb-activity-card{align-self:start!important}
+.card p:last-child{margin-bottom:0}
+.guild-banner,.ledger-head,.hall-hero{min-height:0!important}
+
+@media(max-width:1100px){.qb-v20-tools{grid-template-columns:repeat(3,minmax(0,1fr))}.chapter-grid{grid-template-columns:repeat(6,minmax(170px,1fr))!important}}
+@media(max-width:900px){.qb-guild-grid{grid-template-columns:1fr}.qb-victory-callout{align-items:flex-start;flex-direction:column}.qb-victory-callout button{width:100%}.weekly-card>.road-block{grid-column:auto!important}.qb-v20-tools{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.chapter-grid{display:flex!important;overflow-x:auto;gap:.45rem}.chapter{flex:0 0 190px!important}.qb-v20-tools{grid-template-columns:1fr 1fr}.qb-v20-tools button{min-height:43px;font-size:.66rem}.qb-guild-grid{gap:.6rem}.qb-victory-card{padding:1.35rem}.qb-victory-card h2{font-size:2.2rem}}
