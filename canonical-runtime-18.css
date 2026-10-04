@@ -1,0 +1,29 @@
+/* Questbound canonical pass 18: production art integration */
+html,body{min-height:100%}
+body{background:#080a0d url('./assets/background_global.png') center center / cover fixed no-repeat}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:rgba(5,7,9,.48);z-index:-1}
+.app-shell{background:transparent!important}
+
+.brand{display:flex;align-items:center;min-width:220px}
+.qb-brand-logo{display:block;width:min(320px,28vw);max-height:68px;object-fit:contain;object-position:left center;filter:drop-shadow(0 2px 8px rgba(0,0,0,.65))}
+
+.campaign-home{position:relative;overflow:hidden;isolation:isolate;background:rgba(8,11,14,.80)!important}
+.campaign-home::before{content:"";position:absolute;inset:0;z-index:-2;background:url('./assets/background_campaign.png') 62% 48% / cover no-repeat}
+.campaign-home::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(4,6,8,.88) 0%,rgba(4,6,8,.72) 48%,rgba(4,6,8,.56) 100%),linear-gradient(0deg,rgba(4,6,8,.46),rgba(4,6,8,.12))}
+.campaign-home .campaign-titleline,.campaign-home .progress,.campaign-home .chapter-grid,.campaign-home .campaign-foot,.campaign-home .qb-victory-callout{position:relative;z-index:1}
+
+.players-grid img.qb-home-character-art{width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 16px 24px rgba(0,0,0,.38))}
+.character-art{overflow:hidden}
+.character-art img.qb-profile-character-art{width:100%;height:100%;object-fit:cover;object-position:center 18%;filter:drop-shadow(0 10px 20px rgba(0,0,0,.35))}
+
+.card,.panel,.ledger-head,.training-hero,.character-hero,.guild-banner{backdrop-filter:blur(2px)}
+
+@media(max-width:900px){
+  .brand{min-width:0}
+  .qb-brand-logo{width:min(250px,48vw);max-height:56px}
+  body{background-attachment:scroll}
+}
+@media(max-width:600px){
+  .qb-brand-logo{width:min(210px,58vw);max-height:48px}
+  .campaign-home::before{background-position:68% center}
+}
