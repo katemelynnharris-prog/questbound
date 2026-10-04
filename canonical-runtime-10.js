@@ -2,7 +2,8 @@
 // Keep recurring responsibilities quiet until they are actually approaching their cadence.
 
 async function loadQuests(){
-  const {data,error}=await sb.from('quest_templates').select('id,key,title,objective,flavor,category,owner_type,assignee_key,assigned_user_id,value_tier,xp_personal,xp_campaign,random_eligible,gauntlet_eligible,random_rarity,visibility,recurrence,late_penalty,warning_days,notes,major_achievement,created_at').eq('guild_id',state.membership.guild_id).eq('active',true).order('category').order('title');
+  const fields='id,key,title,objective,flavor,category,owner_type,assignee_key,assigned_user_id,value_tier,xp_personal,xp_campaign,random_eligible,gauntlet_eligible,random_weight,random_rarity,visibility,recurrence,late_penalty,warning_days,notes,major_achievement,loot_policy,due_date,priority,hidden_encounter,created_at';
+  const {data,error}=await sb.from('quest_templates').select(fields).eq('guild_id',state.membership.guild_id).eq('active',true).order('category').order('title');
   if(error)throw error;state.quests=data||[];
 }
 
@@ -16,7 +17,7 @@ function qbWatchAdd(date,count,unit){
   else if(unit==='years')d.setFullYear(d.getFullYear()+count);
   return d.toISOString().slice(0,10);
 }
-function qbWatchCompletionDate(c){return localDate(new Date(c.completed_at))}
+function qbWatchCompletionDate(c){return c?.effective_date?String(c.effective_date).slice(0,10):localDate(new Date(c.completed_at))}
 function qbWatchQuestCompletions(q){return state.completions.filter(c=>!c.reversed_at&&c.quest_id===q.id).sort((a,b)=>new Date(b.completed_at)-new Date(a.completed_at))}
 function qbWatchDefaultWindow(q){
   const r=safeMeta(q.recurrence),t=r.type;
@@ -48,7 +49,10 @@ function qbWatchWeeklyDue(q,today){
 }
 function qbWatchMeta(q){
   const today=localDate(),r=safeMeta(q.recurrence),t=r.type||'once',windowDays=qbWatchDefaultWindow(q),cs=qbWatchQuestCompletions(q);let due=null,done=false;
-  if(t==='interval'){
+  if(q.hidden_encounter)return null;
+  if(q.due_date){
+    due=String(q.due_date).slice(0,10);done=isCompletedForCurrentOccurrence(q);
+  }else if(t==='interval'){
     const anchor=cs[0]?qbWatchCompletionDate(cs[0]):(q.created_at?localDate(new Date(q.created_at)):today);
     due=qbWatchAdd(anchor,Math.max(1,Number(r.count||1)),r.unit||'weeks');
   }else if(t==='weekly'){
@@ -79,8 +83,20 @@ function questWatchItems(){
 }
 function questWatchCard(){
   const metas=state.quests.filter(q=>q.recurrence?.type!=='daily'&&q.owner_type!=='personal_daily'&&canOwnQuest(q)).map(q=>qbWatchMeta(q)).filter(Boolean).sort((a,b)=>a.days-b.days||a.q.title.localeCompare(b.q.title)).slice(0,5);
-  return `<section class="card home-card"><p class="eyebrow">⏳ QUEST WATCH</p><h2>Deadlines & rhythms</h2><div class="watch-list">${metas.map(({q,...m})=>`<div class="watch-row"><div><b>${esc(q.title)}</b><span>${esc(qbWatchStatus(m))} · ${esc(recurrenceLabel(q))} · ${esc(ownerLabel(q))}</span></div><button data-complete="${q.id}" data-source="journal" class="mini">Complete</button></div>`).join('')||'<div class="empty-inline">Nothing needs your attention yet.</div>'}</div></section>`;
+  return `<section class="card home-card qb-quest-watch" data-qb-quest-watch><p class="eyebrow">⏳ QUEST WATCH</p><h2>Deadlines & rhythms</h2><div class="watch-list">${metas.map(({q,...m})=>`<div class="watch-row"><div><b>${esc(q.title)}</b><span>${esc(qbWatchStatus(m))} · ${esc(recurrenceLabel(q))} · ${esc(ownerLabel(q))}</span></div><button data-complete="${q.id}" data-source="journal" class="mini">Complete</button></div>`).join('')||'<div class="empty-inline">Nothing needs your attention yet.</div>'}</div></section>`;
 }
 
 const qbWireHomeButtonsBeforeV10=wireHomeButtons;
 wireHomeButtons=function(){qbWireHomeButtonsBeforeV10();wireQuestButtons()};
+
+const qbRenderHomeBeforeV10=renderHome;
+renderHome=function(){
+  qbRenderHomeBeforeV10();
+  if(!screen.querySelector('[data-qb-quest-watch]')){
+    const holder=document.createElement('div');holder.innerHTML=questWatchCard();
+    const watch=holder.firstElementChild;
+    const two=[...screen.querySelectorAll('.home-two')].find(x=>x.children.length<2)||null;
+    if(two)two.appendChild(watch);else screen.appendChild(watch);
+  }
+  wireQuestButtons();
+};
