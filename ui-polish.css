@@ -1,0 +1,38 @@
+/* Final production density / parity polish. Keep Questbound in the site header only. */
+.screen{padding:1.15rem clamp(1rem,2.2vw,1.65rem) 3rem}
+.card{border-radius:13px}
+.ledger-head{min-height:0!important;margin:0 0 1rem!important;padding:1.05rem 1.25rem!important;border-radius:13px!important}
+.ledger-head h1{font-size:clamp(2rem,4.4vw,3.45rem)!important;line-height:.98!important;margin:.05rem 0 .4rem!important}
+.ledger-head p{margin:.35rem 0 0!important}
+.home-two,.players-grid{gap:.8rem;margin-bottom:.8rem}.campaign-home{margin-bottom:.8rem}.daily-home,.daily-ledger{margin:.8rem 0}.weekly-card{margin-bottom:.8rem}
+.home-card{min-height:0}
+
+/* Character becomes a dashboard rather than a dashboard plus another tab system. */
+.qb-character-hero{display:grid;grid-template-columns:minmax(170px,250px) 1fr;gap:1.25rem;align-items:center;border:1px solid var(--line);background:radial-gradient(circle at 12% 25%,rgba(176,147,77,.10),transparent 24rem),linear-gradient(145deg,#151a14,#0d110d);border-radius:15px;padding:.9rem 1.15rem;margin-bottom:.8rem;min-height:280px;overflow:hidden}
+.qb-character-art{height:260px;display:flex;align-items:flex-end;justify-content:center}.qb-character-art img{display:block;max-width:100%;max-height:260px;object-fit:contain;filter:drop-shadow(0 14px 12px rgba(0,0,0,.35))}
+.qb-character-summary h1{font-size:clamp(2.7rem,6vw,4.8rem);line-height:.9;font-weight:normal;margin:.1rem 0 .55rem;color:#efe7d7}.qb-character-summary>p{color:#b9b19f;margin:.35rem 0}
+.qb-character-switch{display:flex;gap:.4rem;margin-bottom:.8rem}.qb-character-switch button{padding:.4rem .65rem;background:transparent;border-color:#3b4038;color:#8f9188}.qb-character-switch button.active{border-color:#b69145;color:#ebd493;background:#1b190f}
+.qb-stat-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.45rem;margin-top:1rem}.qb-stat-strip span{padding:.65rem .55rem;border:1px solid #313830;background:#0d120e;text-align:center}.qb-stat-strip b{display:block;color:#e0c477;font-size:1.25rem}.qb-stat-strip small{display:block;color:#7f867d;font-family:var(--sans);font-size:.58rem;text-transform:uppercase;letter-spacing:.08em;margin-top:.18rem}
+.qb-character-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;align-items:start}.qb-panel{padding:1.05rem 1.1rem;min-height:0}.qb-loadout{grid-row:span 2}.qb-loadout .gear-grid{gap:.48rem}.qb-loadout .gear-slot{min-height:96px;padding:.7rem}.qb-loadout .gear-slot b{font-size:.88rem}.qb-loadout .gear-slot small{font-size:.58rem}
+.qb-spec-row,.qb-history-row{display:flex;justify-content:space-between;align-items:center;gap:.75rem;padding:.62rem .68rem;border:1px solid #30372f;background:#0d120e;margin:.42rem 0}.qb-spec-row>div{display:grid;gap:.18rem}.qb-spec-row b,.qb-history-row b{color:#d8cdb3;font-size:.86rem}.qb-spec-row span,.qb-history-row span{color:#81877f;font-size:.68rem}.qb-spec-row button{padding:.42rem .58rem;font-size:.68rem}
+.qb-mini-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.45rem}.qb-mini-stats span{display:grid;gap:.15rem;padding:.65rem;border:1px solid #30372f;background:#0d120e;text-align:center}.qb-mini-stats b{font-size:1.25rem;color:#e2c77d}.qb-mini-stats small{font-family:var(--sans);font-size:.58rem;color:#7f867d;text-transform:uppercase;letter-spacing:.05em}
+.qb-achievement-grid{display:flex;gap:.45rem;flex-wrap:wrap}.qb-achievement-grid span{border:1px solid #5b4c2e;background:#18150e;color:#d9c386;padding:.46rem .58rem;font-size:.72rem;border-radius:999px}
+
+/* Map: do not stretch the right-hand cards to the height of the full map. */
+.map-layout{align-items:start!important}.map-layout>div{display:grid;gap:.8rem;align-content:start}.map-layout .home-card{min-height:0!important;height:auto!important}.map-layout .expedition-card{margin-top:0!important}.fog-map{gap:.42rem}.map-hex{padding:.3rem}.map-hex span{font-size:1.35rem}
+
+/* Treasury controls */
+.qb-treasury-actions{margin-top:.8rem}.qb-treasury-controls{display:grid;grid-template-columns:minmax(130px,.8fr) auto minmax(155px,1fr) auto;gap:.5rem;align-items:end;margin:.8rem 0}.qb-treasury-controls label{margin:0}.qb-treasury-controls button,.qb-treasury-controls select,.qb-treasury-controls input{min-height:42px}.qb-history-list{margin-top:.7rem}.qb-admin-inline{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.75rem}
+
+/* Weekly admin + calendar holidays */
+.qb-weekly-admin{margin-bottom:.8rem}.qb-holiday-event{color:#dfc270!important}.qb-holiday-list{grid-column:1/-1;min-height:0!important}.calendar-layout{align-items:start}.calendar-layout>.home-card{min-height:0}.calendar-cell{min-height:96px}
+
+/* Reduce oversized training/admin whitespace without flattening hierarchy. */
+.training-layout,.admin-grid,.map-layout,.calendar-layout{gap:.8rem}.training-assignment,.training-progress,.training-note,.admin-card{padding:1.05rem 1.1rem}.admin-card{margin-bottom:.8rem}.training-note{margin-top:0}
+
+@media(max-width:900px){
+  .qb-character-hero{grid-template-columns:180px 1fr;min-height:240px}.qb-character-art{height:220px}.qb-character-art img{max-height:220px}.qb-character-grid{grid-template-columns:1fr}.qb-loadout{grid-row:auto}.qb-stat-strip{grid-template-columns:repeat(3,1fr)}.qb-treasury-controls{grid-template-columns:1fr 1fr}
+}
+@media(max-width:650px){
+  .screen{padding:.8rem .72rem 2.5rem}.qb-character-hero{grid-template-columns:110px 1fr;gap:.75rem;padding:.7rem;min-height:180px}.qb-character-art{height:165px}.qb-character-art img{max-height:165px}.qb-character-summary h1{font-size:2.45rem}.qb-stat-strip{grid-template-columns:repeat(2,1fr)}.qb-stat-strip span:last-child{grid-column:1/-1}.qb-mini-stats{grid-template-columns:repeat(2,1fr)}.qb-treasury-controls{grid-template-columns:1fr}.qb-treasury-controls button{width:100%}.calendar-cell{min-height:74px}
+}
