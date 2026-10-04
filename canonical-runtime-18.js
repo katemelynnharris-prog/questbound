@@ -3,7 +3,7 @@
 function qbApplyBrandArtV18(){
   const brand=document.querySelector('.brand');
   if(brand&&!brand.querySelector('img.qb-brand-logo')){
-    brand.innerHTML='<img class="qb-brand-logo" src="./assets/questbound-logo.png?v=18.3" alt="Questbound">';
+    brand.innerHTML='<img class="qb-brand-logo" src="./assets/questbound-logo.png?v=18.5" alt="Questbound">';
   }
 }
 
@@ -34,14 +34,30 @@ function qbApplyHomeArtV18(){
 
 function qbApplyCharacterArtV18(){
   if(state.tab!=='Character')return;
-  const {member}=selectedCharacter();
-  const key=String(member?.player_key||state.membership?.player_key||'Kate').trim();
-  const img=screen.querySelector('.character-art img');
-  if(!img)return;
+  const selected=typeof selectedCharacter==='function'?selectedCharacter():null;
+  const key=String(selected?.member?.player_key||state.membership?.player_key||'Kate').trim();
   const drew=/^drew$/i.test(key);
-  img.src=drew?'./assets/Drew_portrait.png?v=18.3':'./assets/kate_portrait.png?v=18.3';
-  img.alt=`${drew?'Drew':'Kate'} portrait`;
+  const src=drew?'./assets/Drew_portrait.png?v=18.5':'./assets/kate_portrait.png?v=18.5';
+  const alt=`${drew?'Drew':'Kate'} portrait`;
+  let hero=screen.querySelector('.character-hero');
+  if(!hero)return;
+  let art=hero.querySelector('.character-art');
+  if(!art){
+    art=document.createElement('div');
+    art.className='character-art qb-forced-character-art';
+    hero.prepend(art);
+  }
+  let img=art.querySelector('img');
+  if(!img){
+    img=document.createElement('img');
+    art.appendChild(img);
+  }
+  img.src=src;
+  img.alt=alt;
   img.classList.add('qb-profile-character-art');
+  [...hero.querySelectorAll('img')].forEach(other=>{
+    if(other!==img && /(?:kate|drew)\.svg/i.test(other.getAttribute('src')||''))other.remove();
+  });
 }
 
 qbApplyBrandArtV18();
@@ -58,6 +74,7 @@ renderCharacter=function(){
   qbRenderCharacterBeforeV18();
   qbApplyBrandArtV18();
   qbApplyCharacterArtV18();
+  requestAnimationFrame(qbApplyCharacterArtV18);
 };
 
 const qbRenderBeforeArtV18=render;
