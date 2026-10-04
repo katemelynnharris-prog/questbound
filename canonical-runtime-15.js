@@ -6,6 +6,8 @@ function qbEnhanceGuildIdentityV15(){
   if(!banner)return;
   const heading=banner.querySelector('h1');
   if(!heading)return;
+  // Always render the persisted Guild name here; never fall back to the player-pair label.
+  heading.textContent=String(state.guild?.name||'Questbound');
   let row=banner.querySelector('.qb-guild-name-row');
   if(!row){
     row=document.createElement('div');
@@ -26,9 +28,9 @@ function qbEnhanceGuildIdentityV15(){
       b.disabled=true;
       const {data,error}=await sb.rpc('admin_rename_guild',{p_name:name});
       if(error){b.disabled=false;return alert(error.message)}
-      state.guild.name=data?.name||name;
-      showToast(`Guild renamed to ${state.guild.name}`);
+      await loadGuild();
       await loadActivity().catch(()=>{});
+      showToast(`Guild renamed to ${state.guild.name}`);
       renderGuild();
     };
   }
