@@ -1,0 +1,6 @@
+/* Questbound parity audit pass 9 */
+.qb-progression-panel{margin:.75rem 0!important}.qb-progression-panel .progress-meta{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:.45rem}.qb-progression-panel .progress-meta span{color:#918d82}
+.qb-treasury-archives{margin-top:-.15rem}.qb-treasury-archives .qb-history-row>div{display:flex;flex-direction:column;gap:.12rem}.qb-treasury-archives .qb-history-row small{color:#817d73;font-weight:400}
+.qb-calendar-head{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem}.qb-calendar-nav{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:flex-end}.qb-calendar-nav button{white-space:nowrap}
+.qb-major-achievement-history{margin-top:.8rem}
+@media(max-width:760px){.qb-calendar-head{align-items:flex-start;flex-direction:column}.qb-calendar-nav{width:100%;justify-content:stretch}.qb-calendar-nav button{flex:1;min-width:0}.qb-progression-panel .progress-meta{flex-direction:column;gap:.2rem}}
