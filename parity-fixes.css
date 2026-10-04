@@ -1,0 +1,78 @@
+/* Questbound V24 parity restoration layer */
+
+/* Keep native sprite detail instead of stretching the earlier downsampled embeds. */
+.sprite-wrap img,.character-art img{image-rendering:auto;object-fit:contain;max-width:100%;height:auto}
+.sprite-wrap img{width:min(180px,100%)}
+.character-art img{width:min(280px,100%)}
+
+/* Daily Ledger */
+.daily-ledger{margin:1rem 0 1.1rem;padding:1.35rem 1.45rem;background:linear-gradient(145deg,rgba(21,27,22,.98),rgba(12,17,13,.98));border-color:#3d4a3f}
+.daily-ledger h2{font-family:Georgia,'Times New Roman',serif;font-size:2rem;margin:.15rem 0 1rem;color:#f0e7d4}
+.daily-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
+.daily-quest{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;border:1px solid #344039;border-radius:10px;padding:1rem 1.05rem;background:#101611}
+.daily-quest b{display:block;color:#f1eadb;font-family:Georgia,'Times New Roman',serif;font-size:1.13rem;margin-bottom:.3rem}
+.daily-quest span{display:block;color:#969e96;font-size:.78rem;line-height:1.35}
+.daily-quest button{min-width:108px;font-weight:700}
+.daily-quest button:disabled{border-color:#3f463f;background:#1a1f1a;color:#8c928b;opacity:.85}
+
+/* Character / gear */
+.loadout-panel{margin:1rem 0;padding:1.35rem 1.45rem;background:linear-gradient(145deg,#151a16,#0f130f);border-color:#3e493f}
+.loadout-title{display:flex;align-items:flex-start;justify-content:space-between;gap:1rem;margin-bottom:1rem}
+.loadout-title h2{font-family:Georgia,'Times New Roman',serif;font-size:2rem;margin:.15rem 0;color:#efe6d2}
+.gear-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem}
+.gear-slot{position:relative;min-height:126px;border:1px solid #3d463e;border-radius:9px;background:radial-gradient(circle at 50% 20%,rgba(204,169,85,.08),transparent 65%),#0e120f;padding:1rem;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.gear-slot.filled{border-color:#9c7934;box-shadow:inset 0 0 0 1px rgba(204,169,85,.12)}
+.gear-icon{position:absolute;right:.8rem;top:.65rem;font-size:1.55rem;opacity:.72}
+.gear-slot small{color:#8f978f;text-transform:uppercase;letter-spacing:.12em;font-size:.66rem}
+.gear-slot b{font-family:Georgia,'Times New Roman',serif;color:#eee5d2;font-size:1.05rem;margin-top:.22rem}
+.gear-slot em{font-style:normal;color:#d7b966;text-transform:uppercase;font-size:.63rem;letter-spacing:.1em;margin-top:.28rem}
+.gear-slot.empty-slot b{color:#667068;font-weight:normal}
+.character-stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem}
+.character-stat-grid span{padding:.8rem;border:1px solid #363e37;background:#101510;text-align:center}
+.character-stat-grid b{display:block;color:#e8ce8e;font-size:1.35rem}
+.character-stat-grid small{color:#8f978f;text-transform:uppercase;letter-spacing:.08em;font-size:.62rem}
+.pack-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.65rem;margin:.8rem 0}
+.pack-item{border:1px solid #374039;background:#101510;padding:.8rem}
+.pack-item b,.pack-item span{display:block}.pack-item span{color:#8f978f;font-size:.75rem;margin-top:.25rem}
+
+/* Training */
+.training-layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(300px,.7fr);gap:1rem;margin-bottom:1rem}
+.training-assignment,.training-progress,.training-note{padding:1.35rem 1.45rem}
+.assignment-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.assignment-head h2{font-family:Georgia,'Times New Roman',serif;font-size:2rem;color:#f0e6d0;margin:.15rem 0}
+.training-objective{font-size:1rem;line-height:1.65;color:#b5b9b2;max-width:760px}
+.training-rewards{display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0 .7rem}
+.training-rewards b{border:1px solid #705a29;background:#211d12;color:#e4c56f;padding:.55rem .7rem;border-radius:4px;font-size:.78rem}
+.delta-row{display:flex;gap:.45rem;flex-wrap:wrap;margin:.65rem 0 1rem}
+.delta-chip{border:1px solid #445346;background:#121914;color:#aebda9;padding:.38rem .55rem;border-radius:999px;font-size:.72rem;text-transform:capitalize}
+.gym-upgrade{border-top:1px solid #343c35;border-bottom:1px solid #343c35;padding:.7rem 0;margin:.9rem 0;color:#aeb3ac}
+.gym-upgrade summary{cursor:pointer;color:#d7ba6f;font-weight:700}
+.gym-upgrade p{margin:.5rem 0 0;line-height:1.5}
+.training-complete{width:100%;margin-top:.5rem;font-size:1rem;font-weight:800;padding:.9rem 1rem}
+.training-complete:disabled{background:#1d231e;border-color:#3b443d;color:#8f978f;opacity:1}
+.status-chip.complete{border-color:#567052;color:#a9c59f;background:#152016}
+.session-count{display:flex;align-items:baseline;gap:.7rem;border-bottom:1px solid #343d35;padding-bottom:.8rem;margin-bottom:.8rem}
+.session-count b{font-size:2.3rem;color:#dfc06b}.session-count span{color:#929a92}
+.training-stat-grid{display:grid;gap:.55rem}
+.training-stat-grid>div{display:grid;grid-template-columns:1fr auto;gap:.5rem;align-items:center}
+.training-stat-grid span{color:#a8afa8}.training-stat-grid b{color:#e8d092}
+.mini-stat{grid-column:1/-1;height:6px;background:#232923;border:1px solid #313a32;overflow:hidden}
+.mini-stat i{display:block;height:100%;background:linear-gradient(90deg,#80642b,#d4b45a)}
+.training-note h2{font-family:Georgia,'Times New Roman',serif;font-size:1.55rem;color:#e9dfcb;margin:.15rem 0 .5rem}
+.training-note p{color:#9ea59e;line-height:1.55}
+
+@media(max-width:900px){
+  .gear-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .training-layout{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  .daily-grid{grid-template-columns:1fr}
+  .daily-quest{grid-template-columns:1fr}
+  .daily-quest button{width:100%}
+  .gear-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:.55rem}
+  .gear-slot{min-height:108px;padding:.8rem}
+  .character-stat-grid{grid-template-columns:repeat(2,1fr)}
+  .loadout-title{align-items:center}
+  .sprite-wrap img{width:145px}
+  .character-art img{width:220px}
+}
