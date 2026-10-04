@@ -1,0 +1,1 @@
+const src=window.__QB_PARITY_SOURCE||''; delete window.__QB_PARITY_SOURCE; const blob=new Blob([src],{type:'text/javascript'}); const url=URL.createObjectURL(blob); try{await import(url)}finally{URL.revokeObjectURL(url)}
