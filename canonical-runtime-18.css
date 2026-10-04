@@ -21,8 +21,9 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;background:rg
 .campaign-home::marker{display:none}
 
 .players-grid img.qb-home-character-art{width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:drop-shadow(0 16px 24px rgba(0,0,0,.38))}
-.character-art{overflow:hidden}
-.character-art img.qb-profile-character-art{width:100%;height:100%;object-fit:cover;object-position:center 18%;filter:drop-shadow(0 10px 20px rgba(0,0,0,.35))}
+.character-hero .character-art{display:block!important;position:relative;overflow:hidden;flex:0 0 clamp(220px,28vw,360px);min-height:300px;align-self:stretch}
+.character-hero .character-art img.qb-profile-character-art{display:block!important;width:100%!important;height:100%!important;min-height:300px;object-fit:cover!important;object-position:center 18%!important;opacity:1!important;visibility:visible!important;filter:drop-shadow(0 10px 20px rgba(0,0,0,.35))}
+.character-hero .qb-forced-character-art{border-right:1px solid rgba(201,169,94,.16)}
 
 .card,.panel,.ledger-head,.training-hero,.character-hero,.guild-banner{backdrop-filter:blur(2px)}
 
@@ -31,9 +32,13 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;background:rg
   .qb-brand-logo{width:min(250px,48vw);max-height:56px}
   body{background-attachment:scroll}
   .screen.qb-home-campaign-backdrop::before{background-position:68% center}
+  .character-hero .character-art{flex-basis:clamp(180px,36vw,280px);min-height:260px}
+  .character-hero .character-art img.qb-profile-character-art{min-height:260px}
 }
 @media(max-width:600px){
   .qb-brand-logo{width:min(210px,58vw);max-height:48px}
   .campaign-home .campaign-titleline{padding:16px}
   .campaign-home .chapter-grid,.campaign-home .campaign-foot{padding:12px}
+  .character-hero .character-art{width:100%;min-height:320px;flex-basis:auto}
+  .character-hero .character-art img.qb-profile-character-art{min-height:320px}
 }
