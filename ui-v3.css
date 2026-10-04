@@ -6,8 +6,8 @@
 .home-two>.card{height:auto!important;min-height:0!important}
 .home-two:has(> :only-child){grid-template-columns:1fr!important}
 
-/* Six Campaign milestones stay on one row. On narrow screens the row scrolls instead of wrapping. */
-.chapter-grid{grid-template-columns:repeat(6,minmax(150px,1fr))!important;overflow-x:auto;padding-bottom:.18rem;scrollbar-width:thin}
+/* Campaign milestones always stay on one row, regardless of milestone count. On narrow screens the row scrolls instead of wrapping. */
+.chapter-grid{display:grid!important;grid-template-columns:none!important;grid-auto-flow:column!important;grid-auto-columns:minmax(150px,1fr)!important;overflow-x:auto;padding-bottom:.18rem;scrollbar-width:thin}
 .chapter{min-width:150px!important}
 .campaign-home{overflow:hidden}
 .qb-victory-callout{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:1rem;padding:.95rem 1rem;border:1px solid #907335;background:linear-gradient(135deg,#241f11,#13160f);border-radius:10px}
@@ -45,6 +45,6 @@
 .card p:last-child{margin-bottom:0}
 .guild-banner,.ledger-head,.hall-hero{min-height:0!important}
 
-@media(max-width:1100px){.qb-v20-tools{grid-template-columns:repeat(3,minmax(0,1fr))}.chapter-grid{grid-template-columns:repeat(6,minmax(170px,1fr))!important}}
+@media(max-width:1100px){.qb-v20-tools{grid-template-columns:repeat(3,minmax(0,1fr))}.chapter-grid{grid-auto-columns:minmax(170px,1fr)!important}}
 @media(max-width:900px){.qb-guild-grid{grid-template-columns:1fr}.qb-victory-callout{align-items:flex-start;flex-direction:column}.qb-victory-callout button{width:100%}.weekly-card>.road-block{grid-column:auto!important}.qb-v20-tools{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:650px){.chapter-grid{display:flex!important;overflow-x:auto;gap:.45rem}.chapter{flex:0 0 190px!important}.qb-v20-tools{grid-template-columns:1fr 1fr}.qb-v20-tools button{min-height:43px;font-size:.66rem}.qb-guild-grid{gap:.6rem}.qb-victory-card{padding:1.35rem}.qb-victory-card h2{font-size:2.2rem}}
