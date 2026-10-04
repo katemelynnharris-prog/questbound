@@ -7,11 +7,13 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;background:rg
 .brand{display:flex;align-items:center;min-width:220px}
 .qb-brand-logo{display:block;width:min(320px,28vw);max-height:68px;object-fit:contain;object-position:left center;filter:drop-shadow(0 2px 8px rgba(0,0,0,.65))}
 
-.campaign-home{position:relative;overflow:hidden;isolation:isolate;background:rgba(8,11,14,.80)!important}
-.campaign-home::before{content:"";position:absolute;inset:0;z-index:-2;background:url('./assets/background_campaign.png') 62% 48% / cover no-repeat}
-.campaign-home::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(4,6,8,.78) 0%,rgba(4,6,8,.60) 48%,rgba(4,6,8,.46) 100%),linear-gradient(0deg,rgba(4,6,8,.38),rgba(4,6,8,.08))}
+.screen.qb-home-campaign-backdrop{position:relative;isolation:isolate}
+.screen.qb-home-campaign-backdrop::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:100vw;height:var(--qb-campaign-backdrop-height,680px);z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(4,6,8,.58) 0%,rgba(4,6,8,.42) 48%,rgba(4,6,8,.32) 100%),linear-gradient(0deg,rgba(4,6,8,.34),rgba(4,6,8,.04)),url('./assets/background_campaign.png') 62% 48% / cover no-repeat;border-bottom:1px solid rgba(201,169,94,.20);box-shadow:0 22px 40px rgba(0,0,0,.20)}
+
+.campaign-home{position:relative;overflow:hidden;isolation:isolate;background:rgba(8,11,14,.10)!important}
+.qb-home-campaign-backdrop .campaign-home::before,.qb-home-campaign-backdrop .campaign-home::after{display:none}
 .campaign-home .campaign-titleline,.campaign-home .progress,.campaign-home .chapter-grid,.campaign-home .campaign-foot,.campaign-home .qb-victory-callout{position:relative;z-index:1}
-.campaign-home .campaign-titleline,.campaign-home .chapter-grid,.campaign-home .campaign-foot{background:linear-gradient(90deg,rgba(5,7,9,.74),rgba(5,7,9,.56));backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border:1px solid rgba(201,169,94,.18);box-shadow:0 10px 28px rgba(0,0,0,.22)}
+.campaign-home .campaign-titleline,.campaign-home .chapter-grid,.campaign-home .campaign-foot{background:linear-gradient(90deg,rgba(5,7,9,.78),rgba(5,7,9,.60));backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border:1px solid rgba(201,169,94,.18);box-shadow:0 10px 28px rgba(0,0,0,.22)}
 .campaign-home .campaign-titleline{padding:22px 24px;border-radius:14px 14px 8px 8px;margin-bottom:12px}
 .campaign-home .chapter-grid{padding:16px 18px;border-radius:8px;margin-top:12px}
 .campaign-home .campaign-foot{padding:12px 18px;border-radius:8px 8px 14px 14px;margin-top:12px}
@@ -26,10 +28,10 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;background:rg
   .brand{min-width:0}
   .qb-brand-logo{width:min(250px,48vw);max-height:56px}
   body{background-attachment:scroll}
+  .screen.qb-home-campaign-backdrop::before{background-position:68% center}
 }
 @media(max-width:600px){
   .qb-brand-logo{width:min(210px,58vw);max-height:48px}
-  .campaign-home::before{background-position:68% center}
   .campaign-home .campaign-titleline{padding:16px}
   .campaign-home .chapter-grid,.campaign-home .campaign-foot{padding:12px}
 }
