@@ -1,0 +1,27 @@
+/* Questbound production UI v2: denser dashboards and no old-layout flash. */
+#screen.qb-switching{opacity:0;pointer-events:none;transition:none!important}
+#screen{transition:opacity .08s ease}
+
+.qb-character-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;align-items:start}
+.qb-character-column{display:grid;gap:.8rem;align-content:start;min-width:0}
+.qb-character-column>.card{margin:0!important;min-height:0!important}
+.qb-character-hero{min-height:245px!important;padding:.75rem 1rem!important}
+.qb-character-art{height:225px!important}.qb-character-art img{max-height:225px!important}
+.qb-character-summary h1{font-size:clamp(2.5rem,5vw,4.25rem)!important}
+.qb-loadout{grid-row:auto!important}
+.gear-grid{gap:.4rem!important}.gear-slot{min-height:88px!important;padding:.58rem!important}
+.qb-item-mini{margin-top:.42rem;padding:.28rem .42rem!important;font-size:.58rem!important;width:max-content}
+.qb-pack-list{display:grid;gap:.45rem;margin-top:.7rem}.qb-pack-item{display:grid;grid-template-columns:1fr auto;gap:.7rem;align-items:center;padding:.68rem .72rem;border:1px solid #30372f;background:#0d120e}.qb-pack-item>div:first-child{display:grid;gap:.18rem}.qb-pack-item b{color:#dbceb1}.qb-pack-item span{color:#858a82;font-size:.7rem;line-height:1.35}.qb-pack-actions{display:flex;gap:.35rem;flex-wrap:wrap;justify-content:flex-end}.qb-pack-actions button{padding:.4rem .5rem;font-size:.64rem}
+
+#qbUnifiedTreasury{margin:0!important}.qb-treasury-controls{margin:.7rem 0!important}.qb-history-list{display:grid;gap:.38rem}.qb-history-row{margin:0!important}
+
+.calendar-layout{align-items:start!important}.qb-calendar-left{display:grid;gap:.8rem;align-content:start}.qb-calendar-left>.card{margin:0!important}.qb-holiday-list{grid-column:auto!important}.qb-calendar-watch{align-self:start;max-height:680px;overflow:auto}.calendar-cell{min-height:86px!important}.calendar-grid,.calendar-weekdays{gap:.28rem!important}
+
+.qb-beta-console{margin-top:.8rem}.qb-beta-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.6rem;align-items:end;margin:.8rem 0 1rem}.qb-beta-grid button{min-height:42px}.qb-rule{border:0;border-top:1px solid var(--line);margin:1rem 0}
+
+.qb-level-modal{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.78);display:grid;place-items:center;padding:1rem;backdrop-filter:blur(5px)}.qb-level-card{width:min(480px,100%);text-align:center;border:1px solid #aa8942;background:radial-gradient(circle at 50% 0,rgba(210,176,91,.16),transparent 18rem),linear-gradient(145deg,#171b13,#0d100c);border-radius:18px;padding:2rem;box-shadow:0 30px 90px #000}.qb-level-number{width:94px;height:94px;border:1px solid #c1a052;border-radius:50%;display:grid;place-items:center;margin:.5rem auto;color:#f0d98d;font-size:3.2rem}.qb-level-card h2{font-size:2.4rem;margin:.4rem 0}.qb-level-card p{color:#aaa392;line-height:1.5}.qb-level-loot{margin:1rem 0;padding:.8rem;border:1px solid #69562d;background:#1b170d;color:#e3c97c}
+
+.activity-row b{line-height:1.35}.activity-row small{line-height:1.35}
+
+@media(max-width:900px){.qb-character-columns{grid-template-columns:1fr}.qb-beta-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.qb-calendar-watch{max-height:none}}
+@media(max-width:650px){.qb-character-hero{min-height:165px!important}.qb-character-art{height:150px!important}.qb-character-art img{max-height:150px!important}.qb-character-columns{gap:.6rem}.qb-character-column{gap:.6rem}.qb-panel{padding:.85rem!important}.gear-slot{min-height:78px!important}.qb-pack-item{grid-template-columns:1fr}.qb-pack-actions{justify-content:flex-start}.qb-beta-grid{grid-template-columns:1fr}.calendar-cell{min-height:68px!important}.qb-holiday-list h2{font-size:1.45rem!important}}
