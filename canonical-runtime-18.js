@@ -3,7 +3,7 @@
 function qbApplyBrandArtV18(){
   const brand=document.querySelector('.brand');
   if(brand&&!brand.querySelector('img.qb-brand-logo')){
-    brand.innerHTML='<img class="qb-brand-logo" src="./assets/questbound-logo.png?v=18.1" alt="Questbound">';
+    brand.innerHTML='<img class="qb-brand-logo" src="./assets/questbound-logo.png?v=18.2" alt="Questbound">';
   }
 }
 
@@ -24,11 +24,12 @@ function qbApplyHomeArtV18(){
 function qbApplyCharacterArtV18(){
   if(state.tab!=='Character')return;
   const {member}=selectedCharacter();
-  const key=member?.player_key||state.membership?.player_key||'Kate';
+  const key=String(member?.player_key||state.membership?.player_key||'Kate').trim();
   const img=screen.querySelector('.character-art img');
   if(!img)return;
-  img.src=key==='Drew'?'./assets/Drew_portrait.png':'./assets/kate_portrait.png';
-  img.alt=`${key} portrait`;
+  const drew=/^drew$/i.test(key);
+  img.src=drew?'./assets/Drew_portrait.png?v=18.2':'./assets/kate_portrait.png?v=18.2';
+  img.alt=`${drew?'Drew':'Kate'} portrait`;
   img.classList.add('qb-profile-character-art');
 }
 
