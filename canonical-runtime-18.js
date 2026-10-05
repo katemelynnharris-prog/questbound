@@ -3,7 +3,7 @@
 function qbApplyBrandArtV18(){
   const brand=document.querySelector('.brand');
   if(brand&&!brand.querySelector('img.qb-brand-logo')){
-    brand.innerHTML='<img class="qb-brand-logo" src="./assets/questbound-logo.png?v=18.5" alt="Questbound">';
+    brand.innerHTML='<img class="qb-brand-logo" src="./assets/questbound-logo.png?v=18.7" alt="Questbound">';
   }
 }
 
@@ -37,9 +37,9 @@ function qbApplyCharacterArtV18(){
   const selected=typeof selectedCharacter==='function'?selectedCharacter():null;
   const key=String(selected?.member?.player_key||state.membership?.player_key||'Kate').trim();
   const drew=/^drew$/i.test(key);
-  const src=drew?'./assets/Drew_portrait.png?v=18.5':'./assets/kate_portrait.png?v=18.5';
+  const src=drew?'./assets/Drew_portrait.png?v=18.7':'./assets/kate_portrait.png?v=18.7';
   const alt=`${drew?'Drew':'Kate'} portrait`;
-  let hero=screen.querySelector('.character-hero');
+  const hero=screen.querySelector('.character-hero');
   if(!hero)return;
   let art=hero.querySelector('.character-art');
   if(!art){
@@ -50,14 +50,20 @@ function qbApplyCharacterArtV18(){
   let img=art.querySelector('img');
   if(!img){
     img=document.createElement('img');
-    art.appendChild(img);
+    art.replaceChildren(img);
   }
-  img.src=src;
-  img.alt=alt;
-  img.classList.add('qb-profile-character-art');
+  img.setAttribute('src',src);
+  img.setAttribute('alt',alt);
+  img.className='qb-profile-character-art';
   [...hero.querySelectorAll('img')].forEach(other=>{
-    if(other!==img && /(?:kate|drew)\.svg/i.test(other.getAttribute('src')||''))other.remove();
+    if(other!==img)other.remove();
   });
+}
+
+function qbReassertCharacterArtV18(){
+  qbApplyCharacterArtV18();
+  setTimeout(qbApplyCharacterArtV18,40);
+  setTimeout(qbApplyCharacterArtV18,180);
 }
 
 qbApplyBrandArtV18();
@@ -73,8 +79,7 @@ const qbRenderCharacterBeforeV18=renderCharacter;
 renderCharacter=function(){
   qbRenderCharacterBeforeV18();
   qbApplyBrandArtV18();
-  qbApplyCharacterArtV18();
-  requestAnimationFrame(qbApplyCharacterArtV18);
+  qbReassertCharacterArtV18();
 };
 
 const qbRenderBeforeArtV18=render;
@@ -83,7 +88,9 @@ render=function(){
     screen.classList.remove('qb-home-campaign-backdrop');
     screen.style.removeProperty('--qb-campaign-backdrop-height');
   }
-  return qbRenderBeforeArtV18();
+  const out=qbRenderBeforeArtV18();
+  if(state.tab==='Character')qbReassertCharacterArtV18();
+  return out;
 };
 
 if(!window.__qbCampaignBackdropResizeV18){
