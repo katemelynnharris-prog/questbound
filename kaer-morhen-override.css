@@ -1,0 +1,291 @@
+/* =========================================================
+   QUESTBOUND — KAER MORHEN VISUAL OVERRIDE
+   VISUALS ONLY. No layout, behavior, state, data, navigation,
+   calculations, component ordering, or control changes.
+   ========================================================= */
+
+:root{
+  --qb-bg:#080907;
+  --qb-bg-deep:#0B0D0A;
+  --qb-panel:#10120F;
+  --qb-panel-raised:#141611;
+  --qb-inset:#0C0E0B;
+  --qb-forest-shadow:#171C16;
+  --qb-border:#30332B;
+  --qb-border-soft:#242820;
+  --qb-brass-dark:#6F572D;
+  --qb-brass:#9B7839;
+  --qb-brass-warm:#B89650;
+  --qb-brass-light:#D0B36B;
+  --qb-gold-soft:#E3CF91;
+  --qb-text:#E8E1CF;
+  --qb-text-secondary:#B7B0A0;
+  --qb-text-muted:#817E74;
+  --qb-text-disabled:#595B54;
+  --qb-success:#596950;
+  --qb-danger:#652824;
+  --qb-danger-light:#984A42;
+  --qb-fate:#5E5265;
+  --qb-progress-track:#191D17;
+  --qb-progress-start:#80602D;
+  --qb-progress-end:#CCAE63;
+  --qb-shadow:0 18px 48px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.018);
+  --qb-shadow-soft:0 8px 24px rgba(0,0,0,.22);
+  --qb-radius-panel:12px;
+  --qb-radius-control:6px;
+
+  /* Map override palette into the app's existing visual tokens. */
+  --bg:var(--qb-bg);
+  --bg2:var(--qb-bg-deep);
+  --panel:var(--qb-panel);
+  --panel2:var(--qb-panel-raised);
+  --panel3:var(--qb-inset);
+  --ink:var(--qb-text);
+  --muted:var(--qb-text-secondary);
+  --muted2:var(--qb-text-muted);
+  --line:var(--qb-border);
+  --line2:#44483D;
+  --gold:var(--qb-brass-light);
+  --gold2:var(--qb-brass);
+  --gold3:var(--qb-brass-dark);
+}
+
+html,body{color:var(--qb-text);background-color:var(--qb-bg)}
+body{
+  background-image:
+    linear-gradient(to bottom,rgba(7,8,6,.18) 0%,rgba(8,9,7,.42) 22%,rgba(8,9,7,.58) 58%,rgba(8,9,7,.78) 100%),
+    url('./assets/background_global.png');
+  background-size:cover;
+  background-position:center top;
+  background-attachment:fixed;
+  background-repeat:no-repeat;
+}
+body::before{background:rgba(5,7,6,.36)!important;opacity:1!important}
+
+h1,h2,h3,h4,h5,h6,.page-title,.section-title,.card-title,.character-name,.campaign-title{
+  font-family:var(--serif,Georgia,serif);
+  color:var(--qb-text);
+  font-weight:600;
+}
+body,button,input,select,textarea{color:var(--qb-text-secondary)}
+p,.description,.helper-text,.meta,.metadata,.timestamp{color:var(--qb-text-secondary)}
+small,.muted,.secondary-text,.caption,.fine{color:var(--qb-text-muted)}
+
+.eyebrow,.section-label,.overline,.category-label,.panel-label{
+  color:var(--qb-brass-light)!important;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.xp,.xp-value,.reward,.reward-value,.gold-value,.highlight-value,.gold{color:var(--qb-gold-soft)!important}
+
+header,.site-header,.app-header,.topbar{
+  background:linear-gradient(180deg,rgba(6,7,6,.98),rgba(8,9,7,.96));
+  border-color:rgba(111,87,45,.52);
+  box-shadow:0 8px 24px rgba(0,0,0,.25);
+}
+
+nav,.main-nav,.primary-nav,.tabs{border-color:rgba(111,87,45,.34)}
+nav a,nav button,.main-nav a,.main-nav button,.tab{color:#8F8B7F}
+nav a:hover,nav button:hover,.main-nav a:hover,.main-nav button:hover,.tab:hover{color:var(--qb-text)}
+nav .active,nav [aria-current='page'],.main-nav .active,.tab.active,.tab[aria-selected='true']{
+  color:var(--qb-gold-soft);
+  border-color:var(--qb-brass-light);
+}
+
+.campaign-strip,.campaign-progress-header,.global-progress{
+  background:rgba(9,11,8,.78);
+  border-color:rgba(111,87,45,.35);
+}
+.campaign-strip strong,.campaign-progress-header strong{color:var(--qb-gold-soft)}
+
+.card,.panel,.widget,.section-card,.content-card,.dashboard-card,.character-card,.quest-card,
+.character-hero,.training-hero,.guild-banner,.ledger-head,.hall-hero{
+  background:linear-gradient(145deg,rgba(17,19,15,.95),rgba(11,13,10,.97));
+  border-color:rgba(48,51,43,.96);
+  box-shadow:var(--qb-shadow-soft);
+  border-radius:var(--qb-radius-panel);
+}
+
+.hero,.hero-card,.feature-card,.campaign-card,.character-card,.character-hero,.guild-banner{
+  border-color:rgba(111,87,45,.65);
+}
+
+.campaign-home .campaign-titleline,.campaign-home .chapter-grid,.campaign-home .campaign-foot{
+  background:linear-gradient(90deg,rgba(8,9,7,.70),rgba(8,9,7,.50));
+  border-color:rgba(111,87,45,.40);
+}
+.campaign-titleline h2,.campaign-title{color:#EADCA9!important}
+.campaign-titleline h3,.campaign-subtitle,.chapter-name{color:var(--qb-brass-light)!important}
+.campaign-titleline p,.campaign-description,.flavor-text{color:#C6BFAE!important}
+
+.forged-frame,.frame-brass,.panel--important{
+  border:1px solid rgba(111,87,45,.78)!important;
+  box-shadow:inset 0 0 0 1px rgba(184,150,80,.06),var(--qb-shadow-soft)!important;
+}
+.forged-frame::before,.panel--important::before{
+  content:'';
+  pointer-events:none;
+  position:absolute;
+  inset:6px;
+  background:
+    linear-gradient(var(--qb-brass),var(--qb-brass)) left top/16px 1px no-repeat,
+    linear-gradient(var(--qb-brass),var(--qb-brass)) left top/1px 16px no-repeat,
+    linear-gradient(var(--qb-brass),var(--qb-brass)) right top/16px 1px no-repeat,
+    linear-gradient(var(--qb-brass),var(--qb-brass)) right top/1px 16px no-repeat,
+    linear-gradient(var(--qb-brass),var(--qb-brass)) left bottom/16px 1px no-repeat,
+    linear-gradient(var(--qb-brass),var(--qb-brass)) left bottom/1px 16px no-repeat,
+    linear-gradient(var(--qb-brass),var(--qb-brass)) right bottom/16px 1px no-repeat,
+    linear-gradient(var(--qb-brass),var(--qb-brass)) right bottom/1px 16px no-repeat;
+  opacity:.58;
+}
+
+.inset,.empty-state,.note-box,.quest-watch-empty,.inventory-empty,.empty-inline{
+  background:rgba(9,11,8,.72);
+  border-color:rgba(48,51,43,.94);
+  color:var(--qb-text-muted);
+}
+
+button,.button,.btn{border-radius:var(--qb-radius-control)}
+.btn-primary,.button-primary,button.primary,button[data-variant='primary']{
+  color:#F0E4C2;
+  background:linear-gradient(180deg,#3E3016,#29210F);
+  border-color:#8E6B31;
+  box-shadow:inset 0 1px 0 rgba(227,207,145,.10),0 3px 8px rgba(0,0,0,.22);
+}
+.btn-primary:hover,.button-primary:hover,button.primary:hover,button[data-variant='primary']:hover{
+  background:linear-gradient(180deg,#4B3A1B,#302611);
+  border-color:var(--qb-brass-warm);
+}
+.btn-secondary,.button-secondary,button.secondary,button.ghost{
+  color:#D3CCBA;
+  background:#11130F;
+  border-color:#44483D;
+}
+.btn-secondary:hover,.button-secondary:hover,button.secondary:hover,button.ghost:hover{
+  background:#181B16;
+  border-color:#626352;
+}
+.btn-danger,.button-danger,button.danger{
+  color:#D79A91;
+  background:#190D0C;
+  border-color:var(--qb-danger);
+}
+.btn-danger:hover,.button-danger:hover,button.danger:hover{
+  background:#24100F;
+  border-color:var(--qb-danger-light);
+}
+
+input,textarea,select{
+  color:var(--qb-text);
+  background:var(--qb-inset);
+  border-color:#393D34;
+  border-radius:var(--qb-radius-control);
+}
+input::placeholder,textarea::placeholder{color:#66685F}
+input:focus,textarea:focus,select:focus{
+  border-color:var(--qb-brass-warm);
+  outline-color:rgba(184,150,80,.28);
+}
+
+progress,.progress,.progress-track,.xp-track{
+  background:var(--qb-progress-track);
+  border-color:#30342C;
+}
+.progress-fill,.xp-fill,.campaign-progress-fill,.progress>span,.progress>i{
+  background:linear-gradient(90deg,var(--qb-progress-start),var(--qb-progress-end));
+  box-shadow:0 0 8px rgba(208,179,107,.10);
+}
+
+.player-card,.character-hero{
+  background:
+    radial-gradient(circle at 24% 45%,rgba(89,105,80,.07),transparent 35%),
+    linear-gradient(145deg,rgba(17,20,15,.97),rgba(9,11,8,.98));
+  border-color:#525747;
+}
+.player-card:hover{border-color:rgba(155,120,57,.72)}
+
+.level-badge,.rank-badge,.level-seal,.count-pill,.status-chip{
+  color:var(--qb-text);
+  background:rgba(8,10,8,.92);
+  border-color:#555342;
+  box-shadow:inset 0 0 0 1px rgba(155,120,57,.14);
+}
+
+.stat,.stat-card,.stat-tile,.metric,.metric-card,.character-stats>div,.player-badges>span,.streak-grid>div{
+  background:rgba(8,11,8,.76);
+  border-color:#2E332B;
+}
+.stat strong,.stat-card strong,.stat-tile strong,.metric strong,.character-stats strong,.player-badges b,.streak-grid b{color:#E2D4A8}
+.stat label,.stat-card label,.stat-tile label,.metric label,.character-stats small,.player-badges small,.streak-grid small{color:var(--qb-text-muted)}
+
+.daily-ledger,.ledger,.daily-home{
+  background:linear-gradient(180deg,rgba(15,18,14,.96),rgba(9,11,8,.98));
+}
+.daily-row,.ledger-row,.quest-row,.daily-quest,.watch-row,.effect-row{
+  background:#0D100C;
+  border-color:#31362D;
+}
+.daily-row:hover,.ledger-row:hover,.quest-row:hover,.daily-quest:hover,.watch-row:hover,.effect-row:hover{
+  background:#121510;
+  border-color:#57513B;
+}
+
+.chip,.badge,.filter-chip,.tag{
+  color:#BBB6A6;
+  background:rgba(12,15,11,.92);
+  border-color:#42483C;
+}
+.filter-chip.active,.chip.active,.tag.active,[aria-pressed='true'].filter-chip{
+  color:#E7D69C;
+  background:#2B2311;
+  border-color:#8C6A31;
+}
+.featured,.featured-bonus,.bonus-chip{
+  color:#E6CC79;
+  background:#1E190C;
+  border-color:#7E6029;
+}
+
+.sidequest-card,.random-sidequest,.contract-card,.random-card{
+  background:linear-gradient(145deg,#11130F,#0C0F0B);
+  border-color:#454737;
+}
+.fate,.fate-card,.today-fate{
+  background:linear-gradient(135deg,#211C24,#151419)!important;
+  border-color:#51465A!important;
+}
+.fate h1,.fate h2,.fate-card h1,.fate-card h2{color:#DCCFE0!important}
+
+.completed,.success,.state-complete{border-color:rgba(89,105,80,.72)}
+.completed .status,.success .status{color:#89967B}
+.failed,.danger-state,.state-danger{border-color:rgba(101,40,36,.78)}
+.failed .status,.danger-state .status{color:#B86A61}
+
+.treasury,.guild-treasury,#qbUnifiedTreasury{
+  background:
+    radial-gradient(circle at 90% 0%,rgba(155,120,57,.10),transparent 32%),
+    linear-gradient(145deg,#14130D,#0B0D09);
+  border-color:#5D5130;
+}
+.treasury-total,.gold-total,.fund-total{color:var(--qb-gold-soft)}
+
+.inventory-slot,.vault-slot,.gear-slot{
+  background:linear-gradient(145deg,#11140F,#090C09);
+  border-color:#3C4137;
+}
+.inventory-slot:hover,.vault-slot:hover,.gear-slot:hover{border-color:var(--qb-brass)}
+.inventory-slot.empty,.vault-slot.empty,.gear-slot.empty{color:#6C6E65}
+
+.activity-row,.history-row,.log-row{
+  background:rgba(9,12,9,.72);
+  border-color:#2C322A;
+}
+.activity-row::before,.history-row::before,.log-row::before{background:var(--qb-brass-dark)}
+hr,.divider,.section-divider{border-color:rgba(111,87,45,.38)}
+
+*{scrollbar-color:#67512B #10130F}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:#10130F}
+::-webkit-scrollbar-thumb{background:#5E4A28;border:2px solid #10130F}
+::-webkit-scrollbar-thumb:hover{background:#806331}
+::selection{background:#6F572D;color:#F1E8D3}
