@@ -1,0 +1,145 @@
+/* Questbound — Kaer Morhen oxblood/brass visual layer v20.3
+   VISUAL ONLY. No behavior, state, data, navigation, calculations,
+   component ordering, responsive information architecture, or controls. */
+
+:root{
+  --qb-bg:#080706;
+  --qb-bg-deep:#0C0B0A;
+  --qb-panel:#12100E;
+  --qb-panel-raised:#181310;
+  --qb-inset:#0D0B0A;
+  --qb-border:#352F2A;
+  --qb-brass-dark:#72572E;
+  --qb-brass:#9D783D;
+  --qb-brass-warm:#BA9550;
+  --qb-brass-light:#D0B069;
+  --qb-text:#E9E0CF;
+  --qb-text-secondary:#B8AFA0;
+  --qb-text-muted:#82786F;
+  --qb-oxblood:#4A1D1A;
+  --qb-crimson:#6F2925;
+  --qb-red-worn:#8E3D35;
+  --qb-ruby:#B34A3E;
+
+  /* Keep existing Questbound token consumers in sync. */
+  --bg:var(--qb-bg);
+  --bg2:var(--qb-bg-deep);
+  --panel:var(--qb-panel);
+  --panel2:var(--qb-panel-raised);
+  --panel3:var(--qb-inset);
+  --ink:var(--qb-text);
+  --muted:var(--qb-text-secondary);
+  --muted2:var(--qb-text-muted);
+  --line:var(--qb-border);
+  --gold:var(--qb-brass-light);
+  --gold2:var(--qb-brass);
+  --gold3:var(--qb-brass-dark);
+}
+
+html,body{background-color:var(--qb-bg)!important;color:var(--qb-text)!important}
+
+/* Important / ceremonial panels — mapped to Questbound's live visual equivalents. */
+#app #screen .campaign-home .campaign-titleline,
+#app #screen .character-hero,
+#app #screen .guild-banner,
+#app #screen .hall-hero,
+#app #screen #qbUnifiedTreasury,
+#app #screen .qb-victory-callout,
+#app #screen .panel--important,
+#app #screen .campaign-card,
+#app #screen .character-card{
+  background:
+    radial-gradient(circle at 100% 0%,rgba(111,41,37,.12),transparent 35%),
+    linear-gradient(145deg,rgba(18,16,14,.97),rgba(10,9,8,.98))!important;
+}
+
+/* Thin brass framing with faint oxblood inset. */
+#app #screen .character-hero,
+#app #screen .guild-banner,
+#app #screen .hall-hero,
+#app #screen #qbUnifiedTreasury,
+#app #screen .qb-victory-callout,
+#app #screen .forged-frame,
+#app #screen .panel--important{
+  border:1px solid rgba(157,120,61,.72)!important;
+  box-shadow:
+    inset 0 0 0 1px rgba(74,29,26,.45),
+    0 10px 28px rgba(0,0,0,.26)!important;
+}
+
+/* Active / selected nav state. */
+#app #mainNav.main-nav button.active,
+#app #mainNav.main-nav [aria-current='page'],
+#app #mainNav.main-nav .tab.active,
+#app #mainNav.main-nav .tab[aria-selected='true']{
+  color:var(--qb-brass-light)!important;
+  border-bottom-color:var(--qb-crimson)!important;
+  background:linear-gradient(180deg,rgba(111,41,37,.02),rgba(111,41,37,.14))!important;
+}
+
+/* Highlight / featured accent. */
+#app #screen .featured-bonus,
+#app #screen .featured,
+#app #screen .bonus-chip,
+#app #screen .special-state,
+#app #screen .qb-victory-callout{
+  background-color:rgba(74,29,26,.42)!important;
+  border-color:#7A3A30!important;
+  color:#D9BE86!important;
+}
+
+/* Carry the warmer palette into the actual high-frequency Questbound surfaces. */
+#app #screen .card,
+#app #screen .home-card,
+#app #screen .weekly-card,
+#app #screen .player-card,
+#app #screen .training-hero,
+#app #screen .ledger-head{
+  background-color:var(--qb-panel)!important;
+  border-color:var(--qb-border)!important;
+}
+
+#app #screen .weekly-block,
+#app #screen .road-block,
+#app #screen .effect-row,
+#app #screen .watch-row,
+#app #screen .daily-quest,
+#app #screen .ledger-row,
+#app #screen .qb-ability-ledger-entry,
+#app #screen .inventory-slot,
+#app #screen .vault-slot,
+#app #screen .gear-slot,
+#app #screen .empty-inline{
+  background-color:var(--qb-inset)!important;
+  border-color:var(--qb-border)!important;
+}
+
+#app #screen .eyebrow,
+#app #screen .section-label,
+#app #screen .overline,
+#app #screen .category-label,
+#app #screen .panel-label{
+  color:var(--qb-brass-light)!important;
+}
+
+#app #screen .progress>span,
+#app #screen .progress>i,
+#app #campaignStrip .progress>span{
+  background:linear-gradient(90deg,var(--qb-brass-dark),var(--qb-brass),var(--qb-brass-light))!important;
+  box-shadow:none!important;
+}
+
+#app button.danger,
+#app .btn-danger,
+#app .button-danger{
+  background:var(--qb-oxblood)!important;
+  border-color:var(--qb-crimson)!important;
+  color:#D9A39C!important;
+}
+
+#app button.danger:hover,
+#app .btn-danger:hover,
+#app .button-danger:hover{
+  background:var(--qb-crimson)!important;
+  border-color:var(--qb-red-worn)!important;
+}
