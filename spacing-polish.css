@@ -1,0 +1,71 @@
+/* Questbound spacing polish v20.10 — visual only. */
+
+/* Home player cards: keep the stats/action cluster attached to the identity block
+   instead of pushing it to the bottom of the full-body art height. */
+#app #screen .players-grid .player-main{
+  justify-content:flex-start!important;
+}
+#app #screen .players-grid .player-badges{
+  margin-top:1rem!important;
+}
+#app #screen .players-grid .player-alerts{
+  min-height:0!important;
+  margin:.55rem 0 .7rem!important;
+}
+#app #screen .players-grid .player-main>button.text-link{
+  margin-top:.35rem!important;
+  align-self:flex-end!important;
+}
+
+/* Weekly co-op/challenge card: restore deliberate breathing room between copy,
+   reward/meta text, controls and the failure note without changing controls. */
+#app #screen .weekly-card>.weekly-block{
+  padding:1.45rem 1.55rem!important;
+}
+#app #screen .weekly-card>.weekly-block .eyebrow{
+  margin-bottom:.7rem!important;
+}
+#app #screen .weekly-card>.weekly-block h2{
+  margin:.1rem 0 .72rem!important;
+}
+#app #screen .weekly-card>.weekly-block p{
+  margin:.55rem 0 .9rem!important;
+}
+#app #screen .weekly-card>.weekly-block .progress,
+#app #screen .weekly-card>.weekly-block .progress-meta,
+#app #screen .weekly-card>.weekly-block .quest-meta{
+  margin-top:.8rem!important;
+}
+#app #screen .weekly-card>.weekly-block button{
+  margin-top:.85rem!important;
+}
+#app #screen .weekly-card>.weekly-block button+button{
+  margin-left:.45rem!important;
+}
+
+/* Hall empty trophy state: avoid a giant vacant panel before the first win. */
+#app #screen .trophy-shelf:has(.trophy.locked){
+  min-height:0!important;
+}
+#app #screen .trophy-shelf .trophy.locked{
+  min-height:210px!important;
+  height:auto!important;
+  padding:2rem 1.5rem!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:1rem!important;
+}
+#app #screen .trophy-shelf .trophy.locked>span{
+  margin:0!important;
+}
+#app #screen .trophy-shelf .trophy.locked>b{
+  margin:0!important;
+  text-align:center!important;
+}
+
+@media(max-width:760px){
+  #app #screen .weekly-card>.weekly-block{padding:1.1rem 1rem!important}
+  #app #screen .trophy-shelf .trophy.locked{min-height:170px!important;padding:1.4rem 1rem!important}
+}
