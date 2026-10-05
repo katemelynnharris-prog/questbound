@@ -1,4 +1,4 @@
-/* Questbound spacing polish v20.10 — visual only. */
+/* Questbound spacing polish v20.11 — visual only. */
 
 /* Home player cards: keep the stats/action cluster attached to the identity block
    instead of pushing it to the bottom of the full-body art height. */
@@ -15,6 +15,36 @@
 #app #screen .players-grid .player-main>button.text-link{
   margin-top:.35rem!important;
   align-self:flex-end!important;
+}
+
+/* Daily ledger: give each two-column row enough internal breathing room and
+   create a clear break before the next Home section. */
+#app #screen .qb-daily-card,
+#app #screen .qb-journal-dailies{
+  margin-bottom:1rem!important;
+  padding-bottom:1.15rem!important;
+}
+#app #screen .qb-daily-compact-grid{
+  gap:.65rem!important;
+}
+#app #screen .qb-daily-row{
+  min-height:64px!important;
+  padding:.78rem .9rem!important;
+  gap:1rem!important;
+}
+#app #screen .qb-daily-main{
+  gap:.25rem .55rem!important;
+  align-items:center!important;
+}
+#app #screen .qb-daily-main b{
+  line-height:1.2!important;
+}
+#app #screen .qb-daily-main small{
+  line-height:1.25!important;
+}
+#app #screen .qb-daily-row .mini{
+  margin-left:auto!important;
+  min-width:88px!important;
 }
 
 /* Weekly co-op/challenge card: restore deliberate breathing room between copy,
@@ -66,6 +96,8 @@
 }
 
 @media(max-width:760px){
+  #app #screen .qb-daily-compact-grid{grid-template-columns:1fr!important}
+  #app #screen .qb-daily-row{min-height:58px!important;padding:.7rem .75rem!important}
   #app #screen .weekly-card>.weekly-block{padding:1.1rem 1rem!important}
   #app #screen .trophy-shelf .trophy.locked{min-height:170px!important;padding:1.4rem 1rem!important}
 }
