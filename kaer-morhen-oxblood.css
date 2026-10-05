@@ -1,4 +1,4 @@
-/* Questbound — Kaer Morhen oxblood/brass visual layer v20.4
+/* Questbound — Kaer Morhen oxblood/brass visual layer v20.5
    VISUAL ONLY. No behavior, state, data, navigation, calculations,
    component ordering, responsive information architecture, or controls. */
 
@@ -141,4 +141,17 @@ html,body{background-color:var(--qb-bg)!important;color:var(--qb-text)!important
 #app .button-danger:hover{
   background:var(--qb-crimson)!important;
   border-color:var(--qb-red-worn)!important;
+}
+
+/* FINAL CAMPAIGN EXCEPTION: .campaign-home itself also carries .card, so generic card overrides
+   were making the entire campaign block opaque. Keep the outer campaign shell fully transparent. */
+#app #screen .campaign-home.card,
+#app #screen .campaign-home{
+  background:transparent!important;
+  background-color:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
 }
