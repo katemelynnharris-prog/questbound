@@ -1,6 +1,9 @@
 /* Questbound UI v3 — parity/density corrections from authenticated beta screenshots. */
 #screen.qb-v3-wait{opacity:0!important;pointer-events:none!important;transition:none!important}
 
+/* Never show the legacy embedded Character sprites while the production portraits are being applied. */
+#screen img[alt="Kate sprite"],#screen img[alt="Drew sprite"]{visibility:hidden!important}
+
 /* Keep paired Home cards only as tall as their own content. */
 .home-two{align-items:start!important}
 .home-two>.card{height:auto!important;min-height:0!important}
