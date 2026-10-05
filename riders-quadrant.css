@@ -1,0 +1,72 @@
+/* Questbound — Rider's Quadrant visual layer v20.6
+   Rider's Quadrant only. Explicitly does not apply to Witcher Trials.
+   Visual presentation only. */
+
+#app #screen.qb-riders-quadrant{
+  position:relative;
+  isolation:isolate;
+}
+
+#app #screen.qb-riders-quadrant::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100vw;
+  min-height:100%;
+  height:100%;
+  z-index:-2;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(8,7,6,.26) 0%,rgba(8,7,6,.50) 42%,rgba(8,7,6,.76) 100%),
+    url('./assets/riderquadrant_background.png') center top / cover no-repeat;
+}
+
+#app #screen.qb-riders-quadrant::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  background:radial-gradient(circle at 50% 18%,rgba(111,41,37,.10),transparent 36rem);
+}
+
+/* Main Rider's Quadrant hero / summary gets the uploaded ornamental frame. */
+#app #screen.qb-riders-quadrant .qb-riders-frame{
+  position:relative;
+  isolation:isolate;
+  overflow:visible!important;
+  background:linear-gradient(145deg,rgba(15,12,10,.82),rgba(8,7,6,.90))!important;
+  border-color:rgba(157,120,61,.20)!important;
+  box-shadow:0 18px 40px rgba(0,0,0,.34)!important;
+}
+
+#app #screen.qb-riders-quadrant .qb-riders-frame::after{
+  content:"";
+  position:absolute;
+  inset:-18px;
+  z-index:4;
+  pointer-events:none;
+  background:url('./assets/quadrant_frame.png') center center / 100% 100% no-repeat;
+  filter:drop-shadow(0 10px 20px rgba(0,0,0,.42));
+}
+
+#app #screen.qb-riders-quadrant .qb-riders-frame > *{
+  position:relative;
+  z-index:2;
+}
+
+/* Keep normal training content grounded and readable over the page art. */
+#app #screen.qb-riders-quadrant .card:not(.qb-riders-frame),
+#app #screen.qb-riders-quadrant .panel:not(.qb-riders-frame),
+#app #screen.qb-riders-quadrant .weekly-block,
+#app #screen.qb-riders-quadrant .road-block,
+#app #screen.qb-riders-quadrant .qb-training-stat{
+  background-color:rgba(13,11,10,.90)!important;
+}
+
+@media(max-width:760px){
+  #app #screen.qb-riders-quadrant::before{background-position:58% top}
+  #app #screen.qb-riders-quadrant .qb-riders-frame::after{inset:-10px}
+}
