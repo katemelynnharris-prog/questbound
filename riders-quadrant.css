@@ -1,4 +1,4 @@
-/* Questbound — Rider's Quadrant visual layer v20.8
+/* Questbound — Rider's Quadrant visual layer v20.9
    Rider's Quadrant only. Explicitly does not apply to Witcher Trials.
    Visual presentation only. */
 
@@ -50,6 +50,23 @@
   background:none!important;
 }
 
+/* Replace the rendered text title with the engraved crest asset, while leaving eyebrow/subtitle intact. */
+#app #screen.qb-riders-quadrant .qb-riders-title-text{
+  display:none!important;
+}
+
+#app #screen.qb-riders-quadrant .qb-riders-title-image{
+  display:block!important;
+  width:min(760px,76vw)!important;
+  max-width:100%!important;
+  height:auto!important;
+  max-height:150px!important;
+  object-fit:contain!important;
+  object-position:left center!important;
+  margin:8px 0 12px!important;
+  filter:drop-shadow(0 4px 12px rgba(0,0,0,.30));
+}
+
 /* Rider's Quadrant content panels: translucent so the page artwork remains visible. */
 #app #screen.qb-riders-quadrant .card:not(.qb-riders-frame),
 #app #screen.qb-riders-quadrant .panel:not(.qb-riders-frame),
@@ -76,4 +93,5 @@
 
 @media(max-width:760px){
   #app #screen.qb-riders-quadrant::before{background-position:58% top}
+  #app #screen.qb-riders-quadrant .qb-riders-title-image{width:min(560px,92vw)!important;max-height:118px!important}
 }
