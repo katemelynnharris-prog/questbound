@@ -5,16 +5,17 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;background:rg
 .app-shell{background:transparent!important}
 
 .brand{display:flex;align-items:center;min-width:220px}
+.brand:before{display:none!important;content:none!important}
 .qb-brand-logo{display:block;width:min(320px,28vw);max-height:68px;object-fit:contain;object-position:left center;filter:drop-shadow(0 2px 8px rgba(0,0,0,.65))}
 
 .screen.qb-home-campaign-backdrop{position:relative;isolation:isolate}
-.screen.qb-home-campaign-backdrop::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:100vw;height:var(--qb-campaign-backdrop-height,680px);z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(4,6,8,.56) 0%,rgba(4,6,8,.40) 48%,rgba(4,6,8,.30) 100%),linear-gradient(0deg,rgba(4,6,8,.30),rgba(4,6,8,.02)),url('./assets/background_campaign.png') 62% 18% / cover no-repeat;box-shadow:none;border-bottom:none}
+.screen.qb-home-campaign-backdrop::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:100vw;height:var(--qb-campaign-backdrop-height,680px);z-index:-1;pointer-events:none;background:linear-gradient(90deg,rgba(4,6,8,.36) 0%,rgba(4,6,8,.25) 48%,rgba(4,6,8,.18) 100%),linear-gradient(0deg,rgba(4,6,8,.20),rgba(4,6,8,0)),url('./assets/background_campaign.png') 62% 18% / cover no-repeat;box-shadow:none;border-bottom:none}
 .screen.qb-home-campaign-backdrop::after{content:"";position:absolute;left:50%;transform:translateX(-50%);top:calc(var(--qb-campaign-backdrop-height,680px) - 2px);width:100vw;height:2px;pointer-events:none;background:linear-gradient(90deg,transparent 0%,rgba(210,176,89,.68) 8%,rgba(231,199,112,.95) 50%,rgba(210,176,89,.68) 92%,transparent 100%);box-shadow:0 1px 0 rgba(0,0,0,.75)}
 
 .campaign-home{position:relative;overflow:visible;isolation:isolate;background:transparent!important;border:none!important;outline:none!important;border-radius:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;padding-left:0!important;padding-right:0!important;margin-bottom:34px!important;padding-bottom:24px!important}
 .qb-home-campaign-backdrop .campaign-home::before,.qb-home-campaign-backdrop .campaign-home::after{content:none!important;display:none!important;border:0!important;box-shadow:none!important}
 .campaign-home .campaign-titleline,.campaign-home .progress,.campaign-home .chapter-grid,.campaign-home .campaign-foot,.campaign-home .qb-victory-callout{position:relative;z-index:1}
-.campaign-home .campaign-titleline,.campaign-home .chapter-grid,.campaign-home .campaign-foot{background:linear-gradient(90deg,rgba(5,7,9,.78),rgba(5,7,9,.60));backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border:1px solid rgba(201,169,94,.18);box-shadow:0 10px 28px rgba(0,0,0,.22)}
+.campaign-home .campaign-titleline,.campaign-home .chapter-grid,.campaign-home .campaign-foot{background:linear-gradient(90deg,rgba(5,7,9,.58),rgba(5,7,9,.42));backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);border:1px solid rgba(201,169,94,.16);box-shadow:0 8px 22px rgba(0,0,0,.16)}
 .campaign-home .campaign-titleline{padding:22px 24px;border-radius:14px 14px 8px 8px;margin-bottom:12px}
 .campaign-home .chapter-grid{padding:16px 18px;border-radius:8px;margin-top:12px}
 .campaign-home .campaign-foot{padding:12px 18px;border-radius:8px 8px 14px 14px;margin-top:12px}
