@@ -1,5 +1,5 @@
 /* =========================================================
-   QUESTBOUND — KAER MORHEN VISUAL OVERRIDE v20.1
+   QUESTBOUND — KAER MORHEN VISUAL OVERRIDE v20.2
    VISUALS ONLY. No layout, behavior, state, data, navigation,
    calculations, component ordering, or control changes.
    ========================================================= */
@@ -11,7 +11,7 @@
   --qb-success:#596950;--qb-danger:#652824;--qb-danger-light:#984A42;--qb-fate:#5E5265;
   --qb-progress-track:#191D17;--qb-progress-start:#80602D;--qb-progress-end:#CCAE63;
   --qb-shadow:0 18px 48px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.018);--qb-shadow-soft:0 8px 24px rgba(0,0,0,.22);
-  --qb-radius-panel:12px;--qb-radius-control:6px;
+  --qb-radius-panel:7px;--qb-radius-control:4px;
   --bg:var(--qb-bg);--bg2:var(--qb-bg-deep);--panel:var(--qb-panel);--panel2:var(--qb-panel-raised);--panel3:var(--qb-inset);
   --ink:var(--qb-text);--muted:var(--qb-text-secondary);--muted2:var(--qb-text-muted);--line:var(--qb-border);--line2:#44483D;
   --gold:var(--qb-brass-light);--gold2:var(--qb-brass);--gold3:var(--qb-brass-dark);
@@ -19,10 +19,10 @@
 
 html,body{color:var(--qb-text)!important;background-color:var(--qb-bg)!important}
 body{
-  background-image:linear-gradient(to bottom,rgba(7,8,6,.18) 0%,rgba(8,9,7,.42) 22%,rgba(8,9,7,.58) 58%,rgba(8,9,7,.78) 100%),url('./assets/background_global.png')!important;
+  background-image:linear-gradient(to bottom,rgba(7,8,6,.10) 0%,rgba(8,9,7,.34) 22%,rgba(8,9,7,.56) 58%,rgba(8,9,7,.82) 100%),url('./assets/background_global.png')!important;
   background-size:cover!important;background-position:center top!important;background-attachment:fixed!important;background-repeat:no-repeat!important;
 }
-body::before{background:rgba(5,7,6,.30)!important;opacity:1!important}
+body::before{background:rgba(4,5,4,.18)!important;opacity:1!important}
 
 h1,h2,h3,h4,h5,h6,.page-title,.section-title,.card-title,.character-name,.campaign-title{font-family:var(--serif,Georgia,serif)!important;color:var(--qb-text)!important;font-weight:600!important}
 body,button,input,select,textarea{color:var(--qb-text-secondary)!important}
@@ -31,71 +31,191 @@ small,.muted,.secondary-text,.caption,.fine{color:var(--qb-text-muted)!important
 .eyebrow,.section-label,.overline,.category-label,.panel-label{color:var(--qb-brass-light)!important;letter-spacing:.16em!important;text-transform:uppercase!important}
 .xp,.xp-value,.reward,.reward-value,.gold-value,.highlight-value,.gold{color:var(--qb-gold-soft)!important}
 
-.topbar{background:linear-gradient(180deg,rgba(6,7,6,.985),rgba(8,9,7,.97))!important;border-bottom-color:rgba(111,87,45,.52)!important;box-shadow:0 8px 24px rgba(0,0,0,.25)!important}
-.main-nav{background:rgba(7,9,7,.985)!important;border-bottom-color:rgba(111,87,45,.34)!important}
-.main-nav button{color:#8F8B7F!important}
-.main-nav button:hover{color:var(--qb-text)!important}
-.main-nav button.active{color:var(--qb-gold-soft)!important;border-bottom-color:var(--qb-brass-light)!important}
+#app .topbar{background:linear-gradient(180deg,#080906 0%,#0b0d09 100%)!important;border-bottom:1px solid rgba(155,120,57,.58)!important;box-shadow:0 7px 24px rgba(0,0,0,.42)!important}
+#app #mainNav.main-nav{background:#090b08!important;border-bottom:1px solid rgba(111,87,45,.54)!important;box-shadow:0 5px 18px rgba(0,0,0,.24)!important}
+#app #mainNav.main-nav button{color:#858277!important;text-shadow:none!important}
+#app #mainNav.main-nav button:hover{color:#d9d1bf!important;background:rgba(184,150,80,.035)!important}
+#app #mainNav.main-nav button.active{color:#ead99f!important;border-bottom-color:#b89650!important;background:linear-gradient(180deg,rgba(184,150,80,.03),rgba(184,150,80,.085))!important}
 
-.campaign-strip{background:rgba(9,11,8,.88)!important;border-bottom-color:rgba(111,87,45,.35)!important}
-.campaign-strip strong{color:var(--qb-gold-soft)!important}
+#app #campaignStrip.campaign-strip{background:#0b0d0a!important;border-bottom:1px solid rgba(111,87,45,.50)!important;box-shadow:inset 0 -1px 0 rgba(255,255,255,.012)!important}
+#app #campaignStrip.campaign-strip strong{color:#e3cf91!important}
 
-.card,.panel,.widget,.section-card,.content-card,.dashboard-card,.character-card,.quest-card,.character-hero,.training-hero,.guild-banner,.ledger-head,.hall-hero{
-  background:linear-gradient(145deg,rgba(16,18,15,.965),rgba(10,12,9,.985))!important;
-  border-color:rgba(48,51,43,.96)!important;border-radius:12px!important;box-shadow:0 8px 24px rgba(0,0,0,.22)!important;
+/* Real Questbound surfaces: force the visual language onto the live components. */
+#app #screen .card,
+#app #screen .panel,
+#app #screen .home-card,
+#app #screen .weekly-card,
+#app #screen .player-card,
+#app #screen .character-hero,
+#app #screen .training-hero,
+#app #screen .guild-banner,
+#app #screen .ledger-head,
+#app #screen .hall-hero,
+#app #screen #qbUnifiedTreasury{
+  background:linear-gradient(150deg,#11130f 0%,#0b0d0a 58%,#090b08 100%)!important;
+  border:1px solid #35382f!important;
+  border-radius:7px!important;
+  box-shadow:0 12px 28px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.014)!important;
+  backdrop-filter:none!important;
+  -webkit-backdrop-filter:none!important;
 }
-.character-hero,.guild-banner,.campaign-home,.player-card{border-color:rgba(111,87,45,.68)!important}
 
-.campaign-home{background:transparent!important;border-radius:0!important;box-shadow:none!important}
-.campaign-home .campaign-titleline,.campaign-home .chapter-grid,.campaign-home .campaign-foot{
-  background:linear-gradient(90deg,rgba(8,9,7,.62),rgba(8,9,7,.42))!important;
-  border-color:rgba(111,87,45,.40)!important;box-shadow:0 8px 22px rgba(0,0,0,.16)!important;
+#app #screen .player-card,
+#app #screen .character-hero,
+#app #screen .guild-banner,
+#app #screen #qbUnifiedTreasury{
+  border-color:rgba(111,87,45,.76)!important;
+  box-shadow:0 14px 34px rgba(0,0,0,.38),inset 0 0 0 1px rgba(184,150,80,.035)!important;
 }
-.campaign-titleline h2,.campaign-title{color:#EADCA9!important}
-.campaign-titleline h3,.campaign-subtitle,.chapter-name{color:var(--qb-brass-light)!important}
-.campaign-titleline p,.campaign-description,.flavor-text{color:#C6BFAE!important}
 
-button,.button,.btn{border-radius:6px!important}
-button:not(.text-link){background:linear-gradient(180deg,#171913,#10120f)!important;border-color:#44483D!important;color:#D3CCBA!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.025)!important}
-button:not(.text-link):hover{background:#1B1E18!important;border-color:#626352!important;color:#E8E1CF!important}
-button.primary,.btn-primary,.button-primary,button[data-variant='primary']{background:linear-gradient(180deg,#3E3016,#29210F)!important;border-color:#8E6B31!important;color:#F0E4C2!important}
-button.primary:hover,.btn-primary:hover,.button-primary:hover,button[data-variant='primary']:hover{background:linear-gradient(180deg,#4B3A1B,#302611)!important;border-color:var(--qb-brass-warm)!important}
-button.danger,.btn-danger,.button-danger{background:#190D0C!important;border-color:var(--qb-danger)!important;color:#D79A91!important}
-button.danger:hover,.btn-danger:hover,.button-danger:hover{background:#24100F!important;border-color:var(--qb-danger-light)!important}
-button.text-link{background:none!important;border:0!important;box-shadow:none!important;color:var(--qb-brass-light)!important}
+#app #screen .card h2,
+#app #screen .card h3,
+#app #screen .player-name-row h2,
+#app #screen .character-main h1,
+#app #screen .ledger-head h1,
+#app #screen .guild-banner h1{
+  color:#e8e1cf!important;
+  text-shadow:none!important;
+}
 
-input,textarea,select{color:var(--qb-text)!important;background:var(--qb-inset)!important;border-color:#393D34!important;border-radius:6px!important}
-input:focus,textarea:focus,select:focus{border-color:var(--qb-brass-warm)!important;box-shadow:0 0 0 3px rgba(184,150,80,.10)!important}
+#app #screen .player-card{
+  background:linear-gradient(145deg,#12150f 0%,#0b0e0a 68%,#090b08 100%)!important;
+}
+#app #screen .player-card::before{opacity:.48!important}
+#app #screen .sprite-wrap{background:radial-gradient(ellipse at 50% 88%,rgba(155,120,57,.08),transparent 46%)!important}
+#app #screen .player-badges>span,
+#app #screen .character-stats>div,
+#app #screen .streak-grid>div{
+  background:#0b0e0a!important;
+  border:1px solid #2c3028!important;
+  border-radius:4px!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.012)!important;
+}
 
-.progress,.progress-track,.xp-track{background:var(--qb-progress-track)!important;border-color:#30342C!important}
-.progress>span,.progress>i,.progress-fill,.xp-fill,.campaign-progress-fill{background:linear-gradient(90deg,var(--qb-progress-start),var(--qb-progress-end))!important;box-shadow:0 0 8px rgba(208,179,107,.10)!important}
+#app #screen .weekly-block,
+#app #screen .road-block,
+#app #screen .effect-row,
+#app #screen .watch-row,
+#app #screen .daily-quest,
+#app #screen .daily-row,
+#app #screen .ledger-row,
+#app #screen .quest-row,
+#app #screen .activity-row,
+#app #screen .history-row,
+#app #screen .log-row,
+#app #screen .qb-ability-ledger-entry,
+#app #screen .inventory-slot,
+#app #screen .vault-slot,
+#app #screen .gear-slot,
+#app #screen .empty-inline{
+  background:#0b0d0a!important;
+  border-color:#30342c!important;
+  border-radius:4px!important;
+  box-shadow:none!important;
+}
 
-.player-card,.character-hero{background:radial-gradient(circle at 24% 45%,rgba(89,105,80,.07),transparent 35%),linear-gradient(145deg,rgba(17,20,15,.97),rgba(9,11,8,.985))!important}
-.player-card{border-radius:12px!important;box-shadow:0 12px 30px rgba(0,0,0,.24)!important}
-.player-card:before{opacity:.42!important}
-.player-card:hover{border-color:rgba(155,120,57,.78)!important}
+#app #screen .effect-row:hover,
+#app #screen .watch-row:hover,
+#app #screen .daily-quest:hover,
+#app #screen .ledger-row:hover,
+#app #screen .quest-row:hover,
+#app #screen .qb-ability-ledger-entry:hover{
+  background:#11140f!important;
+  border-color:#655431!important;
+}
 
-.level-badge,.rank-badge,.level-seal,.count-pill,.status-chip{color:var(--qb-text)!important;background:rgba(8,10,8,.92)!important;border-color:#555342!important;box-shadow:inset 0 0 0 1px rgba(155,120,57,.14)!important}
+#app #screen .count-pill,
+#app #screen .status-chip,
+#app #screen .level-seal,
+#app #screen .rank-badge,
+#app #screen .level-badge,
+#app #screen .chip,
+#app #screen .badge,
+#app #screen .filter-chip,
+#app #screen .tag{
+  background:#0a0c09!important;
+  border-color:#4a493b!important;
+  color:#c9c0aa!important;
+  border-radius:4px!important;
+  box-shadow:none!important;
+}
 
-.character-stats>div,.player-badges>span,.streak-grid>div,.stat,.stat-card,.stat-tile,.metric,.metric-card{background:rgba(8,11,8,.80)!important;border-color:#2E332B!important;border-radius:6px!important}
-.character-stats strong,.player-badges b,.streak-grid b,.stat strong,.stat-card strong,.stat-tile strong,.metric strong{color:#E2D4A8!important}
-.character-stats small,.player-badges small,.streak-grid small,.stat label,.stat-card label,.stat-tile label,.metric label{color:var(--qb-text-muted)!important}
+#app #screen .fate-card,
+#app #screen .fate,
+#app #screen .today-fate{
+  background:linear-gradient(145deg,#1a171d 0%,#111013 100%)!important;
+  border-color:#51465a!important;
+  box-shadow:0 10px 26px rgba(0,0,0,.28)!important;
+}
 
-.daily-home,.daily-ledger,.ledger{background:linear-gradient(180deg,rgba(15,18,14,.96),rgba(9,11,8,.98))!important}
-.daily-quest,.daily-row,.ledger-row,.quest-row,.watch-row,.effect-row{background:#0D100C!important;border-color:#31362D!important;border-radius:6px!important}
-.daily-quest:hover,.daily-row:hover,.ledger-row:hover,.quest-row:hover,.watch-row:hover,.effect-row:hover{background:#121510!important;border-color:#57513B!important}
+/* Home campaign: keep castle art, replace glossy inner cards with restrained forged panels. */
+#app #screen .campaign-home{background:transparent!important;border:0!important;border-radius:0!important;box-shadow:none!important}
+#app #screen .campaign-home .campaign-titleline,
+#app #screen .campaign-home .chapter-grid,
+#app #screen .campaign-home .campaign-foot{
+  background:rgba(8,10,8,.66)!important;
+  border:1px solid rgba(111,87,45,.52)!important;
+  border-radius:4px!important;
+  box-shadow:0 8px 22px rgba(0,0,0,.22)!important;
+  backdrop-filter:blur(2px)!important;
+  -webkit-backdrop-filter:blur(2px)!important;
+}
+#app #screen .campaign-titleline h2{color:#eadca9!important;text-shadow:none!important}
+#app #screen .campaign-titleline h3{color:#d0b36b!important}
+#app #screen .chapter{border-top-color:#35372f!important}
+#app #screen .chapter.reached{border-top-color:#9b7839!important}
+#app #screen .chapter.reached b{color:#e0ca8d!important}
 
-.fate,.fate-card,.today-fate{background:linear-gradient(135deg,#211C24,#151419)!important;border-color:#51465A!important}
-.fate h1,.fate h2,.fate-card h1,.fate-card h2{color:#DCCFE0!important}
+/* Progress becomes a simple old-metal track instead of a bright game UI glow. */
+#app #screen .progress,
+#app #campaignStrip .progress{
+  background:#151914!important;
+  border:1px solid #30342c!important;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,.55)!important;
+}
+#app #screen .progress>span,
+#app #screen .progress>i,
+#app #campaignStrip .progress>span{
+  background:linear-gradient(90deg,#75572a 0%,#a8813c 58%,#c6a75d 100%)!important;
+  box-shadow:none!important;
+}
 
-#qbUnifiedTreasury,.treasury,.guild-treasury{background:radial-gradient(circle at 90% 0%,rgba(155,120,57,.10),transparent 32%),linear-gradient(145deg,#14130D,#0B0D09)!important;border-color:#5D5130!important}
+/* Buttons: compact forged controls, not glossy fantasy pills. */
+#app button:not(.text-link){
+  background:linear-gradient(180deg,#161813,#0f110e)!important;
+  border:1px solid #46483e!important;
+  border-radius:4px!important;
+  color:#d0c8b7!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.018)!important;
+  text-shadow:none!important;
+}
+#app button:not(.text-link):hover{background:#1b1e18!important;border-color:#7b6537!important;color:#eee4cc!important}
+#app button.primary,#app .btn-primary,#app .button-primary,#app button[data-variant='primary']{
+  background:linear-gradient(180deg,#3b2e16,#231c0d)!important;border-color:#8d6a31!important;color:#eee1be!important;
+}
+#app button.danger,#app .btn-danger,#app .button-danger{background:#170d0c!important;border-color:#652824!important;color:#d89b92!important}
+#app button.text-link{background:none!important;border:0!important;box-shadow:none!important;color:#d0b36b!important}
 
-.inventory-slot,.vault-slot,.gear-slot{background:linear-gradient(145deg,#11140F,#090C09)!important;border-color:#3C4137!important;border-radius:6px!important}
-.inventory-slot:hover,.vault-slot:hover,.gear-slot:hover{border-color:var(--qb-brass)!important}
+#app input,#app textarea,#app select{background:#0a0c09!important;border-color:#393d34!important;border-radius:4px!important;color:#e8e1cf!important;box-shadow:none!important}
+#app input:focus,#app textarea:focus,#app select:focus{border-color:#b89650!important;box-shadow:0 0 0 2px rgba(184,150,80,.08)!important}
 
-.empty-inline,.inset,.empty-state,.note-box,.quest-watch-empty,.inventory-empty{background:rgba(9,11,8,.72)!important;border-color:rgba(48,51,43,.94)!important;color:var(--qb-text-muted)!important}
+/* Kill leftover glossy/rounded treatment without changing spacing or structure. */
+#app #screen .card,
+#app #screen .player-card,
+#app #screen .character-hero,
+#app #screen .guild-banner,
+#app #screen .training-hero,
+#app #screen .ledger-head,
+#app #screen .weekly-block,
+#app #screen .road-block,
+#app #screen .effect-row,
+#app #screen .watch-row,
+#app #screen .daily-quest,
+#app #screen .qb-ability-ledger-entry{
+  filter:none!important;
+}
 
-hr,.divider,.section-divider{border-color:rgba(111,87,45,.38)!important}
+hr,.divider,.section-divider{border-color:rgba(111,87,45,.44)!important}
 *{scrollbar-color:#67512B #10130F}
 ::-webkit-scrollbar{width:10px;height:10px}::-webkit-scrollbar-track{background:#10130F}::-webkit-scrollbar-thumb{background:#5E4A28;border:2px solid #10130F}::-webkit-scrollbar-thumb:hover{background:#806331}
 ::selection{background:#6F572D;color:#F1E8D3}
