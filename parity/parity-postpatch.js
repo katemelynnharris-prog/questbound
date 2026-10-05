@@ -24,7 +24,8 @@
     "mustReplace("+JSON.stringify(fromPretty)+","+JSON.stringify(toPretty)+");",
     "src=src.replace(\"select('id,quest_id,completed_by,subject_user_id,occurrence_key,source,completed_at,campaign_xp_awarded,modifiers,reversed_at')\",\"select('id,quest_id,completed_by,subject_user_id,occurrence_key,source,completed_at,effective_date,campaign_xp_awarded,modifiers,reversed_at')\");",
     "src=src.replaceAll(\"map(c=>localDate(new Date(c.completed_at)))\",\"map(c=>c.effective_date||localDate(new Date(c.completed_at)))\");",
-    "src=src.replace(\"const d=localDate(new Date(x.completed_at)); if(x.quest_id===protein.id)p.add(d); if(x.quest_id===calories.id)c.add(d);\",\"const d=x.effective_date||localDate(new Date(x.completed_at)); if(x.quest_id===protein.id)p.add(d); if(x.quest_id===calories.id)c.add(d);\");"
+    "src=src.replace(\"const d=localDate(new Date(x.completed_at)); if(x.quest_id===protein.id)p.add(d); if(x.quest_id===calories.id)c.add(d);\",\"const d=x.effective_date||localDate(new Date(x.completed_at)); if(x.quest_id===protein.id)p.add(d); if(x.quest_id===calories.id)c.add(d);\");",
+    "src=src.replace(\"sprite=key==='Drew'?window.QB_SPRITES.Drew:window.QB_SPRITES.Kate\",\"sprite=key==='Drew'?'./assets/Drew_portrait.png?v=18.8':'./assets/kate_portrait.png?v=18.8'\");"
   ].join('\n');
   if(!bridge.includes(needle)) throw new Error('Questbound parity postpatch could not find bridge import marker');
   bridge=bridge.replace(needle,injected+'\n'+needle);
