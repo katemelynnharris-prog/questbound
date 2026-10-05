@@ -1,4 +1,4 @@
-/* Questbound spacing polish v20.11 — visual only. */
+/* Questbound spacing polish v20.12 — visual only. */
 
 /* Home player cards: keep the stats/action cluster attached to the identity block
    instead of pushing it to the bottom of the full-body art height. */
@@ -17,15 +17,21 @@
   align-self:flex-end!important;
 }
 
-/* Daily ledger: give each two-column row enough internal breathing room and
-   create a clear break before the next Home section. */
+/* Daily ledger: keep a real section break below the full-width ledger. */
 #app #screen .qb-daily-card,
 #app #screen .qb-journal-dailies{
-  margin-bottom:1rem!important;
+  margin-bottom:1.25rem!important;
   padding-bottom:1.15rem!important;
+}
+#app #screen .qb-daily-card + .home-two,
+#app #screen .qb-daily-card + .card,
+#app #screen .qb-journal-dailies + .home-two,
+#app #screen .qb-journal-dailies + .card{
+  margin-top:.9rem!important;
 }
 #app #screen .qb-daily-compact-grid{
   gap:.65rem!important;
+  margin-bottom:.2rem!important;
 }
 #app #screen .qb-daily-row{
   min-height:64px!important;
@@ -47,30 +53,64 @@
   min-width:88px!important;
 }
 
-/* Weekly co-op/challenge card: restore deliberate breathing room between copy,
-   reward/meta text, controls and the failure note without changing controls. */
+/* Fate / Quest Watch row: keep both panels aligned and away from the ledger edge. */
+#app #screen .home-two:has(.fate-card){
+  align-items:stretch!important;
+  gap:1rem!important;
+  margin-top:0!important;
+}
+#app #screen .home-two:has(.fate-card)>.card{
+  height:100%!important;
+}
+
+/* Weekly challenge + weekly co-op: treat the pair as one balanced two-column panel.
+   This changes spacing/presentation only; controls and content remain untouched. */
+#app #screen .weekly-card{
+  align-items:stretch!important;
+  overflow:hidden!important;
+  padding:0!important;
+}
 #app #screen .weekly-card>.weekly-block{
+  min-height:0!important;
+  height:auto!important;
   padding:1.45rem 1.55rem!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-start!important;
+  background:transparent!important;
+}
+#app #screen .weekly-card>.weekly-block + .weekly-block{
+  border-left:1px solid rgba(157,120,61,.22)!important;
 }
 #app #screen .weekly-card>.weekly-block .eyebrow{
-  margin-bottom:.7rem!important;
+  margin:0 0 .7rem!important;
 }
 #app #screen .weekly-card>.weekly-block h2{
   margin:.1rem 0 .72rem!important;
+  line-height:1.04!important;
 }
-#app #screen .weekly-card>.weekly-block p{
-  margin:.55rem 0 .9rem!important;
+#app #screen .weekly-card>.weekly-block>p{
+  margin:.55rem 0 .95rem!important;
 }
-#app #screen .weekly-card>.weekly-block .progress,
+#app #screen .weekly-card>.weekly-block .progress{
+  margin:.75rem 0 .45rem!important;
+}
 #app #screen .weekly-card>.weekly-block .progress-meta,
 #app #screen .weekly-card>.weekly-block .quest-meta{
-  margin-top:.8rem!important;
+  margin:.35rem 0 .7rem!important;
 }
 #app #screen .weekly-card>.weekly-block button{
-  margin-top:.85rem!important;
+  margin-top:.55rem!important;
 }
 #app #screen .weekly-card>.weekly-block button+button{
   margin-left:.45rem!important;
+}
+#app #screen .weekly-card>.weekly-block>p:last-child{
+  margin-top:1rem!important;
+  margin-bottom:0!important;
+}
+#app #screen .weekly-card>.road-block{
+  margin:0!important;
 }
 
 /* Hall empty trophy state: avoid a giant vacant panel before the first win. */
@@ -93,6 +133,13 @@
 #app #screen .trophy-shelf .trophy.locked>b{
   margin:0!important;
   text-align:center!important;
+}
+
+@media(max-width:900px){
+  #app #screen .weekly-card>.weekly-block + .weekly-block{
+    border-left:0!important;
+    border-top:1px solid rgba(157,120,61,.22)!important;
+  }
 }
 
 @media(max-width:760px){
