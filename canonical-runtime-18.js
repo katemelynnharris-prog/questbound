@@ -7,6 +7,11 @@ function qbApplyBrandArtV18(){
   }
 }
 
+function qbClearHomeCampaignBackdropV18(){
+  screen.classList.remove('qb-home-campaign-backdrop');
+  screen.style.removeProperty('--qb-campaign-backdrop-height');
+}
+
 function qbSizeHomeCampaignBackdropV18(){
   if(state.tab!=='Home')return;
   const campaign=screen.querySelector('.campaign-home');
@@ -77,6 +82,9 @@ renderHome=function(){
 
 const qbRenderCharacterBeforeV18=renderCharacter;
 renderCharacter=function(){
+  // Character can be opened directly from a Home player card, bypassing the main render() wrapper.
+  // Clear Home-only campaign backdrop state here too so it never leaks onto Character on first open.
+  qbClearHomeCampaignBackdropV18();
   qbRenderCharacterBeforeV18();
   qbApplyBrandArtV18();
   qbReassertCharacterArtV18();
@@ -84,10 +92,7 @@ renderCharacter=function(){
 
 const qbRenderBeforeArtV18=render;
 render=function(){
-  if(state.tab!=='Home'){
-    screen.classList.remove('qb-home-campaign-backdrop');
-    screen.style.removeProperty('--qb-campaign-backdrop-height');
-  }
+  if(state.tab!=='Home')qbClearHomeCampaignBackdropV18();
   const out=qbRenderBeforeArtV18();
   if(state.tab==='Character')qbReassertCharacterArtV18();
   return out;
