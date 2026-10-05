@@ -1,4 +1,4 @@
-/* Questbound — Rider's Quadrant visual layer v20.7
+/* Questbound — Rider's Quadrant visual layer v20.8
    Rider's Quadrant only. Explicitly does not apply to Witcher Trials.
    Visual presentation only. */
 
@@ -32,32 +32,22 @@
   background:radial-gradient(circle at 50% 18%,rgba(111,41,37,.09),transparent 36rem);
 }
 
-/* Hero: keep the uploaded frame as restrained ornament instead of the dominant container. */
+/* Hero: no decorative frame. Keep a restrained translucent surface only. */
 #app #screen.qb-riders-quadrant .qb-riders-frame{
   position:relative;
   isolation:isolate;
   overflow:hidden!important;
-  background:linear-gradient(145deg,rgba(12,10,9,.62),rgba(8,7,6,.72))!important;
-  border:1px solid rgba(157,120,61,.30)!important;
-  box-shadow:0 14px 34px rgba(0,0,0,.24)!important;
+  background:linear-gradient(145deg,rgba(12,10,9,.54),rgba(8,7,6,.64))!important;
+  border:1px solid rgba(157,120,61,.22)!important;
+  box-shadow:0 12px 30px rgba(0,0,0,.20)!important;
   backdrop-filter:blur(5px)!important;
   -webkit-backdrop-filter:blur(5px)!important;
 }
 
 #app #screen.qb-riders-quadrant .qb-riders-frame::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:1;
-  pointer-events:none;
-  background:url('./assets/quadrant_frame.png') center center / 100% 100% no-repeat;
-  opacity:.28;
-  filter:drop-shadow(0 6px 12px rgba(0,0,0,.28));
-}
-
-#app #screen.qb-riders-quadrant .qb-riders-frame > *{
-  position:relative;
-  z-index:2;
+  content:none!important;
+  display:none!important;
+  background:none!important;
 }
 
 /* Rider's Quadrant content panels: translucent so the page artwork remains visible. */
@@ -65,26 +55,25 @@
 #app #screen.qb-riders-quadrant .panel:not(.qb-riders-frame),
 #app #screen.qb-riders-quadrant .weekly-block,
 #app #screen.qb-riders-quadrant .road-block{
-  background:linear-gradient(145deg,rgba(13,11,10,.68),rgba(8,7,6,.76))!important;
-  border-color:rgba(157,120,61,.28)!important;
-  box-shadow:0 10px 26px rgba(0,0,0,.20)!important;
+  background:linear-gradient(145deg,rgba(13,11,10,.62),rgba(8,7,6,.70))!important;
+  border-color:rgba(157,120,61,.24)!important;
+  box-shadow:0 10px 26px rgba(0,0,0,.18)!important;
   backdrop-filter:blur(5px)!important;
   -webkit-backdrop-filter:blur(5px)!important;
 }
 
 #app #screen.qb-riders-quadrant .qb-training-stat{
-  background:rgba(8,7,6,.42)!important;
-  border-color:rgba(157,120,61,.18)!important;
+  background:rgba(8,7,6,.38)!important;
+  border-color:rgba(157,120,61,.16)!important;
 }
 
 #app #screen.qb-riders-quadrant .empty-inline,
 #app #screen.qb-riders-quadrant .inset,
 #app #screen.qb-riders-quadrant .note-box{
-  background:rgba(8,7,6,.46)!important;
-  border-color:rgba(157,120,61,.20)!important;
+  background:rgba(8,7,6,.42)!important;
+  border-color:rgba(157,120,61,.18)!important;
 }
 
 @media(max-width:760px){
   #app #screen.qb-riders-quadrant::before{background-position:58% top}
-  #app #screen.qb-riders-quadrant .qb-riders-frame::after{opacity:.20}
 }
