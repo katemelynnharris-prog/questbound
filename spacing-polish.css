@@ -1,4 +1,4 @@
-/* Questbound spacing polish v20.18 — visual only. */
+/* Questbound spacing polish v20.19 — visual only. */
 
 /* Home player cards: keep the stats/action cluster attached to the identity block
    instead of pushing it to the bottom of the full-body art height. */
@@ -60,7 +60,7 @@
   margin-top:0!important;
 }
 #app #screen .home-two:has(.fate-card)>.card{
-  height:100%!important;
+  height:94%!important;
 }
 
 /* Weekly challenge + weekly co-op: treat the pair as one balanced two-column panel.
@@ -160,9 +160,9 @@
   box-sizing:border-box!important;
 }
 #app #screen .players-grid .sprite-wrap img.qb-home-character-art{
-  width:116%!important;
+  width:104%!important;
   max-width:none!important;
-  height:100%!important;
+  height:95%!important;
   position:relative!important;
   bottom:auto!important;
   object-fit:contain!important;
@@ -173,7 +173,7 @@
     padding-bottom:3px!important;
   }
   #app #screen .players-grid .sprite-wrap img.qb-home-character-art{
-    width:110%!important;
+    width:102%!important;
     height:100%!important;
   }
 }
