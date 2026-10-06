@@ -1,4 +1,4 @@
-/* Questbound spacing polish v20.15 — visual only. */
+/* Questbound spacing polish v20.16 — visual only. */
 
 /* Home player cards: keep the stats/action cluster attached to the identity block
    instead of pushing it to the bottom of the full-body art height. */
@@ -114,6 +114,9 @@
 }
 
 /* Hall empty trophy state: avoid a giant vacant panel before the first win. */
+#app #screen .trophy-shelf{
+  margin-bottom:1rem!important;
+}
 #app #screen .trophy-shelf:has(.trophy.locked){
   min-height:0!important;
 }
