@@ -11,7 +11,7 @@ function qbActivityRows(list){
 function activityList(limit=30){return `<div class="activity qb-activity-scroll">${qbActivityRows(state.activity.slice(0,limit))}</div>`}
 
 function permanentDailyCard(){
-  const qs=state.quests.filter(q=>q.owner_type==='personal_daily'&&canOwnQuest(q)),done=qs.filter(q=>isCompletedForCurrentOccurrence(q)).length;
+  const qs=state.quests.filter(q=>(q.owner_type==='personal_daily'||(q.owner_type==='co-op'&&safeMeta(q.recurrence).type==='daily'))&&canOwnQuest(q)),done=qs.filter(q=>isCompletedForCurrentOccurrence(q)).length;
   const rows=qs.map(q=>{const completed=isCompletedForCurrentOccurrence(q),eligible=canOwnQuest(q),target=typeof qbCountTarget==='function'?qbCountTarget(q):1,current=target>1&&typeof qbDailyCount==='function'?qbDailyCount(q):completed?1:0,progress=target>1?`<span class="qb-daily-count">${Math.min(current,target)}/${target}</span>`:'',label=completed?'Done':target>1?`Log ${Math.min(current+1,target)}/${target}`:'Complete';return `<div class="qb-daily-row ${completed?'done':''}"><div class="qb-daily-main"><b>${completed?'✓ ':''}${esc(q.title)}</b>${progress}<small>+${fmt(q.xp_personal)} XP${Number(q.xp_campaign||0)?` · +${fmt(q.xp_campaign)} Campaign`:''}</small></div><button class="mini" data-complete="${q.id}" data-source="journal" ${completed||!eligible?'disabled':''}>${label}</button></div>`}).join('');
   return `<section class="card home-card qb-daily-card qb-daily-compact"><div class="card-head"><div><p class="eyebrow">☀ DAILY LEDGER</p><h2>Today</h2></div><span class="count-pill">${done} / ${qs.length}</span></div><div class="qb-daily-compact-grid">${rows||'<div class="empty-inline">No personal dailies are visible.</div>'}</div></section>`;
 }
