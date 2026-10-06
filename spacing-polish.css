@@ -1,4 +1,4 @@
-/* Questbound spacing polish v20.17 — visual only. */
+/* Questbound spacing polish v20.18 — visual only. */
 
 /* Home player cards: keep the stats/action cluster attached to the identity block
    instead of pushing it to the bottom of the full-body art height. */
@@ -156,7 +156,7 @@
 /* Home player portraits: fill the art column without ever sitting on the lower frame. */
 #app #screen .players-grid .sprite-wrap{
   overflow:hidden!important;
-  padding-bottom:12px!important;
+  padding-bottom:4px!important;
   box-sizing:border-box!important;
 }
 #app #screen .players-grid .sprite-wrap img.qb-home-character-art{
@@ -170,7 +170,7 @@
 }
 @media(max-width:680px){
   #app #screen .players-grid .sprite-wrap{
-    padding-bottom:8px!important;
+    padding-bottom:3px!important;
   }
   #app #screen .players-grid .sprite-wrap img.qb-home-character-art{
     width:110%!important;
