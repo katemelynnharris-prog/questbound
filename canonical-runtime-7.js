@@ -29,7 +29,7 @@ function qbCountTarget(q){
 }
 function qbDailyCount(q,uid=ownUserId(),date=localDate()){
   if(!q) return 0;
-  return state.completions.filter(c=>!c.reversed_at && c.quest_id===q.id && c.subject_user_id===uid && qbCompletionDate(c)===date).length;
+  return state.completions.filter(c=>!c.reversed_at && c.quest_id===q.id && qbCompletionDate(c)===date && (q.owner_type==='co-op' || c.subject_user_id===uid)).length;
 }
 function occurrenceKey(q){
   const date=localDate(),r=safeMeta(q?.recurrence),type=r.type||'once',target=qbCountTarget(q);
