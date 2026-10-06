@@ -1,14 +1,14 @@
 // === Questbound canonical pass 12: compact Journal dailies + training bars + Hall achievement details ===
 
 function qbJournalDailySection(qs){
-  const dailies=qs.filter(q=>q.owner_type==='personal_daily'&&canOwnQuest(q));
+  const dailies=qs.filter(q=>(q.owner_type==='personal_daily'||(q.owner_type==='co-op'&&safeMeta(q.recurrence).type==='daily'))&&canOwnQuest(q));
   if(!dailies.length)return'';
   const done=dailies.filter(q=>isCompletedForCurrentOccurrence(q)).length;
   const rows=dailies.map(q=>{const completed=isCompletedForCurrentOccurrence(q),eligible=canOwnQuest(q),target=typeof qbCountTarget==='function'?qbCountTarget(q):1,current=target>1&&typeof qbDailyCount==='function'?qbDailyCount(q):completed?1:0,progress=target>1?`<span class="qb-daily-count">${Math.min(current,target)}/${target}</span>`:'',label=completed?'Done':target>1?`Log ${Math.min(current+1,target)}/${target}`:'Complete';return `<div class="qb-daily-row ${completed?'done':''}" data-quest-id="${q.id}"><div class="qb-daily-main"><b>${completed?'✓ ':''}${esc(q.title)}</b>${progress}<small>${esc(q.category)} · +${fmt(q.xp_personal)} XP${Number(q.xp_campaign||0)?` · +${fmt(q.xp_campaign)} Campaign`:''}</small></div><button class="mini" data-complete="${q.id}" data-source="journal" ${completed||!eligible?'disabled':''}>${label}</button></div>`}).join('');
   return `<section class="card home-card qb-daily-card qb-daily-compact qb-journal-dailies"><div class="card-head"><div><p class="eyebrow">☀ DAILY LEDGER</p><h2>Today</h2></div><span class="count-pill">${done} / ${dailies.length}</span></div><div class="qb-daily-compact-grid">${rows}</div></section>`;
 }
 function renderJournal(){
-  const visible=state.quests.filter(q=>!q.hidden_encounter),cats=['All',...new Set(visible.map(q=>q.category))],qs=state.questFilter==='All'?visible:visible.filter(q=>q.category===state.questFilter),regular=qs.filter(q=>q.owner_type!=='personal_daily');
+  const visible=state.quests.filter(q=>!q.hidden_encounter),cats=['All',...new Set(visible.map(q=>q.category))],qs=state.questFilter==='All'?visible:visible.filter(q=>q.category===state.questFilter),regular=qs.filter(q=>q.owner_type!=='personal_daily'&&!(q.owner_type==='co-op'&&safeMeta(q.recurrence).type==='daily'));
   screen.innerHTML=`<section class="ledger-head"><p class="eyebrow">THE GUILD LEDGER</p><h1>Quest Journal</h1><p>${fmt(visible.length)} active visible quests. Hidden surprise and secret subplot pools remain server-side.</p></section>${questWatchCard()}<div class="filterbar">${cats.map(c=>`<button class="${state.questFilter===c?'active':''}" data-filter="${esc(c)}">${esc(c)}</button>`).join('')}</div>${qbJournalDailySection(qs)}<div class="quest-list journal-list">${regular.map(q=>questRow(q)).join('')||(!qs.length?'<div class="empty-inline">No quests match this filter.</div>':'')}</div>`;
   screen.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{state.questFilter=b.dataset.filter;renderJournal()});wireQuestButtons();wireHomeButtons();qbWireActivityUndo();
 }
