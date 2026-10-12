@@ -63,3 +63,10 @@ async function qbRefreshDay(){
 }
 setInterval(qbRefreshDay,30000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)qbRefreshDay()});
+
+const qbOwnerLabelBeforeCompletionScope=ownerLabel;
+ownerLabel=function(q){
+  if(q.owner_type==='shared')return safeMeta(q.recurrence).completion_scope==='player'?'Personal · separate progress':'Household · completer XP';
+  if(q.owner_type==='co-op')return 'Together · both earn XP';
+  return qbOwnerLabelBeforeCompletionScope(q);
+};
