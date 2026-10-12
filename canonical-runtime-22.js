@@ -321,3 +321,7 @@ const qbStreakCardBeforeCheat=streakCard;
 streakCard=function(){return qbStreakCardBeforeCheat().replace('</section>',qbLockedCheatButton()+'</section>')};
 const qbHomeBeforeLockedCheat=renderHome;
 renderHome=function(){qbHomeBeforeLockedCheat();qbWireLockedCheat()};
+
+const qbRefreshDayBeforeLockedCheat=qbRefreshDay;
+qbRefreshDay=async function(){const oldDay=state.lockedCheat?.today;await qbRefreshDayBeforeLockedCheat();if(state.membership&&oldDay&&oldDay!==localDate()){await loadLockedCheat();render()}};
+document.addEventListener('visibilitychange',async()=>{if(!document.hidden&&state.membership){await loadLockedCheat();render()}});
