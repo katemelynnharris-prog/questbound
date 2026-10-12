@@ -146,27 +146,6 @@ function qbConfirmSecondWind(kind,id,source='journal'){
   qbModal(`<p class="eyebrow">SECOND WIND · WEEKLY ACTIVE</p><h2>${esc(title)}</h2><p>Complete this ${kind==='training'?'workout':'fitness log'} with Second Wind for <b>+${fmt(base)} extra Personal XP</b>, on top of its normal reward.</p><p>This spends your weekly use. Your partner keeps their own use. Campaign XP and your partner's reward stay the same.</p><p class="fine">Undo reverses the XP, but this week's use stays spent. Resets Monday, ${esc(state.secondWind?.resets||'')}.</p><div class="qb-inline-actions"><button id="qbWindConfirm">Complete with Second Wind</button><button class="ghost" data-qb-modal-close>Cancel</button></div>`);
   document.querySelector('#qbWindConfirm').onclick=()=>qbPerformSecondWind(kind,id,source);
 }
-const qbWireQuestBeforeSecondWind=wireQuestButtons;
-wireQuestButtons=function(){
-  qbWireQuestBeforeSecondWind();
-  if(!qbSecondWindReady())return;
-  screen.querySelectorAll('[data-complete]').forEach(button=>{
-    const q=questById(button.dataset.complete);
-    if(!q||!canOwnQuest(q)||!qbSecondWindFitness(q)||!qbCycle(q)?.available||button.disabled)return;
-    if(button.nextElementSibling?.dataset.secondWindQuest===q.id)return;
-    button.insertAdjacentHTML('afterend',`<button class="mini ghost qb-second-wind-button" data-second-wind-quest="${q.id}" data-second-wind-source="${esc(button.dataset.source||'journal')}">✦ Second Wind</button>`);
-    const wind=button.nextElementSibling;wind.onclick=()=>qbConfirmSecondWind('quest',q.id,wind.dataset.secondWindSource);
-  });
-};
-const qbRenderTrainingBeforeSecondWind=renderTraining;
-renderTraining=function(){
-  qbRenderTrainingBeforeSecondWind();
-  const a=state.training.find(t=>t.assignment_date===localDate()&&t.user_id===ownUserId());
-  if(!a||!state.secondWind?.unlocked)return;
-  const ready=qbSecondWindReady()&&!a.completed_at;
-  screen.querySelector('.qb-training-contract')?.insertAdjacentHTML('beforeend',`<div class="qb-workout-bonus"><p class="eyebrow">✦ SECOND WIND</p><p>${state.secondWind.used?'Used this week':a.completed_at?'Choose an unfinished fitness quest to use Second Wind.':'Use your weekly ability to add one extra base workout XP reward.'}</p><button id="qbWindWorkout" class="ghost" ${ready?'':'disabled'}>${state.secondWind.used?'Used · resets Monday':'Complete with Second Wind'}</button><p class="fine">Your weekly use is separate from the More or Harder bonus.</p></div>`);
-  screen.querySelector('#qbWindWorkout')?.addEventListener('click',()=>qbConfirmSecondWind('training',a.id));
-};
 const qbOpenAbilityBeforeSecondWind=qbOpenAbilityLedgerDetailV17;
 qbOpenAbilityLedgerDetailV17=async function(key){
   if(key!=='cadet'||selectedCharacter().uid!==ownUserId())return qbOpenAbilityBeforeSecondWind(key);
@@ -311,7 +290,7 @@ const qbLoadAllBeforeLockedCheat=loadAll;
 loadAll=async function(){await qbLoadAllBeforeLockedCheat();await loadLockedCheat()};
 const qbLockedDataBeforeCheat=drewLockedData;
 drewLockedData=function(){const data=qbLockedDataBeforeCheat(),days=new Set(data.days||[]);for(const d of state.lockedCheat?.days||[])days.add(d);return {...data,days,streak:streakFromSet(days),secured:days.has(localDate()),cheat:state.lockedCheat?.days?.includes(localDate())||false}};
-function qbLockedCheatButton(){const s=state.lockedCheat;if(!s)return'';const drew=memberByKey('Drew');if(!drew||(ownUserId()!==drew.user_id&&state.membership.role!=='admin'))return'';return `<div class="qb-inline-actions"><button class="ghost" data-locked-cheat ${s.can_use?'':'disabled'}>${s.used_this_week?'✓ Cheat Day Used':s.secured_by_goals?'Today Already Secured':'Use Cheat Day · 1/week'}</button></div><p class="fine">Protects today's Locked In streak without marking Protein or Calories complete or awarding XP. Resets Monday, ${esc(s.resets)}.</p>`}
+function qbLockedCheatButton(){const s=state.lockedCheat;if(!s)return'';const drew=memberByKey('Drew');if(!drew||(ownUserId()!==drew.user_id&&state.membership.role!=='admin'))return'';return `<div class="qb-inline-actions"><button class="ghost" data-locked-cheat ${s.can_use?'':'disabled'}>${s.used_this_week?'✓ Cheat Day Used':s.secured_by_goals?'Today Already Secured':'Use cheat day'}</button></div><p class="fine">Protects today's Locked In streak without marking Protein or Calories complete or awarding XP. Resets Monday, ${esc(s.resets)}.</p>`}
 function qbWireLockedCheat(){screen.querySelectorAll('[data-locked-cheat]').forEach(b=>b.onclick=()=>{qbModal(`<p class="eyebrow">DREW · LOCKED IN</p><h2>Use today as a Cheat Day?</h2><p>Today will count toward Drew's Locked In streak. This spends his one Cheat Day for the Monday–Sunday week. It awards no XP and does not complete either nutrition quest.</p><button id="qbConfirmLockedCheat">Use Cheat Day Today</button><button class="ghost" data-qb-modal-close>Cancel</button>`);document.querySelector('#qbConfirmLockedCheat').onclick=async e=>{const button=e.currentTarget;button.disabled=true;try{const {data,error}=await sb.rpc('use_locked_in_cheat_day');if(error)throw error;state.lockedCheat=data;document.querySelector('.qb-modal')?.remove();showToast('Drew’s Locked In streak secured with a Cheat Day.');await qbReloadCore()}catch(error){button.disabled=false;alert(error.message)}}})}
 const qbLockedPanelBeforeCheat=qbLockedInPanel;
 qbLockedInPanel=function(){return qbLockedPanelBeforeCheat().replace('</section>',qbLockedCheatButton()+'</section>')};
@@ -325,4 +304,24 @@ renderHome=function(){qbHomeBeforeLockedCheat();qbWireLockedCheat()};
 const qbRefreshDayBeforeLockedCheat=qbRefreshDay;
 qbRefreshDay=async function(){const oldDay=state.lockedCheat?.today;await qbRefreshDayBeforeLockedCheat();if(state.membership&&oldDay&&oldDay!==localDate()){await loadLockedCheat();render()}};
 document.addEventListener('visibilitychange',async()=>{if(!document.hidden&&state.membership){await loadLockedCheat();render()}});
+
+
+function qbChooseWindForCompletion(kind,id,normalCompletion,source='journal'){
+ const q=kind==='quest'?questById(id):null,a=kind==='training'?state.training.find(t=>t.id===id):null;
+ const base=q?qbSecondWindBase(q):Number(a?.xp_personal||0);
+ qbModal(`<p class="eyebrow">SECOND WIND AVAILABLE</p><h2>${esc(q?.title||a?.title||'Fitness quest')}</h2><p>Use your weekly Second Wind for <b>+${fmt(base)} extra Personal XP</b> on this completion?</p><p class="fine">One use per week. Resets Monday. Undo reverses XP but keeps the weekly use spent.</p><div class="stack"><button id="qbWindConfirm">Use Second Wind</button><button id="qbCompleteNormally" class="ghost">Complete normally</button><button class="ghost" data-qb-modal-close>Cancel</button></div>`);
+ document.querySelector('#qbWindConfirm').onclick=()=>qbPerformSecondWind(kind,id,source);
+ document.querySelector('#qbCompleteNormally').onclick=async e=>{e.currentTarget.disabled=true;document.querySelector('.qb-modal')?.remove();await normalCompletion()};
+}
+const qbCompleteQuestBeforeWindChoice=completeQuest;
+completeQuest=async function(id,button,source='journal'){
+ const q=questById(id);
+ if(qbSecondWindReady()&&q&&canOwnQuest(q)&&qbSecondWindFitness(q)&&qbCycle(q)?.available)return qbChooseWindForCompletion('quest',id,()=>qbCompleteQuestBeforeWindChoice(id,button,source),source);
+ return qbCompleteQuestBeforeWindChoice(id,button,source);
+};
+const qbCompleteTrainingBeforeWindChoice=qbCompleteTraining;
+qbCompleteTraining=async function(a){
+ if(a&&!a.completed_at&&qbSecondWindReady())return qbChooseWindForCompletion('training',a.id,()=>qbCompleteTrainingBeforeWindChoice(a));
+ return qbCompleteTrainingBeforeWindChoice(a);
+};
 
