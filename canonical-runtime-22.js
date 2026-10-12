@@ -265,7 +265,7 @@ async function qbOpenFocusBoard(){
 const qbJournalBeforeAbilityControls=renderJournal;
 renderJournal=function(){qbJournalBeforeAbilityControls();screen.querySelector('.ledger-head')?.insertAdjacentHTML('afterend',qbFocusCard());wireQuestButtons();qbWireFocus()};
 const qbHomeBeforeAbilityControls=renderHome;
-renderHome=function(){qbHomeBeforeAbilityControls();screen.querySelector('.home-mast')?.insertAdjacentHTML('afterend',qbFocusCard());wireQuestButtons();qbWireFocus();const f=state.legendaryDraw;if(f?.unlocked)screen.querySelector('.home-mast')?.insertAdjacentHTML('beforeend',`<p class="qb-personal-fate">✦ Legendary Draw · ${f.ready?'Rare Fortune ready: +25% base XP on your next quest today':f.used?'Rare Fortune used today':'Quiet personal draw today'}.</p>`)};
+renderHome=function(){qbHomeBeforeAbilityControls();const focusAnchor=screen.querySelector('.campaign-home')||screen.querySelector('.home-mast');focusAnchor?.insertAdjacentHTML('afterend',qbFocusCard());wireQuestButtons();qbWireFocus();const f=state.legendaryDraw;if(f?.unlocked)screen.querySelector('.home-mast')?.insertAdjacentHTML('beforeend',`<p class="qb-personal-fate">✦ Legendary Draw · ${f.ready?'Rare Fortune ready: +25% base XP on your next quest today':f.used?'Rare Fortune used today':'Quiet personal draw today'}.</p>`)};
 const qbCharacterBeforeAbilityControls=renderCharacter;
 renderCharacter=function(){
  qbCharacterBeforeAbilityControls();const {uid,progress}=selectedCharacter();if(uid!==ownUserId())return;
@@ -325,3 +325,4 @@ renderHome=function(){qbHomeBeforeLockedCheat();qbWireLockedCheat()};
 const qbRefreshDayBeforeLockedCheat=qbRefreshDay;
 qbRefreshDay=async function(){const oldDay=state.lockedCheat?.today;await qbRefreshDayBeforeLockedCheat();if(state.membership&&oldDay&&oldDay!==localDate()){await loadLockedCheat();render()}};
 document.addEventListener('visibilitychange',async()=>{if(!document.hidden&&state.membership){await loadLockedCheat();render()}});
+
