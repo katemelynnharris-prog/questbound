@@ -1,0 +1,10 @@
+alter table public.activity_events add target_user_id uuid,add message text,add visibility text,add created_at timestamptz default now();
+alter table public.activity_events alter id set default gen_random_uuid();
+create table public.item_definitions(key text primary key,name text,icon text,rarity text,kind text,slot text,description text,mechanics jsonb default '{}',active boolean default true,transferable boolean default true);
+create table public.player_items(id uuid primary key default gen_random_uuid(),guild_id uuid,owner_user_id uuid,item_key text,state text,metadata jsonb default '{}',acquired_at timestamptz default now());
+create table public.training_assignments(id uuid primary key,guild_id uuid,user_id uuid,assignment_date date default current_date,path_key text,title text,completed_at timestamptz,xp_personal int,xp_campaign int,stat_deltas jsonb default '{}');
+create table public.training_stats(guild_id uuid,user_id uuid,training_sessions int default 0,strength int default 0,endurance int default 0,agility int default 0,mobility int default 0,core_power int default 0,grip_climbing int default 0,updated_at timestamptz,primary key(guild_id,user_id));
+create table public.expeditions(id uuid primary key,guild_id uuid,drawn_by uuid,title text,status text default 'active',completed_at timestamptz,xp_personal int,xp_campaign int,renown_reward int,metadata jsonb default '{}');
+create table public.exploration_state(guild_id uuid primary key,renown int default 0,exploration_rank text default 'Home Territory',revealed_cells jsonb default '[]',updated_at timestamptz);
+create function public.use_second_wind_rested(text,uuid,text,text) returns jsonb language sql as $$select '{}'::jsonb$$;
+create function public.complete_gauntlet_rested(uuid) returns jsonb language sql as $$select '{}'::jsonb$$;
