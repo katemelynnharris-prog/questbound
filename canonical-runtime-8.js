@@ -60,7 +60,7 @@ function qbQuestEditor(id){
   const q=id?questById(id):null,r=safeMeta(q?.recurrence),type=r.type||'once',owner=q?.owner_type||'shared',assignee=q?.assignee_key||'';
   const dayNames=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   qbModal(`<p class="eyebrow">${q?'EDIT QUEST':'NEW QUEST'}</p><h2>${q?esc(q.title):'Add to the Guild Ledger'}</h2><form id="qbQuestForm" class="qb-quest-form qb-readable-editor">
-    <label>Title<input id="qeTitle" required value="${esc(q?.title||'')}"></label><label>Category<input id="qeCategory" required value="${esc(q?.category||'Tasks')}"></label>
+    <label>Title<input id="qeTitle" required value="${esc(q?.title||'')}"></label><label>Category<select id="qeCategory" required>${qbExistingCategoryOptions(q)}</select></label>
     <label>Ownership<select id="qeOwner">${['shared','co-op','personal_daily','individual'].map(x=>`<option value="${x}" ${owner===x?'selected':''}>${x==='personal_daily'?'Personal Daily':x==='co-op'?'Co-op':x[0].toUpperCase()+x.slice(1)}</option>`).join('')}</select></label>
     <label>Completion tracking<select id="qeCompletionScope"><option value="household" ${r.completion_scope!=='player'?'selected':''}>One household completion</option><option value="player" ${r.completion_scope==='player'?'selected':''}>Separate progress for each player</option></select><small>Shared: completer earns XP. Co-op: both earn XP. Personal/assigned quests track per player.</small></label>
     <label>Assignee<select id="qeAssignee"><option value="">None</option>${state.members.map(m=>`<option ${assignee===m.player_key?'selected':''}>${esc(m.player_key)}</option>`).join('')}</select></label>
