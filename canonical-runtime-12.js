@@ -7,10 +7,33 @@ function qbJournalDailySection(qs){
   const rows=dailies.map(q=>{const completed=isCompletedForCurrentOccurrence(q),eligible=canOwnQuest(q),target=typeof qbCountTarget==='function'?qbCountTarget(q):1,current=target>1&&typeof qbDailyCount==='function'?qbDailyCount(q):completed?1:0,progress=target>1?`<span class="qb-daily-count">${Math.min(current,target)}/${target}</span>`:'',label=completed?'Done':target>1?`Log ${Math.min(current+1,target)}/${target}`:'Complete';return `<div class="qb-daily-row ${completed?'done':''}" data-quest-id="${q.id}"><div class="qb-daily-main"><b>${completed?'✓ ':''}${esc(q.title)}</b>${progress}<small>${esc(q.category)} · +${fmt(q.xp_personal)} XP${Number(q.xp_campaign||0)?` · +${fmt(q.xp_campaign)} Campaign`:''}</small></div><button class="mini" data-complete="${q.id}" data-source="journal" ${completed||!eligible?'disabled':''}>${label}</button></div>`}).join('');
   return `<section class="card home-card qb-daily-card qb-daily-compact qb-journal-dailies"><div class="card-head"><div><p class="eyebrow">☀ DAILY LEDGER</p><h2>Today</h2></div><span class="count-pill">${done} / ${dailies.length}</span></div><div class="qb-daily-compact-grid">${rows}</div></section>`;
 }
+function qbJournalArchived(q){
+  return safeMeta(q.recurrence).type==='once'&&isCompletedForCurrentOccurrence(q);
+}
+function qbJournalMatches(q,query){
+  const words=query.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
+  const text=[q.title,q.category,q.objective,ownerLabel(q)].join(' ').toLocaleLowerCase();
+  return words.every(word=>text.includes(word));
+}
 function renderJournal(){
-  const visible=state.quests.filter(q=>!q.hidden_encounter&&q.key!=='no-overspending-week'),cats=['All',...new Set(visible.map(q=>q.category))],qs=state.questFilter==='All'?visible:visible.filter(q=>q.category===state.questFilter),regular=qs.filter(q=>q.owner_type!=='personal_daily'&&!(q.owner_type==='co-op'&&safeMeta(q.recurrence).type==='daily'));
-  screen.innerHTML=`<section class="ledger-head"><p class="eyebrow">THE GUILD LEDGER</p><h1>Quest Journal</h1><p>${fmt(visible.length)} active visible quests. Hidden surprise and secret subplot pools remain server-side.</p></section>${questWatchCard()}<div class="filterbar">${cats.map(c=>`<button class="${state.questFilter===c?'active':''}" data-filter="${esc(c)}">${esc(c)}</button>`).join('')}</div>${qbJournalDailySection(qs)}<div class="quest-list journal-list">${regular.map(q=>questRow(q)).join('')||(!qs.length?'<div class="empty-inline">No quests match this filter.</div>':'')}</div>`;
-  screen.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{state.questFilter=b.dataset.filter;renderJournal()});wireQuestButtons();wireHomeButtons();qbWireActivityUndo();
+  const visible=state.quests.filter(q=>!q.hidden_encounter&&q.key!=='no-overspending-week');
+  const archived=visible.filter(q=>qbJournalArchived(q)),active=visible.filter(q=>!qbJournalArchived(q));
+  const archiveView=state.questJournalView==='archive',pool=archiveView?archived:active;
+  const cats=['All',...new Set(pool.map(q=>q.category))];
+  if(!cats.includes(state.questFilter))state.questFilter='All';
+  const search=state.questSearch||'';
+  const qs=pool.filter(q=>(state.questFilter==='All'||q.category===state.questFilter)&&qbJournalMatches(q,search));
+  const regular=archiveView?qs:qs.filter(q=>q.owner_type!=='personal_daily'&&!(q.owner_type==='co-op'&&safeMeta(q.recurrence).type==='daily'));
+  screen.innerHTML=`<section class="ledger-head"><p class="eyebrow">THE GUILD LEDGER</p><h1>Quest Journal</h1><p>Completed one-time quests move into the archive automatically.</p></section><div class="qb-journal-controls"><div class="filterbar qb-journal-views" aria-label="Journal view"><button data-journal-view="active" class="${!archiveView?'active':''}" aria-pressed="${!archiveView}">Current quests (${active.length})</button><button data-journal-view="archive" class="${archiveView?'active':''}" aria-pressed="${archiveView}">Completed archive (${archived.length})</button></div><label class="qb-journal-search" for="qbJournalSearch">Search quests<input id="qbJournalSearch" type="search" placeholder="Title, category, player, or objective…" value="${esc(search)}" autocomplete="off"></label></div>${!archiveView&&!search.trim()?questWatchCard():''}<div class="filterbar">${cats.map(c=>`<button class="${state.questFilter===c?'active':''}" data-filter="${esc(c)}">${esc(c)}</button>`).join('')}</div><p class="fine" role="status">${qs.length} quest${qs.length===1?'':'s'} shown${archiveView?' · Completed one-time tasks':''}</p>${archiveView?'':qbJournalDailySection(qs)}<div class="quest-list journal-list">${regular.map(q=>questRow(q)).join('')||(!qs.length?`<div class="empty-inline">${search.trim()?'No quests match your search.':archiveView?'No completed one-time quests here yet.':'No quests match this filter.'}</div>`:'')}</div>`;
+  screen.querySelectorAll('[data-journal-view]').forEach(b=>b.onclick=()=>{state.questJournalView=b.dataset.journalView;state.questFilter='All';renderJournal()});
+  screen.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{state.questFilter=b.dataset.filter;renderJournal()});
+  screen.querySelector('#qbJournalSearch')?.addEventListener('input',e=>{
+    const value=e.currentTarget.value,position=e.currentTarget.selectionStart;
+    state.questSearch=value;renderJournal();
+    const input=screen.querySelector('#qbJournalSearch');input?.focus();
+    if(input&&position!==null)input.setSelectionRange(position,position);
+  });
+  wireQuestButtons();wireHomeButtons();qbWireActivityUndo();
 }
 
 function qbTrainingStatBars(){
