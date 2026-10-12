@@ -81,3 +81,10 @@ async function qbRefreshBudget(){
 }
 setInterval(qbRefreshBudget,30000);
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)qbRefreshBudget()});
+
+// Budget has its own permanent Home tracker, so omit it from Quest Watch.
+const qbWatchMetaBeforeBudgetExclusion=qbWatchMeta;
+qbWatchMeta=function(q){
+  if(q?.key==='no-overspending-week')return null;
+  return qbWatchMetaBeforeBudgetExclusion(q);
+};
