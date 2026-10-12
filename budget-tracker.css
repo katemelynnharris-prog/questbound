@@ -1,0 +1,11 @@
+.qb-budget-days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin:18px 0 12px}
+.qb-budget-day{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0;padding:10px 3px;background:rgba(17,19,17,.78);border:1px solid rgba(180,151,98,.35);color:#e3d6bd;border-radius:7px}
+.qb-budget-day span{font-size:12px}.qb-budget-day strong{font-size:23px;line-height:1.1}.qb-budget-day small{font-size:11px;opacity:.7}
+.qb-budget-day.success{border-color:#90a96c;background:rgba(56,79,39,.6);color:#deebbf}
+.qb-budget-day.overspent{border-color:#b66d61;background:rgba(96,40,35,.65);color:#f3c6bb}
+.qb-budget-day.today{box-shadow:0 0 0 2px rgba(208,177,112,.3)}
+.qb-budget-day:disabled{cursor:default;opacity:.4}.qb-budget-day.success:disabled,.qb-budget-day.overspent:disabled{opacity:.8}
+.qb-budget-day:focus-visible{outline:2px solid #e4c888;outline-offset:3px}
+#app #screen .weekly-card>.qb-budget .qb-budget-days button{margin:0!important;min-width:0}
+.qb-budget-stats{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:13px;color:#cbbb99}.qb-budget-stats b{font-size:21px;color:#eadbb9;margin-right:4px}
+@media(max-width:400px){.qb-budget-days{gap:3px}.qb-budget-day span{font-size:10px}.qb-budget-day{padding:10px 1px}}
