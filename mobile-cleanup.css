@@ -18,3 +18,15 @@
  #app #screen .players-grid .player-alerts .alert{font-size:.55rem!important;padding:.2rem .3rem!important}
  #app #screen .players-grid .player-main>button.text-link{font-size:.65rem!important;letter-spacing:.06em!important;line-height:1.4!important;white-space:normal!important;text-align:left!important;margin:.25rem 0 0!important;padding:.4rem 0!important;min-height:40px!important}
 }
+
+#app #screen .players-grid .qb-home-art-preview{position:absolute!important;inset:0!important;display:block!important;width:100%!important;height:100%!important;min-height:0!important;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;cursor:zoom-in}
+#app #screen .players-grid .qb-home-art-preview:focus-visible{outline:2px solid #d2b875!important;outline-offset:-3px}
+#app #screen .players-grid .qb-home-art-preview picture{display:block;height:100%;width:100%}
+.qb-full-character-preview{display:flex;justify-content:center}.qb-full-character-preview img{display:block;width:auto;max-width:100%;height:min(65vh,580px);object-fit:contain}
+@media(max-width:680px){
+ #app #screen .players-grid .qb-home-art-preview{position:relative!important;inset:auto!important}
+ #app #screen .players-grid .sprite-wrap{height:150px!important;padding:12px 10px 0!important;box-sizing:border-box!important;background:transparent!important}
+ #app #screen .players-grid .sprite-wrap::after{display:none!important}
+ #app #screen .players-grid .sprite-wrap img.qb-home-character-art{height:100%!important;width:100%!important;max-width:100%!important;object-fit:contain!important;object-position:center center!important}
+}
+

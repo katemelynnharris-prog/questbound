@@ -325,3 +325,21 @@ qbCompleteTraining=async function(a){
  return qbCompleteTrainingBeforeWindChoice(a);
 };
 
+
+const qbPlayerCardBeforeMobilePortrait=playerCard;
+playerCard=function(key){
+ const html=qbPlayerCardBeforeMobilePortrait(key);
+ if(!['Kate','Drew'].includes(key))return html;
+ const portrait=key==='Kate'?'./assets/kate_portrait.png?v=28.0':'./assets/Drew_portrait.png?v=28.0';
+ const full=key==='Kate'?'./assets/kate_full.png':'./assets/Drew_full.png';
+ return html.replace(/<div class="sprite-wrap">[\s\S]*?<\/div>/,`<div class="sprite-wrap"><button type="button" class="qb-home-art-preview" data-full-character="${key}" aria-label="View ${key}'s full-body character"><picture><source media="(max-width: 680px)" srcset="${portrait}"><img class="qb-home-character-art" src="${full}" alt="${key} character" /></picture></button></div>`);
+};
+const qbHomeBeforeMobilePortrait=renderHome;
+renderHome=function(){
+ qbHomeBeforeMobilePortrait();
+ screen.querySelectorAll('[data-full-character]').forEach(b=>b.onclick=()=>{
+  const key=b.dataset.fullCharacter,src=key==='Kate'?'./assets/kate_full.png':'./assets/Drew_full.png';
+  qbModal(`<p class="eyebrow">FULL CHARACTER ART</p><h2>${esc(key)}</h2><div class="qb-full-character-preview"><img src="${src}" alt="${esc(key)} full-body character"></div><button class="ghost" data-qb-modal-close>Close</button>`);
+ });
+};
+
