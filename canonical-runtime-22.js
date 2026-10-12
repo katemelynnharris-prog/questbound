@@ -304,3 +304,20 @@ qbOpenAbilityLedgerDetailV17=async function(key){
 // Refresh personal daily Fate after a sleeping browser crosses guild midnight.
 const qbRefreshDayBeforeAbilityControls=qbRefreshDay;
 qbRefreshDay=async function(){const oldDate=state.legendaryDraw?.date;await qbRefreshDayBeforeAbilityControls();if(state.membership&&oldDate&&oldDate!==localDate()){await loadAbilityControls();render()}};
+
+// A weekly Cheat Day secures Drew's Locked In streak without completing nutrition quests or awarding XP.
+async function loadLockedCheat(){const {data,error}=await sb.rpc('locked_in_cheat_state');state.lockedCheat=error?null:data;if(error)console.warn('Locked In Cheat Day unavailable',error.message)}
+const qbLoadAllBeforeLockedCheat=loadAll;
+loadAll=async function(){await qbLoadAllBeforeLockedCheat();await loadLockedCheat()};
+const qbLockedDataBeforeCheat=drewLockedData;
+drewLockedData=function(){const data=qbLockedDataBeforeCheat(),days=new Set(data.days||[]);for(const d of state.lockedCheat?.days||[])days.add(d);return {...data,days,streak:streakFromSet(days),secured:days.has(localDate()),cheat:state.lockedCheat?.days?.includes(localDate())||false}};
+function qbLockedCheatButton(){const s=state.lockedCheat;if(!s)return'';const drew=memberByKey('Drew');if(!drew||(ownUserId()!==drew.user_id&&state.membership.role!=='admin'))return'';return `<div class="qb-inline-actions"><button class="ghost" data-locked-cheat ${s.can_use?'':'disabled'}>${s.used_this_week?'✓ Cheat Day Used':s.secured_by_goals?'Today Already Secured':'Use Cheat Day · 1/week'}</button></div><p class="fine">Protects today's Locked In streak without marking Protein or Calories complete or awarding XP. Resets Monday, ${esc(s.resets)}.</p>`}
+function qbWireLockedCheat(){screen.querySelectorAll('[data-locked-cheat]').forEach(b=>b.onclick=()=>{qbModal(`<p class="eyebrow">DREW · LOCKED IN</p><h2>Use today as a Cheat Day?</h2><p>Today will count toward Drew's Locked In streak. This spends his one Cheat Day for the Monday–Sunday week. It awards no XP and does not complete either nutrition quest.</p><button id="qbConfirmLockedCheat">Use Cheat Day Today</button><button class="ghost" data-qb-modal-close>Cancel</button>`);document.querySelector('#qbConfirmLockedCheat').onclick=async e=>{const button=e.currentTarget;button.disabled=true;try{const {data,error}=await sb.rpc('use_locked_in_cheat_day');if(error)throw error;state.lockedCheat=data;document.querySelector('.qb-modal')?.remove();showToast('Drew’s Locked In streak secured with a Cheat Day.');await qbReloadCore()}catch(error){button.disabled=false;alert(error.message)}}})}
+const qbLockedPanelBeforeCheat=qbLockedInPanel;
+qbLockedInPanel=function(){return qbLockedPanelBeforeCheat().replace('</section>',qbLockedCheatButton()+'</section>')};
+const qbCharacterBeforeLockedCheat=renderCharacter;
+renderCharacter=function(){qbCharacterBeforeLockedCheat();qbWireLockedCheat();if(drewLockedData().cheat)screen.querySelector('.qb-locked-panel .count-pill')?.replaceChildren(document.createTextNode('Cheat Day Secured'))};
+const qbStreakCardBeforeCheat=streakCard;
+streakCard=function(){return qbStreakCardBeforeCheat().replace('</section>',qbLockedCheatButton()+'</section>')};
+const qbHomeBeforeLockedCheat=renderHome;
+renderHome=function(){qbHomeBeforeLockedCheat();qbWireLockedCheat()};
