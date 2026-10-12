@@ -133,7 +133,7 @@ async function qbPerformSecondWind(kind,id,source='journal'){
   document.querySelectorAll('[data-second-wind-quest],#qbWindConfirm,#qbWindWorkout').forEach(b=>b.disabled=true);
   try{
     const q=kind==='quest'?questById(id):null,before=progressByUser(ownUserId())?.level||1;
-    const {data,error}=await sb.rpc('use_second_wind',{p_kind:kind,p_target:id,p_occurrence_key:q?occurrenceKey(q):null,p_source:source});
+    const {data,error}=await sb.rpc('use_second_wind_rested',{p_kind:kind,p_target:id,p_occurrence_key:q?occurrenceKey(q):null,p_source:source});
     if(error)throw error;
     document.querySelector('.qb-modal')?.remove();
     showToast(`Second Wind used · +${data.second_wind_bonus} extra Personal XP · weekly use spent`);
@@ -177,4 +177,37 @@ qbOpenAbilityLedgerDetailV17=async function(key){
   const options=(a?`<option value="training:${a.id}">Today's workout: ${esc(a.title)}</option>`:'')+qs.map(q=>`<option value="quest:${q.id}">${esc(q.title)} · +${fmt(qbSecondWindBase(q))} extra XP</option>`).join('');
   qbModal(`<p class="eyebrow">WEEKLY ACTIVE · LEVEL 5</p><h2>Second Wind</h2><p>Add one extra base Personal XP reward to a fitness completion. Existing Fate, featured, and gear modifiers keep their normal values.</p><p><b>${!wind?'Status unavailable':wind.used?'Used this week':wind.ready?'Ready to use':'Unlocks at level 5'}</b>${wind?` · Resets ${esc(wind.resets)}`:''}</p>${wind?.ready&&options?`<label>Choose a fitness quest or workout<select id="qbWindTarget">${options}</select></label><button id="qbWindChoose" class="qb-second-wind-button">Review Second Wind completion</button>`:wind?.ready?'<p>No unfinished eligible fitness quests or workout are currently available.</p>':''}<button class="ghost" data-qb-modal-close>Close</button>`);
   document.querySelector('#qbWindChoose')?.addEventListener('click',()=>{const [kind,id]=document.querySelector('#qbWindTarget').value.split(':');qbConfirmSecondWind(kind,id)});
+};
+
+async function loadRested(){
+  const {data,error}=await sb.rpc('rested_state');if(error){state.rested=null;throw error}state.rested=data;
+}
+const qbLoadAllBeforeRested=loadAll;
+loadAll=async function(){await qbLoadAllBeforeRested();try{await loadRested()}catch(e){console.warn('Rested status unavailable',e)}};
+function qbRestedBadge(){
+  document.querySelectorAll('.qb-rested-ready').forEach(el=>el.remove());
+  if(!state.rested?.ready||!state.rested?.unlocked)return;
+  if(state.tab==='Character'&&selectedCharacter().uid!==ownUserId())return;
+  const head=screen.querySelector('.ledger-head,.home-mast,.qb-character-summary,.training-hero');
+  head?.insertAdjacentHTML('beforeend','<p class="qb-rested-ready">✦ Rested bonus ready · +25% base Personal XP on your next quest</p>');
+}
+const qbRenderBeforeRested=render;
+render=function(){const result=qbRenderBeforeRested();qbRestedBadge();return result};
+const qbCharacterBeforeRested=renderCharacter;
+renderCharacter=function(){qbCharacterBeforeRested();qbRestedBadge()};
+const qbOpenAbilityBeforeRested=qbOpenAbilityLedgerDetailV17;
+qbOpenAbilityLedgerDetailV17=async function(key){
+  if(key!=='pathfinder'||selectedCharacter().uid!==ownUserId())return qbOpenAbilityBeforeRested(key);
+  await loadRested().catch(()=>{});const r=state.rested;
+  qbModal(`<p class="eyebrow">RESTED · LEVEL 20</p><h2>An Hour to Recharge</h2><p>Spend an hour without screens, or enjoy another intentionally restful activity: reading, a bath, relaxing outside, or a combination.</p><p>Log the completed hour to bank <b>+25% base Personal XP on your next quest</b>. It applies automatically, once, and stays banked until used.</p><p><b>${!r?'Status unavailable':r.ready?'✦ Rested bonus ready':r.logged_this_week?'Used this week':r.unlocked?'Ready to log your restful hour':'Unlocks at level 20'}</b></p>${r?.ready?`<p class="fine">Logged activity: ${esc(r.activity||'Intentional rest')}. A pending bonus does not expire or stack.</p>`:''}${r?.can_log?`<label>Restful activity<select id="qbRestedActivity"><option>An hour without screens</option><option>Reading for enjoyment</option><option>Bath / relaxation</option><option>Relaxing outside</option><option>A combination of restful activities</option><option>Other restful activity</option></select></label><label>Optional detail<input id="qbRestedDetail" maxlength="100" placeholder="What helped you recharge?"></label><button id="qbLogRested">I completed my restful hour</button>`:''}<p class="fine">One hour can be logged per Monday–Sunday week, separately for each of you. This does not add a quest to the Daily Ledger. Undo removes awarded XP; the restful hour remains used.</p><button class="ghost" data-qb-modal-close>Close</button>`);
+  document.querySelector('#qbLogRested')?.addEventListener('click',async e=>{
+    const b=e.currentTarget;b.disabled=true;
+    const activity=document.querySelector('#qbRestedActivity').value,detail=document.querySelector('#qbRestedDetail').value.trim();
+    try{
+      const {data,error}=await sb.rpc('log_rested_hour',{p_activity:detail?activity+': '+detail:activity});
+      if(error)throw error;state.rested=data;document.querySelector('.qb-modal')?.remove();
+      showToast('✦ Rested bonus ready · +25% base Personal XP on your next quest');
+      await qbReloadCore();
+    }catch(error){b.disabled=false;alert(error.message)}
+  });
 };
