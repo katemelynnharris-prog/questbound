@@ -18,15 +18,3 @@ qbWireGuildActions=function(){
   screen.querySelectorAll('[data-guild-item-use]').forEach(b=>b.onclick=async()=>{b.disabled=true;const {data,error}=await sb.rpc('use_guild_item',{p_item_id:b.dataset.guildItemUse});if(error){b.disabled=false;return alert(error.message)}showToast(data?.message||'Guild item readied');await Promise.all([loadGuildItems(),loadActivity()]);renderGuild()});
 };
 
-const qbRenderAdminV3=renderAdmin;
-renderAdmin=function(){
-  qbRenderAdminV3();
-  if(state.membership.role!=='admin')return;
-  const t=state.treasury;
-  const section=document.createElement('section');
-  section.className='card home-card';
-  section.innerHTML=`<p class="eyebrow">💰 TREASURY SETUP</p><h2>Fund Configuration</h2><div class="admin-form"><label>Fund name<input id="qbAdminFundName" value="${esc(t?.name||'')}"></label><label>Goal<input id="qbAdminFundGoal" type="number" min="1" value="${Number(t?.target_amount||10000)}"></label><label>Starting / corrected balance<input id="qbAdminFundBalance" type="number" min="0" step="0.01" value="${Number(t?.balance||0)}"></label><label>High-water mark<input disabled value="${Number(t?.high_water||0)}"></label></div><div class="admin-actions"><button id="qbSaveTreasurySetup">Save Treasury Setup</button></div><p class="fine">Starting or corrected balance is reward-neutral and becomes the new high-water mark. Future net-new deposits are what earn Treasury Campaign XP.</p>`;
-  const resetCard=[...screen.querySelectorAll('.card')].find(c=>/PLAYTEST RESETS/.test(c.textContent||''));
-  if(resetCard)screen.insertBefore(section,resetCard);else screen.appendChild(section);
-  document.querySelector('#qbSaveTreasurySetup')?.addEventListener('click',async()=>{const name=document.querySelector('#qbAdminFundName').value.trim(),goal=Number(document.querySelector('#qbAdminFundGoal').value),balance=Number(document.querySelector('#qbAdminFundBalance').value);if(!name||!(goal>0)||balance<0)return alert('Enter a fund name, a positive goal, and a starting balance of 0 or greater.');const {error}=await sb.rpc('admin_configure_treasury',{p_name:name,p_goal:goal,p_balance:balance});if(error)return alert(error.message);showToast('Treasury setup saved');await qbReloadCore()});
-};

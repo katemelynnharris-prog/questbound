@@ -20,7 +20,7 @@ const qbDailyCountV20BeforeV21=qbDailyCountV20;
 qbDailyCountV20=function(q,date=localDate()){const c=qbCycle(q);return c&&date===c.date?c.count:qbDailyCountV20BeforeV21(q,date)};
 randomBoard=function(){
   const nonce=Number(state.randomDraw?.nonce||0),key=`${state.guild?.id||''}:${localDate()}:${state.membership?.player_key||''}:${nonce}`;
-  return state.quests.filter(q=>q.random_eligible&&!q.hidden_encounter&&q.owner_type!=='personal_daily'&&canOwnQuest(q)&&qbCycle(q)?.available)
+  return state.quests.filter(q=>q.random_eligible&&!q.hidden_encounter&&canOwnQuest(q)&&qbCycle(q)?.available)
     .map(q=>({q,n:seededHash(`${key}:${q.id}`)})).sort((a,b)=>a.n-b.n).slice(0,3).map(x=>x.q);
 };
 const qbQuestRowBeforeV21=questRow;
