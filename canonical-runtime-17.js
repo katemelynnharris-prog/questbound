@@ -2,7 +2,7 @@
 
 const QB_ABILITY_LEDGER_V17={
   initiate:{kind:'Core unlock',effect:'Unlocks the Quest Journal, quest completion tracking, Personal XP, Campaign XP, and Guild activity history.',bonus:'Base Questbound systems unlocked.',stat:'Core systems'},
-  cadet:{kind:'Weekly active',effect:'Once per week, Second Wind can be used on one fitness quest.',bonus:'That quest earns 2× its base Personal XP.',stat:'2× XP · 1/week'},
+  cadet:{kind:'Weekly active',effect:'Once per week, use Second Wind when completing one fitness quest or today’s assigned workout.',bonus:'Adds one extra base Personal XP reward to your completion. Use it from this detail panel, eligible quest buttons, or the workout page.',stat:'2× XP · 1/week'},
   crawler:{kind:'Progression passive',effect:'Level-up rewards can include bonus challenge loot.',bonus:'Loot access improves; there is no fixed percentage modifier in the current rules.',stat:'Bonus loot'},
   rider:{kind:'Build unlock',effect:'Unlocks your personal specialization choice.',bonus:'Your chosen specialization supplies its own bonuses; Signet itself does not add a flat stat.',stat:'Specialization unlocked'},
   pathfinder:{kind:'Recovery passive',effect:'Quiet periods can build a Rested benefit instead of being treated as failure.',bonus:'Recovery utility rather than a permanent stat increase; no fixed numeric modifier is currently configured.',stat:'Rested bonus'},

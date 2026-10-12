@@ -112,3 +112,69 @@ renderTraining=function(){
     }catch(error){button.disabled=false;alert(error.message)}
   });
 };
+
+async function loadSecondWind(){
+  const {data,error}=await sb.rpc('second_wind_state');
+  if(error){state.secondWind=null;throw error;}state.secondWind=data;
+}
+const qbLoadAllBeforeSecondWind=loadAll;
+loadAll=async function(){await qbLoadAllBeforeSecondWind();try{await loadSecondWind()}catch(e){console.warn('Second Wind status unavailable',e)}};
+function qbSecondWindReady(){return !!state.secondWind?.ready}
+function qbSecondWindFitness(q){return state.secondWind?.fitness_quests?.includes(q.id)}
+function qbSecondWindBase(q){
+  const target=Number(safeMeta(q.recurrence).count_target||1);
+  if(safeMeta(q.recurrence).type!=='daily'||target<=1)return Number(q.xp_personal||0);
+  const base=Math.floor(Number(q.xp_personal||0)/target),step=Number(qbCycle(q)?.count||0)+1;
+  return step===target?Number(q.xp_personal)-base*(target-1):base;
+}
+let qbSecondWindSaving=false;
+async function qbPerformSecondWind(kind,id,source='journal'){
+  if(qbSecondWindSaving)return;qbSecondWindSaving=true;
+  document.querySelectorAll('[data-second-wind-quest],#qbWindConfirm,#qbWindWorkout').forEach(b=>b.disabled=true);
+  try{
+    const q=kind==='quest'?questById(id):null,before=progressByUser(ownUserId())?.level||1;
+    const {data,error}=await sb.rpc('use_second_wind',{p_kind:kind,p_target:id,p_occurrence_key:q?occurrenceKey(q):null,p_source:source});
+    if(error)throw error;
+    document.querySelector('.qb-modal')?.remove();
+    showToast(`Second Wind used · +${data.second_wind_bonus} extra Personal XP · weekly use spent`);
+    await qbReloadCore();const after=progressByUser(ownUserId())?.level||1;if(after>before)qbLevelFanfare(after);
+  }catch(e){alert(e.message);await loadSecondWind().catch(()=>{});render()}finally{qbSecondWindSaving=false}
+}
+function qbConfirmSecondWind(kind,id,source='journal'){
+  const q=kind==='quest'?questById(id):null,a=kind==='training'?state.training.find(t=>t.id===id):null;
+  const title=q?.title||a?.title||'Fitness quest',base=q?qbSecondWindBase(q):Number(a?.xp_personal||0);
+  qbModal(`<p class="eyebrow">SECOND WIND · WEEKLY ACTIVE</p><h2>${esc(title)}</h2><p>Complete this ${kind==='training'?'workout':'fitness log'} with Second Wind for <b>+${fmt(base)} extra Personal XP</b>, on top of its normal reward.</p><p>This spends your weekly use. Your partner keeps their own use. Campaign XP and your partner's reward stay the same.</p><p class="fine">Undo reverses the XP, but this week's use stays spent. Resets Monday, ${esc(state.secondWind?.resets||'')}.</p><div class="qb-inline-actions"><button id="qbWindConfirm">Complete with Second Wind</button><button class="ghost" data-qb-modal-close>Cancel</button></div>`);
+  document.querySelector('#qbWindConfirm').onclick=()=>qbPerformSecondWind(kind,id,source);
+}
+const qbWireQuestBeforeSecondWind=wireQuestButtons;
+wireQuestButtons=function(){
+  qbWireQuestBeforeSecondWind();
+  if(!qbSecondWindReady())return;
+  screen.querySelectorAll('[data-complete]').forEach(button=>{
+    const q=questById(button.dataset.complete);
+    if(!q||!canOwnQuest(q)||!qbSecondWindFitness(q)||!qbCycle(q)?.available||button.disabled)return;
+    if(button.nextElementSibling?.dataset.secondWindQuest===q.id)return;
+    button.insertAdjacentHTML('afterend',`<button class="mini ghost qb-second-wind-button" data-second-wind-quest="${q.id}" data-second-wind-source="${esc(button.dataset.source||'journal')}">✦ Second Wind</button>`);
+    const wind=button.nextElementSibling;wind.onclick=()=>qbConfirmSecondWind('quest',q.id,wind.dataset.secondWindSource);
+  });
+};
+const qbRenderTrainingBeforeSecondWind=renderTraining;
+renderTraining=function(){
+  qbRenderTrainingBeforeSecondWind();
+  const a=state.training.find(t=>t.assignment_date===localDate()&&t.user_id===ownUserId());
+  if(!a||!state.secondWind?.unlocked)return;
+  const ready=qbSecondWindReady()&&!a.completed_at;
+  screen.querySelector('.qb-training-contract')?.insertAdjacentHTML('beforeend',`<div class="qb-workout-bonus"><p class="eyebrow">✦ SECOND WIND</p><p>${state.secondWind.used?'Used this week':a.completed_at?'Choose an unfinished fitness quest to use Second Wind.':'Use your weekly ability to add one extra base workout XP reward.'}</p><button id="qbWindWorkout" class="ghost" ${ready?'':'disabled'}>${state.secondWind.used?'Used · resets Monday':'Complete with Second Wind'}</button><p class="fine">Your weekly use is separate from the More or Harder bonus.</p></div>`);
+  screen.querySelector('#qbWindWorkout')?.addEventListener('click',()=>qbConfirmSecondWind('training',a.id));
+};
+const qbOpenAbilityBeforeSecondWind=qbOpenAbilityLedgerDetailV17;
+qbOpenAbilityLedgerDetailV17=async function(key){
+  if(key!=='cadet'||selectedCharacter().uid!==ownUserId())return qbOpenAbilityBeforeSecondWind(key);
+  await loadSecondWind().catch(()=>{});
+  const wind=state.secondWind;
+  const qs=state.quests.filter(q=>canOwnQuest(q)&&qbSecondWindFitness(q)&&qbCycle(q)?.available);
+  const a=state.training.find(t=>t.assignment_date===localDate()&&t.user_id===ownUserId()&&!t.completed_at);
+  const options=(a?`<option value="training:${a.id}">Today's workout: ${esc(a.title)}</option>`:'')+qs.map(q=>`<option value="quest:${q.id}">${esc(q.title)} · +${fmt(qbSecondWindBase(q))} extra XP</option>`).join('');
+  qbModal(`<p class="eyebrow">WEEKLY ACTIVE · LEVEL 5</p><h2>Second Wind</h2><p>Add one extra base Personal XP reward to a fitness completion. Existing Fate, featured, and gear modifiers keep their normal values.</p><p><b>${!wind?'Status unavailable':wind.used?'Used this week':wind.ready?'Ready to use':'Unlocks at level 5'}</b>${wind?` · Resets ${esc(wind.resets)}`:''}</p>${wind?.ready&&options?`<label>Choose a fitness quest or workout<select id="qbWindTarget">${options}</select></label><button id="qbWindChoose" class="qb-second-wind-button">Review Second Wind completion</button>`:wind?.ready?'<p>No unfinished eligible fitness quests or workout are currently available.</p>':''}<button class="ghost" data-qb-modal-close>Close</button>`);
+  document.querySelector('#qbWindChoose')?.addEventListener('click',()=>{const [kind,id]=document.querySelector('#qbWindTarget').value.split(':');qbConfirmSecondWind(kind,id)});
+};
