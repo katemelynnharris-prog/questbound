@@ -123,8 +123,8 @@ declare result jsonb;bonus jsonb;
 begin
  if auth.uid() is null then raise exception 'Authentication required';end if;
  result:=public.complete_gauntlet_challenge(p_challenge_id);
- if result->>'completion_id' is not null then
-  bonus:=game_private.apply_rested((result->>'completion_id')::uuid);
+ if result->>'quest_completion_id' is not null then
+  bonus:=game_private.apply_rested((result->>'quest_completion_id')::uuid);
   result:=result||jsonb_build_object('rested_rewards',bonus->'rested_rewards');
   if result->'quest_reward' is not null and result->'quest_reward'<>'null'::jsonb then
     result:=jsonb_set(result,'{quest_reward,personal_xp_each}',to_jsonb((result#>>'{quest_reward,personal_xp_each}')::int+(bonus->>'actor_bonus')::int));
