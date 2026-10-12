@@ -88,3 +88,27 @@ qbWatchMeta=function(q){
   if(q?.key==='no-overspending-week')return null;
   return qbWatchMetaBeforeBudgetExclusion(q);
 };
+
+function qbTrainingBonusCard(a){
+  const claimed=!!a.bonus_claimed_at,ready=!!a.completed_at;
+  return `<div class="qb-workout-bonus"><p class="eyebrow">✦ OPTIONAL WORKOUT BONUS</p><h3>More or Harder</h3><p>Earn a bonus when you exceed the assigned workout with extra sets, reps, time, distance, or a harder version.</p><div class="quest-meta">+50 Personal XP · +10 Campaign XP · once per workout day</div><div class="qb-inline-actions"><label for="qbWorkoutBonusReason">How did you exceed it?<select id="qbWorkoutBonusReason" ${claimed||!ready?'disabled':''}><option value="more">More</option><option value="harder">Harder</option><option value="both">More and harder</option></select></label><button id="qbClaimWorkoutBonus" ${claimed||!ready?'disabled':''}>${claimed?'✓ Bonus Claimed':ready?'Claim Extra Effort Bonus':'Complete Workout First'}</button></div></div>`;
+}
+const qbRenderTrainingBeforeExtraEffort=renderTraining;
+renderTraining=function(){
+  qbRenderTrainingBeforeExtraEffort();
+  const a=state.training.find(t=>t.assignment_date===localDate()&&t.user_id===ownUserId());
+  if(!a)return;
+  screen.querySelector('.qb-training-contract')?.insertAdjacentHTML('beforeend',qbTrainingBonusCard(a));
+  screen.querySelector('#qbClaimWorkoutBonus')?.addEventListener('click',async e=>{
+    const button=e.currentTarget;button.disabled=true;
+    const reason=screen.querySelector('#qbWorkoutBonusReason')?.value||'more';
+    const before=progressByUser(ownUserId())?.level||1;
+    try{
+      const {data,error}=await sb.rpc('claim_training_bonus',{p_assignment_id:a.id,p_reason:reason});
+      if(error)throw error;
+      showToast(`Extra effort · +${data.personal_xp} Personal XP · +${data.campaign_xp} Campaign XP`);
+      await qbReloadCore();
+      const after=progressByUser(ownUserId())?.level||1;if(after>before)qbLevelFanfare(after);
+    }catch(error){button.disabled=false;alert(error.message)}
+  });
+};

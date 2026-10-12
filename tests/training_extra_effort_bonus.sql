@@ -1,0 +1,42 @@
+begin;
+do $test$
+declare a public.training_assignments; sample public.training_assignments; uid uuid; other_uid uuid; gid uuid; d date;
+ before_xp int; after_xp int; sessions int; reward jsonb; failed boolean;
+begin
+ select gm.guild_id,gm.user_id into strict gid,uid from public.guild_members gm where lower(gm.player_key)='kate';
+ select user_id into strict other_uid from public.guild_members where guild_id=gid and lower(player_key)='drew';
+ update public.guilds set playtest_day_offset=coalesce(playtest_day_offset,0)+120 where id=gid;
+ d:=public.qb_effective_date(gid);
+ select * into strict sample from public.training_assignments where guild_id=gid and user_id=uid order by assignment_date desc limit 1;
+ a:=sample;a.id:=gen_random_uuid();a.assignment_date:=d;a.completed_at:=null;a.replaced:=false;
+ a.bonus_claimed_at:=null;a.bonus_reason:=null;a.bonus_personal_xp:=0;a.bonus_campaign_xp:=0;a.bonus_campaign_id:=null;
+ insert into public.training_assignments select (a).*;
+ perform set_config('request.jwt.claim.sub',uid::text,true);
+ failed:=false;begin perform public.claim_training_bonus(a.id,'more');exception when others then failed:=true;end;
+ assert failed,'Unfinished workout bonus was allowed';
+ select personal_xp into before_xp from public.player_progress_public where guild_id=gid and user_id=uid;
+ perform public.complete_training_assignment(a.id);
+ select training_sessions into sessions from public.training_stats where guild_id=gid and user_id=uid;
+ select personal_xp into after_xp from public.player_progress_public where guild_id=gid and user_id=uid;
+ reward:=public.claim_training_bonus(a.id,'harder');
+ assert (reward->>'personal_xp')::int=50;
+ assert (select personal_xp=after_xp+50 from public.player_progress_public where guild_id=gid and user_id=uid);
+ assert (select training_sessions=sessions from public.training_stats where guild_id=gid and user_id=uid),'Bonus should not count another session';
+ failed:=false;begin perform public.claim_training_bonus(a.id,'more');exception when others then failed:=true;end;assert failed,'Duplicate bonus was allowed';
+ perform set_config('request.jwt.claim.sub',other_uid::text,true);
+ failed:=false;begin perform public.claim_training_bonus(a.id,'more');exception when others then failed:=true;end;assert failed,'Other player claimed workout bonus';
+ -- Other member can earn their own bonus independently.
+ select * into strict sample from public.training_assignments where guild_id=gid and user_id=other_uid order by assignment_date desc limit 1;
+ sample.id:=gen_random_uuid();sample.assignment_date:=d;sample.completed_at:=null;sample.replaced:=false;
+ sample.bonus_claimed_at:=null;sample.bonus_reason:=null;sample.bonus_personal_xp:=0;sample.bonus_campaign_xp:=0;sample.bonus_campaign_id:=null;
+ insert into public.training_assignments select (sample).*;
+ perform public.complete_training_assignment(sample.id);perform public.claim_training_bonus(sample.id,'both');
+ perform set_config('request.jwt.claim.sub',uid::text,true);
+ perform public.undo_training_assignment(a.id);
+ assert (select personal_xp=before_xp from public.player_progress_public where guild_id=gid and user_id=uid),'Undo did not reverse both rewards';
+ assert (select bonus_claimed_at is null and bonus_personal_xp=0 from public.training_assignments where id=a.id);
+ assert not has_table_privilege('authenticated','public.training_assignments','UPDATE'),'Direct update could bypass reward checks';
+ assert not has_function_privilege('anon','public.claim_training_bonus(uuid,text)','EXECUTE');
+ assert (select not coalesce((recurrence->>'daily_ledger')::boolean,false) from public.quest_templates where key='finish-a-book'),'Optional book leaked into Ledger';
+end $test$;
+rollback;

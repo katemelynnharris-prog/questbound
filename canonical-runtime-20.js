@@ -44,13 +44,9 @@ render=function(){
 /* Final daily-ledger compatibility pass: ensure shared daily quests such as Walk Arthur
    render in both Home and Journal daily sections, after all earlier renderer overrides. */
 function qbIsDailyLedgerQuestV20(q){
-  const r=safeMeta(q?.recurrence);
-  return q && canOwnQuest(q) && (
-    q.owner_type==='personal_daily' ||
-    (q.owner_type==='co-op' && r.type==='daily') ||
-    q.key==='walk-arthur'
-  );
+  return !!q&&canOwnQuest(q)&&safeMeta(q.recurrence).daily_ledger===true;
 }
+
 function qbDailyCountV20(q,date=localDate()){
   if(!q)return 0;
   return state.completions.filter(c=>!c.reversed_at && c.quest_id===q.id && qbCompletionDate(c)===date && (q.owner_type==='co-op' || q.key==='walk-arthur' || c.subject_user_id===ownUserId())).length;

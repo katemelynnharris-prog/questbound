@@ -68,5 +68,6 @@ const qbOwnerLabelBeforeCompletionScope=ownerLabel;
 ownerLabel=function(q){
   if(q.owner_type==='shared')return safeMeta(q.recurrence).completion_scope==='player'?'Personal · separate progress':'Household · completer XP';
   if(q.owner_type==='co-op')return 'Together · both earn XP';
+  if(q.owner_type==='personal_daily')return safeMeta(q.recurrence).daily_ledger?'Personal Daily':'Personal · separate progress';
   return qbOwnerLabelBeforeCompletionScope(q);
 };
