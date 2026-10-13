@@ -60,7 +60,9 @@
   margin-top:0!important;
 }
 #app #screen .home-two:has(.fate-card)>.card{
-  height:94%!important;
+  height:auto!important;
+  min-height:0!important;
+  box-sizing:border-box!important;
 }
 
 /* Weekly challenge + weekly co-op: treat the pair as one balanced two-column panel.
@@ -177,3 +179,4 @@
     height:100%!important;
   }
 }
+
