@@ -347,3 +347,71 @@ renderHome=function(){
  });
 };
 
+
+
+// Each account chooses its own Daily Ledger; these choices never edit quest templates.
+function qbLedgerEligible(q){
+ return !!q&&q.active!==false&&!q.hidden_encounter&&canOwnQuest(q)&&['daily','repeatable'].includes(safeMeta(q.recurrence).type);
+}
+function qbOwnLedgerPreference(){
+ const p=state.dailyLedgerPreference;
+ return p&&p.user_id===ownUserId()&&p.guild_id===state.guild?.id?p:null;
+}
+async function qbLoadDailyLedgerPreference(){
+ const user_id=ownUserId(),guild_id=state.guild?.id;
+ state.dailyLedgerPreference=null;
+ if(!user_id||!guild_id)return;
+ const {data,error}=await sb.from('daily_ledger_preferences').select('quest_ids').eq('guild_id',guild_id).eq('user_id',user_id).maybeSingle();
+ if(user_id!==ownUserId()||guild_id!==state.guild?.id)return;
+ state.dailyLedgerPreference={user_id,guild_id,quest_ids:data?.quest_ids??null,error};
+ if(error)console.warn('Daily Ledger settings unavailable',error.message);
+}
+const qbLoadAllBeforePersonalLedger=loadAll;
+loadAll=async function(){state.dailyLedgerPreference=null;await qbLoadAllBeforePersonalLedger();await qbLoadDailyLedgerPreference()};
+const qbDefaultLedgerQuest=qbIsDailyLedgerQuestV20;
+qbIsDailyLedgerQuestV20=function(q){
+ if(!qbLedgerEligible(q))return false;
+ const ids=qbOwnLedgerPreference()?.quest_ids;
+ return Array.isArray(ids)?ids.includes(q.id):qbDefaultLedgerQuest(q);
+};
+function qbLedgerEditableCard(html){
+ return html.replace('<h2>Today</h2>','<div class="qb-ledger-heading"><h2>Today</h2><button type="button" class="mini ghost" data-qb-edit-ledger>Edit Ledger</button></div>')
+  .replace('No daily quests are visible.','Your ledger is empty. Choose Edit Ledger to add daily-reset quests.');
+}
+const qbDailyCardBeforePersonalLedger=permanentDailyCard;
+permanentDailyCard=function(){return qbLedgerEditableCard(qbDailyCardBeforePersonalLedger())};
+const qbJournalDailyBeforePersonalLedger=qbJournalDailySection;
+qbJournalDailySection=function(qs){return qbLedgerEditableCard(qbJournalDailyBeforePersonalLedger(qs))};
+function qbWireDailyLedger(){screen.querySelectorAll('[data-qb-edit-ledger]').forEach(b=>b.onclick=qbOpenDailyLedgerEditor)}
+const qbHomeBeforePersonalLedger=renderHome;
+renderHome=function(){qbHomeBeforePersonalLedger();qbWireDailyLedger()};
+const qbJournalBeforePersonalLedger=renderJournal;
+renderJournal=function(){qbJournalBeforePersonalLedger();qbWireDailyLedger()};
+async function qbOpenDailyLedgerEditor(){
+ try{await qbLoadDailyLedgerPreference()}catch(e){return alert('Unable to load your ledger. Please try again.');}
+ const p=qbOwnLedgerPreference();
+ if(!p||p.error)return alert('Unable to load your ledger. Please try again.');
+ const quests=state.quests.filter(qbLedgerEligible).sort((a,b)=>a.title.localeCompare(b.title));
+ const selected=new Set(quests.filter(qbIsDailyLedgerQuestV20).map(q=>q.id));
+ qbModal(`<p class="eyebrow">YOUR DAILY LEDGER</p><h2>Edit Ledger</h2><p>Choose the daily-reset quests you want to see here. These choices are saved for your account. Shared and co-op quests keep their existing completion and XP rules.</p><label>Search daily quests<input id="qbLedgerSearch" type="search" placeholder="Search by title or category"></label><p class="fine" id="qbLedgerSelectionCount" aria-live="polite">${selected.size} selected</p><div class="qb-ledger-options">${quests.map(q=>`<label class="qb-ledger-option" data-ledger-search="${esc([q.title,q.category].join(' ').toLocaleLowerCase())}"><input type="checkbox" value="${esc(q.id)}" ${selected.has(q.id)?'checked':''}><span><b>${esc(q.title)}</b><small>${esc(q.category)} · ${esc(ownerLabel(q))}</small></span></label>`).join('')||'<p>No daily-reset quests available.</p>'}</div><p class="fine" id="qbLedgerNoMatches" hidden>No matching quests.</p><div class="qb-ledger-editor-actions"><button type="button" id="qbSaveDailyLedger">Save Ledger</button><button type="button" class="ghost" data-qb-modal-close>Cancel</button></div>`);
+ const modal=document.querySelector('.qb-modal');
+ const boxes=[...modal.querySelectorAll('.qb-ledger-option input')];
+ boxes.forEach(box=>box.onchange=()=>{modal.querySelector('#qbLedgerSelectionCount').textContent=`${boxes.filter(b=>b.checked).length} selected`});
+ modal.querySelector('#qbLedgerSearch').oninput=e=>{
+  const words=e.target.value.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
+  const rows=[...modal.querySelectorAll('.qb-ledger-option')];
+  rows.forEach(row=>row.hidden=!words.every(word=>row.dataset.ledgerSearch.includes(word)));
+  modal.querySelector('#qbLedgerNoMatches').hidden=rows.some(row=>!row.hidden);
+ };
+ modal.querySelector('#qbSaveDailyLedger').onclick=async e=>{
+  const button=e.currentTarget;button.disabled=true;
+  try{
+   if(p.user_id!==ownUserId()||p.guild_id!==state.guild?.id)throw new Error('Account changed. Reopen your ledger to edit it.');
+   const quest_ids=boxes.filter(b=>b.checked).map(b=>b.value).filter(id=>qbLedgerEligible(questById(id)));
+   const {error}=await sb.from('daily_ledger_preferences').upsert({guild_id:p.guild_id,user_id:p.user_id,quest_ids},{onConflict:'guild_id,user_id'});
+   if(error)throw error;
+   if(p.user_id!==ownUserId()||p.guild_id!==state.guild?.id)return;
+   state.dailyLedgerPreference={...p,quest_ids};modal.remove();render();showToast('Your Daily Ledger has been saved.');
+  }catch(error){button.disabled=false;alert(error.message);}
+ };
+}

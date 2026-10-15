@@ -1,0 +1,10 @@
+.qb-ledger-heading{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap}
+.qb-ledger-heading h2{margin-bottom:0!important}
+.qb-ledger-options{display:grid;gap:.45rem;max-height:45vh;overflow-y:auto;overscroll-behavior:contain;margin:.8rem 0}
+.qb-dialog .qb-ledger-option{display:grid;grid-template-columns:22px minmax(0,1fr);gap:.65rem;align-items:start;padding:.7rem;border:1px solid rgba(207,184,116,.22);border-radius:8px;cursor:pointer}
+.qb-dialog .qb-ledger-option[hidden]{display:none}
+.qb-dialog .qb-ledger-option input{width:20px;height:20px;margin:.15rem 0 0;padding:0;accent-color:#cbb16c}
+.qb-ledger-option span{min-width:0;overflow-wrap:anywhere}
+.qb-ledger-option b{display:block;font-size:1rem;letter-spacing:normal;text-transform:none}
+.qb-ledger-option small{display:block;margin-top:.25rem;opacity:.72;font-size:.76rem;letter-spacing:normal;text-transform:none}
+.qb-ledger-editor-actions{display:flex;gap:.65rem;flex-wrap:wrap}
