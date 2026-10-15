@@ -236,8 +236,12 @@ function qbFocusCard(){
 function qbWireFocus(){screen.querySelectorAll('[data-qb-focus-manage]').forEach(b=>b.onclick=qbOpenFocusBoard)}
 async function qbOpenFocusBoard(){
  await loadAbilityControls();const s=state.abilityControls;if(!s)return alert('Focus status unavailable. Please refresh.');
- const pins=qbAbilityChoices().pin||[],available=state.quests.filter(q=>canOwnQuest(q)&&!q.hidden_encounter&&qbCycle(q)?.available&&!pins.includes(q.id));
- qbModal(`<p class="eyebrow">PERSONAL FOCUS</p><h2>Your Focus Board</h2><p>${pins.length} / ${s.focus_capacity} slots. A sixth slot unlocks at Level 60. Pinning never changes a quest’s reset or adds it to the Daily Ledger.</p><div class="qb-focus-pins">${pins.map(id=>`<div><span>${esc(questById(id)?.title||'Unavailable quest')}</span><button class="mini ghost" data-qb-unpin="${esc(id)}">Unpin</button></div>`).join('')||'<p>No quests pinned yet.</p>'}</div>${available.length&&pins.length<s.focus_capacity?`<label>Choose an available quest<select id="qbFocusQuest">${available.map(q=>`<option value="${q.id}">${esc(q.title)}</option>`).join('')}</select></label><button id="qbPinQuest">Pin Quest</button>`:''}<button class="ghost" data-qb-modal-close>Close</button>`);
+ // Recurring quests remain pinnable between resets; completion eligibility stays with the cycle.
+ const pins=qbAbilityChoices().pin||[],available=state.quests.filter(q=>{
+  const c=qbCycle(q),type=safeMeta(q.recurrence).type||'once';
+  return canOwnQuest(q)&&q.active!==false&&!q.hidden_encounter&&c?.active&&(c.available||type!=='once')&&!pins.includes(q.id);
+ });
+ qbModal(`<p class="eyebrow">PERSONAL FOCUS</p><h2>Your Focus Board</h2><p>${pins.length} / ${s.focus_capacity} slots. A sixth slot unlocks at Level 60. Pinning never changes a quest’s reset or adds it to the Daily Ledger.</p><div class="qb-focus-pins">${pins.map(id=>`<div><span>${esc(questById(id)?.title||'Unavailable quest')}</span><button class="mini ghost" data-qb-unpin="${esc(id)}">Unpin</button></div>`).join('')||'<p>No quests pinned yet.</p>'}</div>${available.length&&pins.length<s.focus_capacity?`<label>Choose a quest<select id="qbFocusQuest">${available.map(q=>`<option value="${q.id}">${esc(q.title)}</option>`).join('')}</select></label><button id="qbPinQuest">Pin Quest</button>`:''}<button class="ghost" data-qb-modal-close>Close</button>`);
  document.querySelectorAll('[data-qb-unpin]').forEach(b=>b.onclick=()=>qbSaveAbilityChoice('pin',b.dataset.qbUnpin,b));
  document.querySelector('#qbPinQuest')?.addEventListener('click',e=>qbSaveAbilityChoice('pin',document.querySelector('#qbFocusQuest').value,e.currentTarget));
 }
