@@ -14,3 +14,13 @@
 .equipment-buffs ul{list-style:none;padding:0;margin:.8rem 0}.equipment-buffs li{padding:.5rem 0;border-bottom:1px solid #383c2a;color:var(--gold);font-size:.9rem}.buff-note{font-size:.75rem}
 @media(max-width:900px){.loadout-layout{grid-template-columns:1fr}}
 @media(max-width:680px){.loadout-layout .gear-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:.4rem}.loadout-layout .gear{padding:.55rem;min-height:125px}.loadout-layout .gear h3{font-size:.85rem}.loadout-layout .gear .slot{font-size:.55rem;letter-spacing:.04em}.gear-bonuses{font-size:.65rem}.gear-rarity{font-size:.6rem}}
+
+/* Campaign presentation follows the game, without any claim or edit actions. */
+.campaign-home .campaign-titleline{display:flex;align-items:flex-end;justify-content:space-between;gap:1.5rem;padding:1.4rem;background:#060a0bc2;border:1px solid #77663866;border-radius:10px}
+.campaign-home h1{font-size:clamp(2rem,5vw,3rem);margin:.4rem 0 .8rem}.campaign-home h2.chapter{font-size:1.1rem;text-transform:uppercase;letter-spacing:.1em;margin:.4rem 0}
+.campaign-narrative{font-family:var(--serif);font-size:1.15rem;font-style:italic;color:#d4cdb9}.campaign-xp{color:var(--gold);white-space:nowrap}
+.campaign-chapters{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(185px,1fr);gap:.7rem;overflow-x:auto;padding:1rem;background:#060a0bb3;border:1px solid #77663866;border-radius:8px;scrollbar-width:thin}
+.campaign-chapter{border-top:2px solid #6d6242;padding-top:.7rem;min-width:0}.campaign-chapter b{display:block;font-family:var(--serif);font-size:1rem;line-height:1.3;color:var(--gold)}.campaign-chapter span{display:block;font-family:var(--serif);font-size:.9rem;line-height:1.45;margin-top:.4rem}.campaign-chapter.locked{opacity:.4}.campaign-chapter.current{border-color:var(--gold)}
+.campaign-foot{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:1rem;margin-top:1rem;background:#060a0bb3;border:1px solid #77663866;border-radius:8px;font-size:.85rem}.campaign-foot b{color:var(--gold);letter-spacing:.1em}.campaign-foot span{color:var(--muted)}
+.fate-card{background:radial-gradient(ellipse at top right,#6c54272b,transparent 70%),var(--panel);border-color:#9c8248}.fate-card h2{color:#e9d9a5}.fate-text{font-family:var(--serif);font-size:1.1rem;line-height:1.6}.fate-key{font-size:.72rem;color:var(--muted);margin-top:.9rem}
+@media(max-width:680px){.campaign-home{padding:1rem}.campaign-home .campaign-titleline{align-items:flex-start;flex-direction:column;padding:1rem;gap:.5rem}.campaign-home h1{font-size:2rem}.campaign-home h2.chapter{font-size:.9rem}.campaign-narrative{font-size:1rem}.campaign-chapters{grid-auto-columns:190px;padding:.8rem}.campaign-foot{padding:.8rem;font-size:.75rem}}
