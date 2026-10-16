@@ -415,3 +415,28 @@ async function qbOpenDailyLedgerEditor(){
   }catch(error){button.disabled=false;alert(error.message);}
  };
 }
+
+
+// Owner controls for the separately sanitized friend view.
+async function qbLoadShowcaseSettings(){
+ state.showcaseSettings=null;
+ if(state.membership?.role!=='admin')return;
+ const {data,error}=await sb.from('questbound_showcase_settings').select('enabled').eq('guild_id',state.membership.guild_id).maybeSingle();
+ if(!error)state.showcaseSettings=data;
+}
+const qbLoadAllBeforeShowcase=loadAll;
+loadAll=async function(){await qbLoadAllBeforeShowcase();await qbLoadShowcaseSettings()};
+const qbAdminBeforeShowcase=renderAdmin;
+renderAdmin=function(){
+ qbAdminBeforeShowcase();if(state.membership?.role!=='admin')return;
+ const s=state.showcaseSettings,link=new URL('./friends.html',location.href).href;
+ const section=document.createElement('section');section.className='card home-card';
+ section.innerHTML=`<p class="eyebrow">FRIEND VIEW</p><h2>Share the adventure</h2><p>A live, view-only page with characters, equipped gear, campaign progress, selected quests, and activity. Vault amounts, personal errands, and health details stay private.</p><p><a href="${esc(link)}" target="_blank" rel="noopener">Open friend view ↗</a></p><div class="qb-pack-actions"><button type="button" data-qb-copy-friend-link>Copy Share Link</button>${s?`<button type="button" class="ghost" data-qb-toggle-showcase>${s.enabled?'Pause Friend View':'Enable Friend View'}</button>`:'<span>Sharing settings unavailable. Refresh to retry.</span>'}</div><p class="fine">${s?(s.enabled?'Friend view is live.':'Friend view is paused.'):'The game remains private behind your sign-in.'}</p>`;
+ screen.append(section);
+ section.querySelector('[data-qb-copy-friend-link]').onclick=async()=>{try{await navigator.clipboard.writeText(link);showToast('Friend view link copied.')}catch{prompt('Copy this friend view link:',link)}};
+ section.querySelector('[data-qb-toggle-showcase]')?.addEventListener('click',async e=>{
+  const b=e.currentTarget;b.disabled=true;
+  try{const {data,error}=await sb.from('questbound_showcase_settings').update({enabled:!s.enabled}).eq('guild_id',state.membership.guild_id).select('enabled').single();if(error)throw error;state.showcaseSettings=data;renderAdmin();showToast(data.enabled?'Friend view enabled.':'Friend view paused.');}
+  catch(error){b.disabled=false;alert(error.message);}
+ });
+};
