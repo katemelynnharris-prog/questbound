@@ -72,9 +72,10 @@ async function qbRefreshBudget(){
   if(qbBudgetSaving||qbBudgetRefreshBusy||!state.membership||document.hidden||document.querySelector('.qb-modal'))return;
   qbBudgetRefreshBusy=true;
   try{
-    const before=JSON.stringify(state.budgetWeek);await loadBudgetWeek();
-    if(before!==JSON.stringify(state.budgetWeek)){
-      await Promise.all([loadQuestCycles(),loadCompletions(),loadCampaigns(),loadPlayers()]);
+    const before=JSON.stringify(state.budgetWeek),cyclesBefore=JSON.stringify(state.questCycles);
+    await Promise.all([loadBudgetWeek(),loadQuestCycles()]);
+    if(before!==JSON.stringify(state.budgetWeek)||cyclesBefore!==JSON.stringify(state.questCycles)){
+      await Promise.all([loadCompletions(),loadCampaigns(),loadPlayers()]);
       renderCampaignStrip();render();
     }
   }catch(e){console.warn('Unable to refresh shared budget',e)}finally{qbBudgetRefreshBusy=false}
@@ -439,4 +440,35 @@ renderAdmin=function(){
   try{const {data,error}=await sb.from('questbound_showcase_settings').update({enabled:!s.enabled}).eq('guild_id',state.membership.guild_id).select('enabled').single();if(error)throw error;state.showcaseSettings=data;renderAdmin();showToast(data.enabled?'Friend view enabled.':'Friend view paused.');}
   catch(error){b.disabled=false;alert(error.message);}
  });
+};
+
+
+// The same authoritative cycle drives Watch visibility and Journal availability.
+const qbWatchMetaBeforeCycleDisplay=qbWatchMeta;
+qbWatchMeta=function(q){
+ const c=qbCycle(q);
+ if(q?.hidden_encounter||!canOwnQuest(q)||(c&&(!c.available||c.complete||!c.active)))return null;
+ return qbWatchMetaBeforeCycleDisplay(q);
+};
+function qbQuestResetNote(q,c){
+ const type=safeMeta(q.recurrence).type;
+ if(!c?.complete)return c&&!c.available?(c.active?'Not due yet':'Out of season'):'';
+ if(['daily','repeatable'].includes(type))return 'Available again at midnight';
+ if(type==='interval'&&c.due){
+  const r=safeMeta(q.recurrence),next=new Date(c.due+'T12:00:00Z');
+  if(r.anchor==='schedule')next.setUTCDate(next.getUTCDate()+Number(r.count||1)*(r.unit==='weeks'?7:1));
+  return `Available again ${new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',timeZone:'UTC'}).format(next)}`;
+ }
+ return type==='once'?'Completed':'Completed for this cycle';
+}
+const qbQuestRowBeforeCycleDisplay=questRow;
+questRow=function(q,options){
+ let html=qbQuestRowBeforeCycleDisplay(q,options);const c=qbCycle(q);
+ if(c&&!c.available){
+  html=html.replace(/(<div class="quest [^"]*")/,'$1 data-qb-cycle-locked="true"');
+  html=html.replace(/(<button\b[^>]*\bdata-complete="[^"]*"[^>]*)(>)/,(all,tag,end)=>/\sdisabled(?:\s|=|$)/.test(tag)?all:tag+' disabled'+end);
+  const note=qbQuestResetNote(q,c);
+  html=html.replace('<div class="quest-actions">',`<div class="quest-actions"><span class="qb-quest-reset-note">${esc(note)}</span>`);
+ }
+ return html;
 };
