@@ -155,7 +155,13 @@ function qbWireCharacterActions(){
 
 async function completeQuest(id,button,source='journal'){
   button.disabled=true;const q=state.quests.find(x=>x.id===id),occurrence=occurrenceKey(q),before=progressByUser(ownUserId())?.level||levelFor(progressByUser(ownUserId())?.personal_xp||0);
-  const {data,error}=await sb.rpc('complete_quest_abilities',{p_quest_id:id,p_occurrence_key:occurrence,p_source:source});if(error){alert(error.message);button.disabled=false;return}
+  const {data,error}=await sb.rpc('complete_quest_abilities',{p_quest_id:id,p_occurrence_key:occurrence,p_source:source});if(error){
+    button.disabled=false;
+    if(/Quest occurrence already completed|Quest is not yet available again|Daily target already complete|Quest is not due yet/.test(error.message||'')){
+      try{await qbReloadCore();showToast('Quest status refreshed. Check its current progress.');}catch{alert(error.message)}
+    }else alert(error.message);
+    return;
+  }
   const fate=data?.fate?` · Fate: ${data.fate}`:'',cache=data?.campaign_cache_bonus?` · Victory Cache +${data.campaign_cache_bonus} Campaign`:'',counter=Number(data?.count_target||1)>1?` · ${data.count_current}/${data.count_target}`:'';
   showToast(`✓ ${q.title}${counter} · +${data?.personal_xp_each||0} XP · +${data?.campaign_xp||0} Campaign${fate}${cache}`);
   await loadAll();
