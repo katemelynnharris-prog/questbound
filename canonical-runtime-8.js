@@ -11,7 +11,7 @@ function recurrenceLabel(q){
   if(t==='weekly')return `Weekly${Array.isArray(r.days)&&r.days.length?` · ${r.days.join(', ')}`:''}`;
   if(t==='monthly_fixed')return `Monthly · day ${r.day||1}`;
   if(t==='monthly_dates')return `Monthly · days ${(r.days||[]).join(', ')}`;
-  if(t==='interval')return `Every ${r.count||1} ${r.unit||'days'}`;
+  if(t==='interval')return `Every ${r.count||1} ${r.unit||'days'}${r.anchor==='schedule'&&r.start_date?` · ${new Intl.DateTimeFormat('en-US',{weekday:'short',timeZone:'UTC'}).format(new Date(r.start_date+'T12:00:00Z'))} rotation`:''}`;
   if(t==='frequency')return `${r.target||1}× / ${r.period||'month'}`;
   if(t==='seasonal')return `Seasonal · month ${r.month||'?'}`;
   if(t==='seasonal_wildcard')return 'Seasonal wildcard';
@@ -42,6 +42,10 @@ function qbQuestDatesForMonth(q,year,month){
   if(r.type==='monthly_fixed'&&r.day)out.push(Number(r.day));
   if(r.type==='monthly_dates')out.push(...(r.days||[]).map(Number));
   if(r.type==='weekly'&&Array.isArray(r.days)){const names=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];for(let day=1;day<=new Date(year,month,0).getDate();day++){const n=names[new Date(year,month-1,day).getDay()];if(r.days.includes(n))out.push(day)}}
+  if(r.type==='interval'&&r.anchor==='schedule'&&r.start_date&&['days','weeks'].includes(r.unit)){
+    const span=Math.max(1,Number(r.count)||1)*(r.unit==='weeks'?7:1)*86400000,start=Date.parse(r.start_date+'T12:00:00Z'),first=Date.UTC(year,month-1,1,12),last=Date.UTC(year,month,0,12);
+    for(let date=start+Math.max(0,Math.ceil((first-start)/span))*span;date<=last;date+=span)out.push(new Date(date).getUTCDate());
+  }
   return [...new Set(out.filter(d=>d>=1&&d<=new Date(year,month,0).getDate()))];
 }
 function renderCalendar(){
@@ -88,7 +92,7 @@ function qbQuestEditor(id){
     if(rt==='weekly')recurrence.days=[...document.querySelector('#qeWeekDays').selectedOptions].map(x=>x.value);
     if(rt==='monthly_fixed')recurrence.day=Math.max(1,Math.min(31,Number(document.querySelector('#qeMonthDay').value)||1));
     if(rt==='monthly_dates')recurrence.days=[...new Set(document.querySelector('#qeMonthDates').value.split(',').map(x=>Number(x.trim())).filter(x=>x>=1&&x<=31))].sort((a,b)=>a-b);
-    if(rt==='interval'){recurrence.count=Math.max(1,Number(document.querySelector('#qeIntervalCount').value)||1);recurrence.unit=document.querySelector('#qeIntervalUnit').value;recurrence.anchor='last_completion'}
+    if(rt==='interval'){recurrence.count=Math.max(1,Number(document.querySelector('#qeIntervalCount').value)||1);recurrence.unit=document.querySelector('#qeIntervalUnit').value;recurrence.anchor='last_completion';if(r.anchor==='schedule'&&r.start_date&&recurrence.count===Number(r.count)&&recurrence.unit===r.unit){recurrence.anchor='schedule';recurrence.start_date=r.start_date}}
     if(rt==='frequency'){recurrence.target=Math.max(1,Number(document.querySelector('#qeFreqTarget').value)||1);recurrence.period=document.querySelector('#qeFreqPeriod').value}
     if(rt==='seasonal')recurrence.month=Math.max(1,Math.min(12,Number(document.querySelector('#qeSeasonMonth').value)||10));
     const ownerType=document.querySelector('#qeOwner').value,assigneeKey=document.querySelector('#qeAssignee').value||null,member=assigneeKey?memberByKey(assigneeKey):null,hidden=document.querySelector('#qeHidden').checked;
