@@ -1,0 +1,617 @@
+{
+  "schema_version": 1,
+  "status": "draft_not_active",
+  "home_region": "37211",
+  "ordinary_drive_limit_minutes": 40,
+  "notes": [
+    "Source transcription, not a claim that businesses are currently open.",
+    "Verify identity, current location, hours, cost, access and driving time before activation.",
+    "Price symbols are user notes, not verified current prices.",
+    "Previously visited flags do not create game completions, award rewards, or reveal fog.",
+    "Multi-location businesses need a specific branch before a map pin is assigned.",
+    "Nightlife challenges must not require alcohol consumption.",
+    "Keep expensive or ticketed outings opt-in; do not roll them into a free or low-budget outing."
+  ],
+  "destinations": [
+    {
+      "name": "Barcelona Wine Bar",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Noko",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$$$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Two Ten Jack",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Sinatra",
+      "categories": [
+        "food",
+        "nightlife"
+      ],
+      "user_price_note": "$$$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Xiao Bao",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "S.S. Gai",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Redheaded Stranger",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Grillshack",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$",
+      "previously_visited": true,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Pelican & Pig",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Dumpling House",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Hopsmith Nashville",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "The Local",
+      "categories": [
+        "food",
+        "nightlife"
+      ],
+      "user_price_note": "$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Sambuca",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "St. Vito Focacceria",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Naan Burger",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Bag Lady Fries",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "M.L.Rose Beer & Burgers",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Mangia",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Skull’s Rainbow Room",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$$$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "The Optimist",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Germantown Pub",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Velvet Taco",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Hunters Station",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Fatbelly Pretzel",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Nomzilla",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Café Intermezzo",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Once Upon a Time in France",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "E3 Chophouse",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$$$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Red Pony",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$$$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Culaccino",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Geist",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Carne Mare",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": null,
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "House of Cards",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": "$$$",
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "The Horn",
+      "categories": [
+        "food"
+      ],
+      "user_price_note": null,
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Urban Cowboy",
+      "categories": [
+        "nightlife"
+      ],
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Le Loup",
+      "categories": [
+        "nightlife"
+      ],
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "The Patterson House",
+      "categories": [
+        "nightlife"
+      ],
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Café Roze",
+      "categories": [
+        "nightlife"
+      ],
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Hidden Bar at Noelle",
+      "categories": [
+        "nightlife"
+      ],
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "The Fox",
+      "categories": [
+        "nightlife"
+      ],
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Four Walls",
+      "categories": [
+        "nightlife"
+      ],
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "The Standard",
+      "categories": [
+        "nightlife"
+      ],
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Tiger Bar",
+      "categories": [
+        "nightlife"
+      ],
+      "previously_visited": false,
+      "status": "needs_verification",
+      "source": "user_screenshots_2026-10-17"
+    },
+    {
+      "name": "Rudy’s Jazz Room",
+      "categories": [
+        "music"
+      ],
+      "status": "needs_verification",
+      "previously_visited": false
+    },
+    {
+      "name": "Tennessee Performing Arts Center (TPAC)",
+      "categories": [
+        "performance"
+      ],
+      "status": "needs_verification",
+      "previously_visited": false
+    }
+  ],
+  "destination_notes": [
+    {
+      "name": "Café Roze",
+      "user_note": "Monday jazz nights",
+      "verification_needed": "Confirm current event schedule."
+    },
+    {
+      "name": "Le Loup",
+      "user_note": "Above The Optimist"
+    },
+    {
+      "name": "Geist",
+      "user_note": "In an old blacksmith shop"
+    },
+    {
+      "name": "The Optimist",
+      "user_note": "Oysters"
+    },
+    {
+      "name": "Sinatra",
+      "verification_needed": "Resolve exact venue identity."
+    },
+    {
+      "name": "The Standard",
+      "verification_needed": "Resolve exact venue and visitor access."
+    },
+    {
+      "name": "Grillshack",
+      "verification_needed": "Resolve intended branch; user marked visited."
+    },
+    {
+      "name": "M.L.Rose Beer & Burgers",
+      "verification_needed": "Resolve intended branch."
+    },
+    {
+      "name": "Velvet Taco",
+      "verification_needed": "Resolve intended branch."
+    },
+    {
+      "name": "Red Pony",
+      "verification_needed": "Check route from home region before ordinary-roll eligibility."
+    },
+    {
+      "name": "Culaccino",
+      "verification_needed": "Check route from home region before ordinary-roll eligibility."
+    }
+  ],
+  "bonus_challenges": [
+    {
+      "key": "rock-paper-scissors-menu",
+      "title": "Rock-paper-scissors dinner",
+      "objective": "Play to choose who picks the appetizer, main course, and dessert; each course is optional within your chosen budget.",
+      "tags": [
+        "food"
+      ],
+      "cost": "chosen_budget"
+    },
+    {
+      "key": "favorite-things-shop",
+      "title": "Favorite-things shopping challenge",
+      "objective": "Within a shared budget, choose the other person’s favorite drink, favorite snack, something needed, and something to do together.",
+      "tags": [
+        "shopping"
+      ],
+      "cost": "chosen_budget"
+    },
+    {
+      "key": "alphabet-adventure",
+      "title": "Alphabet adventure",
+      "objective": "Choose a local stop or activity beginning with the next letter of the alphabet.",
+      "tags": [
+        "flexible"
+      ],
+      "cost": "free_or_paid"
+    },
+    {
+      "key": "go-dancing",
+      "title": "Go dancing",
+      "objective": "Find a suitable local dance venue or public dance event.",
+      "tags": [
+        "nightlife",
+        "event"
+      ],
+      "cost": "verify",
+      "requires": "Compatible venue and event schedule"
+    },
+    {
+      "key": "bingo-outing",
+      "title": "Bingo outing",
+      "objective": "Attend a local bingo event.",
+      "tags": [
+        "event"
+      ],
+      "cost": "verify",
+      "requires": "Confirmed venue and event schedule"
+    },
+    {
+      "key": "adventure-book-outing",
+      "title": "Adventure-book outing",
+      "objective": "Choose an outdoor or local outing challenge from your adventure book.",
+      "tags": [
+        "flexible"
+      ],
+      "cost": "verify",
+      "requires": "User-provided challenge details; do not invent book content"
+    }
+  ],
+  "outside_ordinary_map": [
+    {
+      "group": "Athens-area list",
+      "items": [
+        "Lash Seafood",
+        "Dub’s",
+        "Salty Cod",
+        "Stem and Stein",
+        "306",
+        "Black Bear Brewing",
+        "High Plane Coffee/general store",
+        "Southern Table",
+        "Ro’s",
+        "Italian on the square",
+        "Piper and Leaf"
+      ],
+      "previously_visited": [
+        "Dub’s",
+        "Salty Cod"
+      ],
+      "status": "held_outside_local_roll",
+      "note": "User section label retained; exact business names and towns not verified."
+    },
+    {
+      "group": "Long-distance trips",
+      "items": [
+        "Lexington",
+        "Clarksville",
+        "Dahlonega (written Dalonega)",
+        "Gatlinburg",
+        "Chattanooga",
+        "Savannah",
+        "Charleston",
+        "Asheville",
+        "Cincinnati",
+        "Louisville",
+        "Saint Charles",
+        "New Orleans",
+        "Beach",
+        "Universal",
+        "New York",
+        "Activate (Pigeon Forge or Birmingham)",
+        "Vineyard in Georgia"
+      ],
+      "status": "held_outside_local_roll"
+    }
+  ],
+  "needs_details_not_pinned": [
+    "Hotel next to Culaccino",
+    "Unspecified remote cabins"
+  ],
+  "excluded_non_exploration": [
+    "At-home activities and unrelated personal tasks"
+  ]
+}
