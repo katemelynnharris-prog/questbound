@@ -2,7 +2,7 @@
   {
     "key": "three-polaroids",
     "title": "Three Polaroids",
-    "objective": "Take three Polaroids: a place, a detail, and a memory together. Take photographs only where permitted.",
+    "objective": "Bring your Polaroid camera and take three permitted photos: a place, a detail, and a memory together. Swap if you do not have the camera or film.",
     "tags": [
       "urban",
       "outdoor"
@@ -201,9 +201,9 @@
   {
     "key": "hammock",
     "title": "Hammock pause",
-    "objective": "Relax in your freestanding hammock at the permitted spot you confirmed for this outing. Do not attach it to park trees. Reroll if permission or a suitable spot is unavailable.",
+    "objective": "Bring your tree-hung hammocks and relax together where the land manager permits it. Use suitable healthy trees and tree-friendly straps; check the posted rules and actual trees. Swap if the spot is unsuitable.",
     "tags": [
-      "picnic"
+      "hammock_permitted"
     ],
     "equipment": [
       "hammock"
@@ -220,6 +220,17 @@
     ],
     "equipment": [],
     "requires_purchase": false,
+    "active": true
+  },
+  {
+    "key": "ten-dollars",
+    "title": "The $10 mini-adventure",
+    "objective": "Find something fun to do for $10 total or less, including tax and tips. Stop before the cap; spending less is welcome.",
+    "tags": [
+      "budget10"
+    ],
+    "equipment": [],
+    "requires_purchase": true,
     "active": true
   }
 ]

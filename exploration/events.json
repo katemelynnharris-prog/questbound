@@ -1,0 +1,100 @@
+[
+  {
+    "key": "event-e60e86e7593faee3",
+    "event_key": "event-e60e86e7593faee3",
+    "name": "Southern Festival of Books",
+    "event_starts_at": "2026-10-17T14:00:00Z",
+    "event_ends_at": "2026-10-18T22:00:00Z",
+    "source_url": "https://www.humanitiestennessee.org/event/38th-annual-southern-festival-of-books/",
+    "area": "Bicentennial Mall · Germantown",
+    "lat": 36.172,
+    "lng": -86.787,
+    "address": "Bicentennial Capitol Mall State Park, Nashville, TN",
+    "event_category": "books",
+    "requires_purchase": false,
+    "cost_label": "Free admission",
+    "tags": [
+      "event",
+      "culture",
+      "budget10",
+      "budget30"
+    ],
+    "note": "Free admission. Saturday 9–6; Sunday 10–5. Sessions span Bicentennial Mall, the State Museum, and Library & Archives. Food and books cost extra.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area",
+    "curated": true
+  },
+  {
+    "key": "event-d5e15492f992a0c3",
+    "event_key": "event-d5e15492f992a0c3",
+    "name": "Music in the Café: Nikki Barber",
+    "event_starts_at": "2026-10-29T23:00:00Z",
+    "event_ends_at": "2026-10-30T00:30:00Z",
+    "source_url": "https://fristartmuseum.org/event/music-in-the-cafe-nikki-barber/",
+    "area": "Downtown · Frist",
+    "lat": 36.158,
+    "lng": -86.783,
+    "address": "919 Broadway, Nashville, TN",
+    "event_category": "music",
+    "requires_purchase": false,
+    "cost_label": "Free admission",
+    "tags": [
+      "event",
+      "indoor",
+      "budget10",
+      "budget30"
+    ],
+    "note": "Free café performance, 6–7:30 p.m. Soulful rock/solo music. Food, drinks, and gallery admission are separate; purchases are optional.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area",
+    "curated": true
+  },
+  {
+    "key": "event-edff1aa140d8da95",
+    "event_key": "event-edff1aa140d8da95",
+    "name": "Frist Architecture Tour",
+    "event_starts_at": "2026-10-17T20:30:00Z",
+    "event_ends_at": "2026-10-17T21:30:00Z",
+    "source_url": "https://fristartmuseum.org/event/architecture-tour-141/",
+    "area": "Downtown · Frist",
+    "lat": 36.158,
+    "lng": -86.783,
+    "address": "919 Broadway, Nashville, TN",
+    "event_category": "culture",
+    "requires_purchase": false,
+    "cost_label": "Free admission",
+    "tags": [
+      "event",
+      "culture",
+      "budget10",
+      "budget30"
+    ],
+    "note": "Free tour, 3:30–4:30 p.m.; meet in the Grand Lobby. No reservation needed. Gallery admission is separate.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area",
+    "curated": true
+  },
+  {
+    "key": "event-acd0c77d12829381",
+    "event_key": "event-acd0c77d12829381",
+    "name": "Belcourt: Under the Silver Lake · Staff Pick",
+    "event_starts_at": "2026-11-04T02:00:00Z",
+    "event_ends_at": "2026-11-04T04:30:00Z",
+    "source_url": "https://www.belcourt.org/films/under-the-silver-lake/",
+    "area": "Hillsboro Village",
+    "lat": 36.138,
+    "lng": -86.805,
+    "address": "2102 Belcourt Avenue, Nashville, TN",
+    "event_category": "movies",
+    "requires_purchase": true,
+    "cost_label": "Tickets required · check current price",
+    "tags": [
+      "event",
+      "indoor"
+    ],
+    "note": "Tuesday November 3, 8 p.m., with a Staff Pick introduction. Rated R; check synopsis and ticket availability. Film runtime 139 minutes; the listed end includes a short introduction allowance.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area",
+    "curated": true
+  }
+]
