@@ -1,0 +1,4 @@
+#app #screen .guild-banner .qb-guild-emblem-row{display:flex;align-items:center;flex-wrap:wrap;gap:1rem}
+#app #screen .guild-banner h1.qb-guild-emblem-title{flex:1 1 480px;min-width:0;max-width:820px;margin:.4rem 0 .8rem!important;line-height:0!important}
+#app #screen .guild-banner .qb-guild-emblem-image{display:block;width:min(760px,100%);max-width:100%;height:auto;max-height:230px;object-fit:contain;object-position:left center;filter:drop-shadow(0 4px 12px #0005)}
+@media(max-width:760px){#app #screen .guild-banner h1.qb-guild-emblem-title{flex-basis:100%;margin:.4rem 0 .5rem!important}#app #screen .guild-banner .qb-guild-emblem-image{width:100%;max-height:150px}#app #screen .guild-banner .qb-guild-emblem-row{gap:.5rem}}
