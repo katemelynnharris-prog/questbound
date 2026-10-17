@@ -56,7 +56,7 @@ function qbMountLocalMap(dests,runs,home,activeKey){
  if(!window.L){container.innerHTML='<p class="qb-local-map-fallback">The map tiles could not load. You can still draw and complete expeditions, use Directions, or refresh to retry.</p>';return}
  const L=window.L,visited=new Set(runs.filter(r=>r.visited_at).map(r=>r.destination_key));
  const map=L.map(container,{scrollWheelZoom:false,minZoom:10,maxZoom:17,maxBounds:[[35.8,-87.2],[36.5,-86.3]],maxBoundsViscosity:.8});qbLocalLeaflet=map;
- map.setView(qbLocalView?.center||[36.13,-86.76],qbLocalView?.zoom||11);
+ map.setView(qbLocalView?.center||[home.lat,home.lng],qbLocalView?.zoom||11);
  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors',maxZoom:19,updateWhenIdle:true,keepBuffer:1}).addTo(map);
  const clearings=[{lat:home.lat,lng:home.lng,radius:900}];
  for(const key of new Set([...visited,...runs.map(r=>r.scouted_destination_key).filter(Boolean)])){const d=dests.find(x=>x.key===key);if(d)clearings.push({...d,radius:650})}
