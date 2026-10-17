@@ -52,6 +52,36 @@ begin
   'home',jsonb_build_object('lat',36.0687,'lng',-86.7241,'label','Home region · 37211'));
 end $$;
 
+-- Called only by the authenticated expedition action after its locked completion.
+-- The existing expedition API rewards its caller; this awards the other guild member(s).
+create function game_private.local_map_coop_xp(p_expedition public.expeditions,p_already_rewarded uuid,p_bonus boolean)
+returns jsonb language plpgsql set search_path='' as $$
+declare m record;amount int;pct numeric;lvl int;ar int;total int;awards jsonb:='[]';
+begin
+ for m in select gm.user_id from public.guild_members gm where gm.guild_id=p_expedition.guild_id and gm.user_id is distinct from p_already_rewarded order by gm.user_id loop
+  select level into lvl from public.player_progress_public where guild_id=p_expedition.guild_id and user_id=m.user_id for update;
+  if not found then raise exception 'Co-op player progress unavailable';end if;
+  if p_bonus then amount:=50;
+  else
+   select coalesce(sum(coalesce((d.mechanics->>'exploration_xp_pct')::numeric,0)),0) into pct
+   from public.player_items pi join public.item_definitions d on d.key=pi.item_key
+   where pi.guild_id=p_expedition.guild_id and pi.owner_user_id=m.user_id and pi.state='equipped';
+   amount:=round(p_expedition.xp_personal*(1+pct/100.0))::int;
+   if lvl>=15 then
+    select coalesce(max(rank),0) into ar from public.player_specializations where guild_id=p_expedition.guild_id and user_id=m.user_id and specialization_key='Archivist';
+    if ar>=2 then amount:=amount+round(p_expedition.xp_personal*.25)::int;end if;
+   end if;
+  end if;
+  update public.player_progress_public set personal_xp=personal_xp+amount,updated_at=now() where guild_id=p_expedition.guild_id and user_id=m.user_id returning personal_xp into total;
+  update public.player_progress_public set level=public.qb_level_for_xp(total),rank_key=public.qb_rank_for_level(public.qb_level_for_xp(total)) where guild_id=p_expedition.guild_id and user_id=m.user_id;
+  insert into public.activity_events(guild_id,actor_user_id,target_user_id,event_type,message,visibility,personal_xp,campaign_xp,metadata)
+  values(p_expedition.guild_id,p_already_rewarded,m.user_id,'expedition_coop_reward',case when p_bonus then 'Co-op adventure bonus' else 'Co-op expedition: '||p_expedition.title end,'guild',amount,0,jsonb_build_object('expedition_id',p_expedition.id,'bonus',p_bonus,'co_op',true));
+  awards:=awards||jsonb_build_array(jsonb_build_object('user_id',m.user_id,'personal_xp',amount));
+ end loop;
+ return awards;
+end $$;
+revoke all on function game_private.local_map_coop_xp(public.expeditions,uuid,boolean) from public,anon,authenticated;
+
 create function public.local_expedition_action(p_action text,p_expedition_id uuid default null,p_free boolean default false,p_setting text default 'any',p_equipment text[] default '{}')
 returns jsonb language plpgsql security definer set search_path='' as $$
 declare uid uuid:=auth.uid();gid uuid;e public.expeditions;r public.local_map_runs;d public.local_map_destinations;b text;result jsonb;xp int;cid uuid;total_renown int;
@@ -71,11 +101,13 @@ begin
   if p_action='complete' then
    if r.visited_at is not null then return jsonb_build_object('already_complete',true);end if;
    if e.status='complete' and e.completed_at is not null then
+    perform game_private.local_map_coop_xp(e,coalesce((e.metadata->>'completed_by')::uuid,e.drawn_by,uid),false);
     update public.local_map_runs set visited_at=e.completed_at,visited_by=e.drawn_by where expedition_id=e.id;
     return jsonb_build_object('already_complete',true,'visited',true);
    end if;
    if e.status<>'active' then raise exception 'Expedition unavailable';end if;
    result:=public.complete_expedition_abilities(e.id);
+   result:=result||jsonb_build_object('co_op',true,'partner_rewards',game_private.local_map_coop_xp(e,uid,false));
    update public.local_map_runs set visited_at=now(),visited_by=uid where expedition_id=e.id;
    if result->>'extra_revealed_cell' is not null then
     select x.* into d from public.local_map_destinations x
@@ -89,9 +121,13 @@ begin
    if coalesce(r.visited_at,e.completed_at) is null or e.status<>'complete' then raise exception 'Complete the visit before claiming its bonus';end if;
    if r.bonus_key is null then raise exception 'No bonus assigned';end if;
    if r.bonus_completed_at is not null then return jsonb_build_object('already_complete',true);end if;
+   if r.visited_at is null then
+    perform game_private.local_map_coop_xp(e,coalesce((e.metadata->>'completed_by')::uuid,e.drawn_by,uid),false);
+   end if;
    update public.local_map_runs set bonus_completed_at=now(),bonus_completed_by=uid,visited_at=coalesce(visited_at,e.completed_at),visited_by=coalesce(visited_by,e.drawn_by) where expedition_id=e.id;
    update public.player_progress_public set personal_xp=personal_xp+50,updated_at=now() where guild_id=gid and user_id=uid returning personal_xp into xp;
    update public.player_progress_public set level=public.qb_level_for_xp(xp),rank_key=public.qb_rank_for_level(public.qb_level_for_xp(xp)) where guild_id=gid and user_id=uid;
+   perform game_private.local_map_coop_xp(e,uid,true);
    select id into cid from public.campaigns where guild_id=gid and status='active' order by started_at desc limit 1 for update;
    if cid is not null then
     update public.campaigns set campaign_xp=least(goal_xp,campaign_xp+10),status=case when campaign_xp+10>=goal_xp then 'victory' else status end,completed_at=case when campaign_xp+10>=goal_xp then coalesce(completed_at,now()) else completed_at end where id=cid;
@@ -101,7 +137,7 @@ begin
    update public.exploration_state set exploration_rank=case when total_renown<5 then 'Home Territory' when total_renown<12 then 'Beyond the Keep' when total_renown<25 then 'Greater Wilds' else 'Open Road' end where guild_id=gid;
    insert into public.activity_events(guild_id,actor_user_id,target_user_id,event_type,message,visibility,personal_xp,campaign_xp,metadata)
    values(gid,uid,uid,'expedition_bonus','Adventure bonus: '||(select data->>'title' from public.local_map_bonuses where key=r.bonus_key),'guild',50,case when cid is null then 0 else 10 end,jsonb_build_object('expedition_id',e.id,'destination_key',r.destination_key,'renown',1));
-   return jsonb_build_object('personal_xp',50,'campaign_xp',case when cid is null then 0 else 10 end,'renown',1);
+   return jsonb_build_object('personal_xp',50,'campaign_xp',case when cid is null then 0 else 10 end,'renown',1,'co_op',true);
   elsif p_action='reroll_bonus' then
    if e.status<>'active' or r.bonus_rerolled then raise exception 'Bonus reroll unavailable';end if;
    b:=game_private.local_map_pick_bonus(gid,r.destination_key,r.free_only,r.equipment,r.bonus_key);
