@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "draft_not_active",
+  "status": "reviewed_local_destinations_activated",
   "home_region": "37211",
   "ordinary_drive_limit_minutes": 40,
   "notes": [
@@ -20,8 +20,10 @@
       ],
       "user_price_note": "$$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "barcelona"
     },
     {
       "name": "Noko",
@@ -30,8 +32,10 @@
       ],
       "user_price_note": "$$$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "noko"
     },
     {
       "name": "Two Ten Jack",
@@ -40,8 +44,10 @@
       ],
       "user_price_note": "$$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "two-ten-jack"
     },
     {
       "name": "Sinatra",
@@ -51,8 +57,10 @@
       ],
       "user_price_note": "$$$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "sinatra"
     },
     {
       "name": "Xiao Bao",
@@ -61,8 +69,10 @@
       ],
       "user_price_note": "$$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "xiao-bao"
     },
     {
       "name": "S.S. Gai",
@@ -71,8 +81,10 @@
       ],
       "user_price_note": "$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "ss-gai"
     },
     {
       "name": "Redheaded Stranger",
@@ -81,8 +93,10 @@
       ],
       "user_price_note": "$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "redheaded"
     },
     {
       "name": "Grillshack",
@@ -91,8 +105,10 @@
       ],
       "user_price_note": "$",
       "previously_visited": true,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "grillshack-east"
     },
     {
       "name": "Pelican & Pig",
@@ -101,8 +117,10 @@
       ],
       "user_price_note": "$$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "closed",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "verification_url": "https://www.wsmv.com/2026/03/11/incredibly-expensive-operate-this-city-nashville-restaurant-announces-permanent-closure/"
     },
     {
       "name": "Dumpling House",
@@ -111,8 +129,10 @@
       ],
       "user_price_note": "$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "dumpling-house"
     },
     {
       "name": "Hopsmith Nashville",
@@ -121,8 +141,10 @@
       ],
       "user_price_note": "$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "closed",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "verification_url": "https://nashvilleguru.com/businesses/hopsmith-tavern"
     },
     {
       "name": "The Local",
@@ -132,8 +154,10 @@
       ],
       "user_price_note": "$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "the-local"
     },
     {
       "name": "Sambuca",
@@ -142,8 +166,10 @@
       ],
       "user_price_note": "$$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "closed",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "verification_url": "https://www.wsmv.com/2025/03/25/nashville-restaurant-closes-after-20-years-business/"
     },
     {
       "name": "St. Vito Focacceria",
@@ -152,8 +178,10 @@
       ],
       "user_price_note": "$$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "st-vito"
     },
     {
       "name": "Naan Burger",
@@ -162,8 +190,10 @@
       ],
       "user_price_note": "$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "ambiguous_name",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "verification_url": ""
     },
     {
       "name": "Bag Lady Fries",
@@ -172,8 +202,10 @@
       ],
       "user_price_note": "$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "bag-ladys"
     },
     {
       "name": "M.L.Rose Beer & Burgers",
@@ -182,8 +214,10 @@
       ],
       "user_price_note": "$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "mlrose-melrose"
     },
     {
       "name": "Mangia",
@@ -192,8 +226,10 @@
       ],
       "user_price_note": "$$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "mangia"
     },
     {
       "name": "Skull’s Rainbow Room",
@@ -202,8 +238,10 @@
       ],
       "user_price_note": "$$$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "skulls"
     },
     {
       "name": "The Optimist",
@@ -212,8 +250,10 @@
       ],
       "user_price_note": "$$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "optimist"
     },
     {
       "name": "Germantown Pub",
@@ -222,8 +262,10 @@
       ],
       "user_price_note": "$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "germantown-pub"
     },
     {
       "name": "Velvet Taco",
@@ -232,8 +274,10 @@
       ],
       "user_price_note": "$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "velvet-taco"
     },
     {
       "name": "Hunters Station",
@@ -242,8 +286,10 @@
       ],
       "user_price_note": "$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "hunters-station"
     },
     {
       "name": "Fatbelly Pretzel",
@@ -252,8 +298,10 @@
       ],
       "user_price_note": "$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "fatbelly"
     },
     {
       "name": "Nomzilla",
@@ -262,8 +310,10 @@
       ],
       "user_price_note": "$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "nomzilla"
     },
     {
       "name": "Café Intermezzo",
@@ -272,8 +322,10 @@
       ],
       "user_price_note": "$$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "cafe-intermezzo"
     },
     {
       "name": "Once Upon a Time in France",
@@ -282,8 +334,10 @@
       ],
       "user_price_note": "$$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "once-upon-france"
     },
     {
       "name": "E3 Chophouse",
@@ -292,8 +346,10 @@
       ],
       "user_price_note": "$$$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "unavailable",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "verification_url": "https://people.com/luke-bryan-jason-aldean-reportedly-sued-for-unpaid-rent-of-nashville-restaurant-12004823"
     },
     {
       "name": "Red Pony",
@@ -302,8 +358,10 @@
       ],
       "user_price_note": "$$$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "red-pony"
     },
     {
       "name": "Culaccino",
@@ -312,8 +370,10 @@
       ],
       "user_price_note": "$$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "culaccino-franklin"
     },
     {
       "name": "Geist",
@@ -322,8 +382,10 @@
       ],
       "user_price_note": "$$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "geist"
     },
     {
       "name": "Carne Mare",
@@ -332,8 +394,10 @@
       ],
       "user_price_note": null,
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "needs_current_operation_verification",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "verification_url": "https://nashvilleguru.com/businesses/carne-mare"
     },
     {
       "name": "House of Cards",
@@ -342,8 +406,10 @@
       ],
       "user_price_note": "$$$",
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "house-of-cards"
     },
     {
       "name": "The Horn",
@@ -352,8 +418,10 @@
       ],
       "user_price_note": null,
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "horn"
     },
     {
       "name": "Urban Cowboy",
@@ -361,8 +429,10 @@
         "nightlife"
       ],
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "urban-cowboy"
     },
     {
       "name": "Le Loup",
@@ -370,8 +440,10 @@
         "nightlife"
       ],
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "le-loup"
     },
     {
       "name": "The Patterson House",
@@ -379,8 +451,10 @@
         "nightlife"
       ],
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "patterson-house"
     },
     {
       "name": "Café Roze",
@@ -388,8 +462,10 @@
         "nightlife"
       ],
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "cafe-roze"
     },
     {
       "name": "Hidden Bar at Noelle",
@@ -397,8 +473,10 @@
         "nightlife"
       ],
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "hidden-bar"
     },
     {
       "name": "The Fox",
@@ -406,8 +484,10 @@
         "nightlife"
       ],
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "the-fox"
     },
     {
       "name": "Four Walls",
@@ -415,8 +495,10 @@
         "nightlife"
       ],
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "four-walls"
     },
     {
       "name": "The Standard",
@@ -424,8 +506,10 @@
         "nightlife"
       ],
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "the-standard"
     },
     {
       "name": "Tiger Bar",
@@ -433,24 +517,30 @@
         "nightlife"
       ],
       "previously_visited": false,
-      "status": "needs_verification",
-      "source": "user_screenshots_2026-10-17"
+      "status": "active",
+      "source": "user_screenshots_2026-10-17",
+      "reviewed_on": "2026-10-17",
+      "destination_key": "tiger-bar"
     },
     {
       "name": "Rudy’s Jazz Room",
       "categories": [
         "music"
       ],
-      "status": "needs_verification",
-      "previously_visited": false
+      "status": "active",
+      "previously_visited": false,
+      "reviewed_on": "2026-10-17",
+      "destination_key": "rudys"
     },
     {
       "name": "Tennessee Performing Arts Center (TPAC)",
       "categories": [
         "performance"
       ],
-      "status": "needs_verification",
-      "previously_visited": false
+      "status": "active",
+      "previously_visited": false,
+      "reviewed_on": "2026-10-17",
+      "destination_key": "tpac"
     }
   ],
   "destination_notes": [
@@ -613,5 +703,9 @@
   ],
   "excluded_non_exploration": [
     "At-home activities and unrelated personal tasks"
-  ]
+  ],
+  "future_map_plan": {
+    "north_alabama": "Separate future bonus map; not activated in the local pool.",
+    "longer_adventures": "Separate future destination and fog pool; not activated in the local pool."
+  }
 }

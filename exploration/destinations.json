@@ -7,7 +7,8 @@
     "lng": -86.79,
     "tags": [
       "urban",
-      "shopping"
+      "shopping",
+      "budget30"
     ],
     "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/12south",
     "address": "12th Avenue South and Paris Avenue, Nashville, TN",
@@ -25,7 +26,8 @@
     "tags": [
       "outdoor",
       "nature",
-      "picnic"
+      "picnic",
+      "budget30"
     ],
     "source_url": "https://www.nashville.gov/departments/parks/permits-rentals-and-reservations/picnic-shelters/sevier",
     "address": "3021 Lealand Lane, Nashville, TN",
@@ -42,7 +44,8 @@
     "lng": -86.795,
     "tags": [
       "urban",
-      "shopping"
+      "shopping",
+      "budget30"
     ],
     "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/belmont-hillsboro",
     "address": "Belmont Boulevard and Portland Avenue, Nashville, TN",
@@ -59,7 +62,8 @@
     "lng": -86.801,
     "tags": [
       "urban",
-      "shopping"
+      "shopping",
+      "budget30"
     ],
     "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/belmont-hillsboro",
     "address": "21st Avenue South and Belcourt Avenue, Nashville, TN",
@@ -76,7 +80,8 @@
     "lng": -86.749,
     "tags": [
       "urban",
-      "shopping"
+      "shopping",
+      "budget30"
     ],
     "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/east-nashville",
     "address": "Five Points, Nashville, TN",
@@ -93,7 +98,8 @@
     "lng": -86.75,
     "tags": [
       "urban",
-      "shopping"
+      "shopping",
+      "budget30"
     ],
     "source_url": "https://musiccityadventureco.squarespace.com/east-side-guide",
     "address": "1006 Fatherland Street, Nashville, TN",
@@ -110,7 +116,8 @@
     "lng": -86.735,
     "tags": [
       "urban",
-      "shopping"
+      "shopping",
+      "budget30"
     ],
     "source_url": "https://musiccityadventureco.squarespace.com/east-side-guide",
     "address": "Shops at Porter East, Nashville, TN",
@@ -128,7 +135,8 @@
     "tags": [
       "outdoor",
       "nature",
-      "picnic"
+      "picnic",
+      "budget30"
     ],
     "source_url": "https://www.nashville.gov/departments/parks/parks/shelby-park",
     "address": "Shelby Park, Nashville, TN",
@@ -145,7 +153,8 @@
     "lng": -86.787,
     "tags": [
       "urban",
-      "shopping"
+      "shopping",
+      "budget30"
     ],
     "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/germantown",
     "address": "5th Avenue North and Monroe Street, Nashville, TN",
@@ -156,13 +165,14 @@
   },
   {
     "key": "farmers-market",
-    "name": "Nashville Farmers\u2019 Market",
+    "name": "Nashville Farmers’ Market",
     "area": "Germantown area",
     "lat": 36.173,
     "lng": -86.789,
     "tags": [
       "shopping",
-      "food"
+      "food",
+      "budget30"
     ],
     "source_url": "https://www.nashvillefarmersmarket.org/hours-and-directions",
     "address": "900 Rosa L Parks Boulevard, Nashville, TN",
@@ -179,7 +189,8 @@
     "lng": -86.787,
     "tags": [
       "outdoor",
-      "culture"
+      "culture",
+      "budget30"
     ],
     "source_url": "https://tnstateparks.com/parks/bicentennial-mall",
     "address": "Bicentennial Capitol Mall State Park, Nashville, TN",
@@ -196,7 +207,8 @@
     "lng": -86.791,
     "tags": [
       "indoor",
-      "culture"
+      "culture",
+      "budget30"
     ],
     "source_url": "https://tnmuseum.org/plan-your-visit",
     "address": "1000 Rosa L Parks Boulevard, Nashville, TN",
@@ -213,7 +225,8 @@
     "lng": -86.765,
     "tags": [
       "urban",
-      "culture"
+      "culture",
+      "budget30"
     ],
     "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/wedgewood-houston",
     "address": "Houston Street and Hagan Street, Nashville, TN",
@@ -230,7 +243,8 @@
     "lng": -86.776,
     "tags": [
       "outdoor",
-      "culture"
+      "culture",
+      "budget30"
     ],
     "source_url": "https://www.nashville.gov/departments/parks/historic-sites/fort-negley/about-your-visit",
     "address": "1100 Fort Negley Boulevard, Nashville, TN",
@@ -247,7 +261,8 @@
     "lng": -86.784,
     "tags": [
       "urban",
-      "shopping"
+      "shopping",
+      "budget30"
     ],
     "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/the-gulch",
     "address": "11th Avenue South and Pine Street, Nashville, TN",
@@ -266,7 +281,8 @@
       "outdoor",
       "nature",
       "picnic",
-      "culture"
+      "culture",
+      "budget30"
     ],
     "source_url": "https://www.nashville.gov/departments/parks/parks/centennial-park",
     "address": "2500 West End Avenue, Nashville, TN",
@@ -282,7 +298,8 @@
     "lat": 36.151,
     "lng": -86.8,
     "tags": [
-      "urban"
+      "urban",
+      "budget30"
     ],
     "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/midtown",
     "address": "Broadway and 20th Avenue South, Nashville, TN",
@@ -299,7 +316,8 @@
     "lng": -86.792,
     "tags": [
       "urban",
-      "culture"
+      "culture",
+      "budget30"
     ],
     "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/music-row-demonbreun",
     "address": "Music Square East and Division Street, Nashville, TN",
@@ -316,7 +334,8 @@
     "lng": -86.853,
     "tags": [
       "urban",
-      "shopping"
+      "shopping",
+      "budget30"
     ],
     "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/the-nations",
     "address": "51st Avenue North and Indiana Avenue, Nashville, TN",
@@ -332,7 +351,8 @@
     "lat": 36.138,
     "lng": -86.845,
     "tags": [
-      "urban"
+      "urban",
+      "budget30"
     ],
     "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/sylvan-park",
     "address": "46th Avenue North and Murphy Road, Nashville, TN",
@@ -350,7 +370,8 @@
     "tags": [
       "indoor",
       "shopping",
-      "food"
+      "food",
+      "budget30"
     ],
     "source_url": "https://www.landlmarket.com/",
     "address": "3820 Charlotte Avenue, Nashville, TN",
@@ -367,7 +388,8 @@
     "lng": -86.848,
     "tags": [
       "outdoor",
-      "nature"
+      "nature",
+      "budget30"
     ],
     "source_url": "https://www.nashville.gov/departments/parks/greenways-and-open-space",
     "address": "McCabe Park Community Center, Nashville, TN",
@@ -385,7 +407,8 @@
     "tags": [
       "outdoor",
       "nature",
-      "picnic"
+      "picnic",
+      "budget30"
     ],
     "source_url": "https://www.nashville.gov/departments/parks/parks/warner-parks",
     "address": "Percy Warner Park, Nashville, TN",
@@ -403,7 +426,8 @@
     "tags": [
       "outdoor",
       "nature",
-      "picnic"
+      "picnic",
+      "budget30"
     ],
     "source_url": "https://www.nashville.gov/departments/parks/nature-centers-and-natural-areas/warner-park-nature-center",
     "address": "7311 Highway 100, Nashville, TN",
@@ -421,7 +445,8 @@
     "tags": [
       "indoor",
       "shopping",
-      "culture"
+      "culture",
+      "budget30"
     ],
     "source_url": "https://marathonvillage.net/visit",
     "address": "1305 Clinton Street, Nashville, TN",
@@ -439,7 +464,8 @@
     "tags": [
       "indoor",
       "shopping",
-      "culture"
+      "culture",
+      "budget30"
     ],
     "source_url": "https://parnassusbooks.net/location-hours",
     "address": "3900 Hillsboro Pike, Nashville, TN",
@@ -456,7 +482,8 @@
     "lng": -86.765,
     "tags": [
       "urban",
-      "shopping"
+      "shopping",
+      "budget30"
     ],
     "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/berry-hill",
     "address": "Bransford Avenue and East Iris Drive, Nashville, TN",
@@ -473,7 +500,8 @@
     "lng": -86.777,
     "tags": [
       "urban",
-      "shopping"
+      "shopping",
+      "budget30"
     ],
     "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/melrose",
     "address": "8th Avenue South and Bradford Avenue, Nashville, TN",
@@ -490,7 +518,8 @@
     "lng": -86.809,
     "tags": [
       "outdoor",
-      "nature"
+      "nature",
+      "budget30"
     ],
     "source_url": "https://tnstateparks.com/parks/radnor-lake",
     "address": "Radnor Lake Visitor Center, Nashville, TN",
@@ -508,7 +537,8 @@
     "tags": [
       "outdoor",
       "nature",
-      "picnic"
+      "picnic",
+      "budget30"
     ],
     "source_url": "https://tnstateparks.com/parks/long-hunter",
     "address": "2910 Hobson Pike, Hermitage, TN",
@@ -536,7 +566,7 @@
   },
   {
     "key": "two-ten-jack",
-    "name": "Two Ten Jack \u2014 East Nashville",
+    "name": "Two Ten Jack — East Nashville",
     "area": "East Nashville",
     "lat": 36.184,
     "lng": -86.736,
@@ -553,7 +583,7 @@
   },
   {
     "key": "barcelona",
-    "name": "Barcelona Wine Bar \u2014 Edgehill",
+    "name": "Barcelona Wine Bar — Edgehill",
     "area": "Edgehill",
     "lat": 36.145,
     "lng": -86.79,
@@ -570,13 +600,14 @@
   },
   {
     "key": "horn",
-    "name": "The Horn \u2014 HQ",
+    "name": "The Horn — HQ",
     "area": "South Nashville",
     "lat": 36.145,
     "lng": -86.751,
     "tags": [
       "indoor",
-      "food"
+      "food",
+      "budget30"
     ],
     "source_url": "https://the-horn.com/pages/visit-us",
     "address": "619 Murfreesboro Pike, Nashville, TN",
@@ -593,7 +624,8 @@
     "lng": -86.75,
     "tags": [
       "indoor",
-      "food"
+      "food",
+      "budget30"
     ],
     "source_url": "https://fatbellypretzel.com/",
     "address": "921 Gallatin Avenue, Nashville, TN",
@@ -604,7 +636,7 @@
   },
   {
     "key": "cafe-roze",
-    "name": "Caf\u00e9 Roze",
+    "name": "Café Roze",
     "area": "East Nashville",
     "lat": 36.191,
     "lng": -86.727,
@@ -627,7 +659,8 @@
     "lng": -86.766,
     "tags": [
       "indoor",
-      "food"
+      "food",
+      "budget30"
     ],
     "source_url": "https://www.redheadedstrangertacos.com/",
     "address": "305 Arrington Street, Nashville, TN",
@@ -638,7 +671,7 @@
   },
   {
     "key": "rudys",
-    "name": "Rudy\u2019s Jazz Room",
+    "name": "Rudy’s Jazz Room",
     "area": "The Gulch",
     "lat": 36.15,
     "lng": -86.782,
@@ -651,6 +684,760 @@
     "address": "809 Gleaves Street, Nashville, TN",
     "requires_purchase": true,
     "note": "Check showtimes, age rules, ticket availability and total cost before leaving.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "sinatra",
+    "name": "Sinatra Bar & Lounge",
+    "area": "Downtown",
+    "lat": 36.165,
+    "lng": -86.779,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://www.sinatranashville.com/",
+    "address": "222 4th Avenue North",
+    "requires_purchase": true,
+    "note": "Check reservations, dress code, and evening age restrictions.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "xiao-bao",
+    "name": "Xiao Bao",
+    "area": "East Nashville",
+    "lat": 36.187,
+    "lng": -86.769,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://www.xiaobaonashville.com/",
+    "address": "830 Meridian Street",
+    "requires_purchase": true,
+    "note": "Check current opening days.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "ss-gai",
+    "name": "S.S. Gai",
+    "area": "East Nashville",
+    "lat": 36.191,
+    "lng": -86.742,
+    "tags": [
+      "indoor",
+      "food",
+      "budget30"
+    ],
+    "source_url": "https://www.ssgainash.com/",
+    "address": "1101 McKennie Avenue, Bay 3",
+    "requires_purchase": true,
+    "note": "A move has been announced; confirm the current location before leaving.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "grillshack-east",
+    "name": "Grillshack · Riverside",
+    "area": "East Nashville",
+    "lat": 36.187,
+    "lng": -86.724,
+    "tags": [
+      "indoor",
+      "food",
+      "budget30"
+    ],
+    "source_url": "https://grillshack.wixsite.com/grillshack/copy-of-contact-us",
+    "address": "1000 Riverside Drive",
+    "requires_purchase": true,
+    "note": "Riverside branch selected; your earlier visited note is preserved without creating a game completion.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "dumpling-house",
+    "name": "Dumpling House",
+    "area": "Hillsboro Village",
+    "lat": 36.137,
+    "lng": -86.803,
+    "tags": [
+      "indoor",
+      "food",
+      "budget30"
+    ],
+    "source_url": "https://dumplinghousenashville.net/",
+    "address": "2117 Belcourt Avenue",
+    "requires_purchase": true,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "the-local",
+    "name": "The Local",
+    "area": "West End",
+    "lat": 36.148,
+    "lng": -86.813,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://localnash.com/contact/",
+    "address": "110 28th Avenue North",
+    "requires_purchase": true,
+    "note": "Check the live music schedule and any cover.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "st-vito",
+    "name": "St. Vito Focacceria",
+    "area": "The Gulch",
+    "lat": 36.149,
+    "lng": -86.783,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://www.stvitonashville.com/home/",
+    "address": "605 Mansion Street",
+    "requires_purchase": true,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "bag-ladys",
+    "name": "Bag Lady’s Fry Joint",
+    "area": "North Nashville",
+    "lat": 36.186,
+    "lng": -86.807,
+    "tags": [
+      "indoor",
+      "food",
+      "budget30"
+    ],
+    "source_url": "https://www.bagladys.com/visit",
+    "address": "1402 Buchanan Street",
+    "requires_purchase": true,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "mlrose-melrose",
+    "name": "M.L.Rose · Melrose",
+    "area": "Melrose",
+    "lat": 36.123,
+    "lng": -86.777,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://mlrose.com/weekend-brunch/",
+    "address": "2535 8th Avenue South, Suite 107",
+    "requires_purchase": true,
+    "note": "Melrose branch.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "mangia",
+    "name": "Mangia Nashville",
+    "area": "Berry Hill",
+    "lat": 36.115,
+    "lng": -86.777,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://mangianashville.com/locations/",
+    "address": "701 Craighead Street",
+    "requires_purchase": true,
+    "note": "Friday/Saturday feast requires planning and reservations; other days are private events.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "skulls",
+    "name": "Skull’s Rainbow Room",
+    "area": "Downtown",
+    "lat": 36.165,
+    "lng": -86.779,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://www.skullsrainbowroom.com/",
+    "address": "222 Printers Alley",
+    "requires_purchase": true,
+    "note": "Check reservations, entertainment, age restrictions, and cover. Alcohol is optional.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "optimist",
+    "name": "The Optimist",
+    "area": "Germantown",
+    "lat": 36.181,
+    "lng": -86.785,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://www.theoptimistrestaurant.com/nashville",
+    "address": "1400 Adams Street",
+    "requires_purchase": true,
+    "note": "Check reservations and menu prices.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "germantown-pub",
+    "name": "Germantown Pub",
+    "area": "Germantown",
+    "lat": 36.179,
+    "lng": -86.792,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://thegermantownpub.com/",
+    "address": "708 Monroe Street",
+    "requires_purchase": true,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "velvet-taco",
+    "name": "Velvet Taco · Midtown",
+    "area": "Midtown",
+    "lat": 36.151,
+    "lng": -86.797,
+    "tags": [
+      "indoor",
+      "food",
+      "budget30"
+    ],
+    "source_url": "https://www.velvettaco.com/location/nashville-midtown/",
+    "address": "1911 Broadway",
+    "requires_purchase": true,
+    "note": "Midtown branch.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "hunters-station",
+    "name": "Hunters Station",
+    "area": "East Nashville",
+    "lat": 36.176,
+    "lng": -86.751,
+    "tags": [
+      "indoor",
+      "food",
+      "budget30"
+    ],
+    "source_url": "https://www.huntersstation.com/location-1",
+    "address": "975 Main Street",
+    "requires_purchase": true,
+    "note": "Check current vendors and opening hours.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "nomzilla",
+    "name": "Nomzilla",
+    "area": "East Nashville",
+    "lat": 36.186,
+    "lng": -86.748,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://nomzilla.com/about",
+    "address": "1000 Gallatin Avenue, Suite A",
+    "requires_purchase": true,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "cafe-intermezzo",
+    "name": "Café Intermezzo",
+    "area": "SoBro",
+    "lat": 36.159,
+    "lng": -86.774,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://www.cafeintermezzo.com/location-nashville-tn",
+    "address": "205 Demonbreun Street",
+    "requires_purchase": true,
+    "note": "Use the official Café Intermezzo website.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "once-upon-france",
+    "name": "Once Upon a Time in France",
+    "area": "East Nashville",
+    "lat": 36.188,
+    "lng": -86.747,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://www.onceuponatime-infrance.com/",
+    "address": "1102 Gallatin Avenue",
+    "requires_purchase": true,
+    "note": "Check reservations and menu prices.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "red-pony",
+    "name": "Red Pony",
+    "area": "Franklin",
+    "lat": 35.925,
+    "lng": -86.871,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://www.redponyrestaurant.com/visit",
+    "address": "408 Main Street, Franklin, TN",
+    "requires_purchase": true,
+    "note": "Check reservations and menu prices.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "culaccino-franklin",
+    "name": "Culaccino · Franklin",
+    "area": "Franklin",
+    "lat": 35.926,
+    "lng": -86.868,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://www.culaccinotn.com/",
+    "address": "104 East Main Street, Franklin, TN",
+    "requires_purchase": true,
+    "note": "Franklin branch; check reservations and menu prices.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "geist",
+    "name": "Geist",
+    "area": "Germantown",
+    "lat": 36.176,
+    "lng": -86.784,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://www.geistnashville.com/visit-1/",
+    "address": "311 Jefferson Street",
+    "requires_purchase": true,
+    "note": "Check reservations and menu prices.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "house-of-cards",
+    "name": "House of Cards",
+    "area": "SoBro",
+    "lat": 36.161,
+    "lng": -86.775,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://www.hocnashville.com/",
+    "address": "119 3rd Avenue South, lower level",
+    "requires_purchase": true,
+    "note": "No photography. Check dress code, reservations, pricing, and age rules; Sunday family brunch has different age rules.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "urban-cowboy",
+    "name": "Urban Cowboy Public House",
+    "area": "East Nashville",
+    "lat": 36.176,
+    "lng": -86.74,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://www.urbancowboy.com/nashville/public-house/",
+    "address": "103 North 16th Street",
+    "requires_purchase": true,
+    "note": "Public House outing, not access to hotel guest rooms. Alcohol is optional.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "le-loup",
+    "name": "Le Loup",
+    "area": "Germantown",
+    "lat": 36.181,
+    "lng": -86.785,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://www.leloupnashville.com/",
+    "address": "1400 Adams Street, upstairs",
+    "requires_purchase": true,
+    "note": "Check reservations, hours, and pricing. Alcohol is optional.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "patterson-house",
+    "name": "The Patterson House",
+    "area": "The Gulch",
+    "lat": 36.15,
+    "lng": -86.781,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://www.thepattersonnashville.com/",
+    "address": "700 8th Avenue South, fifth floor",
+    "requires_purchase": true,
+    "note": "New Gulch location; do not use the former Division Street address. Alcohol is optional.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "hidden-bar",
+    "name": "Hidden Bar at Noelle",
+    "area": "Downtown",
+    "lat": 36.165,
+    "lng": -86.778,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://www.noelle-nashville.com/dine-drink/hidden-bar/",
+    "address": "200 4th Avenue North",
+    "requires_purchase": true,
+    "note": "Check current access, hours, and age requirements. Alcohol is optional.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "the-fox",
+    "name": "The Fox Bar & Cocktail Club",
+    "area": "Inglewood",
+    "lat": 36.203,
+    "lng": -86.742,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://www.thefoxnashville.com/",
+    "address": "2905 Gallatin Pike, Suite B",
+    "requires_purchase": true,
+    "note": "Check hours and age requirements. Alcohol is optional.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "four-walls",
+    "name": "Four Walls at The Joseph",
+    "area": "SoBro",
+    "lat": 36.156,
+    "lng": -86.775,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://www.fourwallsnashville.com/",
+    "address": "405 4th Avenue South",
+    "requires_purchase": true,
+    "note": "Check reservations, pricing, and age requirements. Alcohol is optional.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "the-standard",
+    "name": "The Standard · public dining",
+    "area": "Downtown",
+    "lat": 36.161,
+    "lng": -86.783,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://smithhousenashville.com/",
+    "address": "167 Rosa L. Parks Boulevard",
+    "requires_purchase": true,
+    "note": "Public restaurant only; upstairs private club membership is not included. Check reservations and pricing.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "tiger-bar",
+    "name": "Tiger Bar",
+    "area": "Inglewood",
+    "lat": 36.203,
+    "lng": -86.742,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://tigerbarnashville.com/",
+    "address": "2909 Gallatin Pike, Suite B",
+    "requires_purchase": true,
+    "note": "Check reservations, hours, and age requirements. Alcohol is optional.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "tpac",
+    "name": "Tennessee Performing Arts Center",
+    "area": "Downtown",
+    "lat": 36.167,
+    "lng": -86.783,
+    "tags": [
+      "indoor",
+      "event"
+    ],
+    "source_url": "https://www.tpac.org/plan-your-visit",
+    "address": "505 Deaderick Street",
+    "requires_purchase": true,
+    "note": "Choose a ticketed performance and confirm its venue, time, and price before leaving. Follow photography rules.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "lavergne-veterans",
+    "name": "Veterans Memorial Park",
+    "area": "La Vergne",
+    "lat": 35.989,
+    "lng": -86.565,
+    "tags": [
+      "outdoor",
+      "nature",
+      "picnic",
+      "budget30"
+    ],
+    "source_url": "https://www.lavergnetn.gov/facilities/facility/details/Veterans-Memorial-Park-4",
+    "address": "115 Floyd Mayfield Drive, La Vergne, TN",
+    "requires_purchase": false,
+    "note": "Explore public areas; check current opening hours and closures. Purchases and paid attractions are optional. Check live directions: traffic may exceed the usual 30–40 minute range.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "sharp-springs",
+    "name": "Sharp Springs Park",
+    "area": "Smyrna",
+    "lat": 36.0,
+    "lng": -86.482,
+    "tags": [
+      "outdoor",
+      "nature",
+      "budget30"
+    ],
+    "source_url": "https://files.townofsmyrna.org/departments/parks_recreation/parks_facilities/index.php",
+    "address": "311 Jefferson Pike, Smyrna, TN",
+    "requires_purchase": false,
+    "note": "Explore public areas; check current opening hours and closures. Purchases and paid attractions are optional. Check live directions: traffic may exceed the usual 30–40 minute range.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "lee-victory",
+    "name": "Lee Victory Recreation Park",
+    "area": "Smyrna",
+    "lat": 35.999,
+    "lng": -86.516,
+    "tags": [
+      "outdoor",
+      "nature",
+      "budget30"
+    ],
+    "source_url": "https://files.townofsmyrna.org/departments/parks_recreation/parks_facilities/index.php",
+    "address": "110 Sam Ridley Parkway East, Smyrna, TN",
+    "requires_purchase": false,
+    "note": "Explore public areas; check current opening hours and closures. Purchases and paid attractions are optional. Check live directions: traffic may exceed the usual 30–40 minute range.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "stones-river",
+    "name": "Stones River National Battlefield",
+    "area": "Murfreesboro",
+    "lat": 35.880481,
+    "lng": -86.434783,
+    "tags": [
+      "outdoor",
+      "nature",
+      "culture",
+      "budget30"
+    ],
+    "source_url": "https://www.nps.gov/stri/planyourvisit/directions.htm",
+    "address": "3501 Old Nashville Highway, Murfreesboro, TN",
+    "requires_purchase": false,
+    "note": "Explore public areas; check current opening hours and closures. Purchases and paid attractions are optional. Check live directions: traffic may exceed the usual 30–40 minute range.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "cannonsburgh",
+    "name": "Cannonsburgh Village",
+    "area": "Murfreesboro",
+    "lat": 35.843,
+    "lng": -86.396,
+    "tags": [
+      "outdoor",
+      "culture",
+      "budget30"
+    ],
+    "source_url": "https://www.murfreesborotn.gov/164/Cannonsburgh-Village",
+    "address": "Cannonsburgh Village, Murfreesboro, TN",
+    "requires_purchase": false,
+    "note": "Explore public areas; check current opening hours and closures. Purchases and paid attractions are optional. Check live directions: traffic may exceed the usual 30–40 minute range. Self-guided village access depends on seasonal hours.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "murfree-spring",
+    "name": "Murfree Spring Wetlands",
+    "area": "Murfreesboro",
+    "lat": 35.837,
+    "lng": -86.388,
+    "tags": [
+      "outdoor",
+      "nature",
+      "budget30"
+    ],
+    "source_url": "https://www.murfreesborotn.gov/187/Murfree-Spring-Wetlands",
+    "address": "Murfree Spring Wetlands, Murfreesboro, TN",
+    "requires_purchase": false,
+    "note": "Explore public areas; check current opening hours and closures. Purchases and paid attractions are optional. Check live directions: traffic may exceed the usual 30–40 minute range. This is the public wetlands, not admission to the adjacent Discovery Center.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "crockett-park",
+    "name": "Crockett Park",
+    "area": "Brentwood",
+    "lat": 35.983,
+    "lng": -86.793,
+    "tags": [
+      "outdoor",
+      "nature",
+      "budget30"
+    ],
+    "source_url": "https://www.brentwoodtn.gov/departments/parks-recreation/parks-trails-greenways/crockett-park",
+    "address": "Crockett Park, Brentwood, TN",
+    "requires_purchase": false,
+    "note": "Explore public areas; check current opening hours and closures. Purchases and paid attractions are optional. Check live directions: traffic may exceed the usual 30–40 minute range.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "smith-park",
+    "name": "Marcella Vivrette Smith Park",
+    "area": "Brentwood",
+    "lat": 35.953,
+    "lng": -86.748,
+    "tags": [
+      "outdoor",
+      "nature",
+      "budget30"
+    ],
+    "source_url": "https://www.brentwoodtn.gov/Service-Center/Parks-Recreation/Parks-Trails-Greenways/Marcella-Vivrette-Smith-Park",
+    "address": "Marcella Vivrette Smith Park, Brentwood, TN",
+    "requires_purchase": false,
+    "note": "Explore public areas; check current opening hours and closures. Purchases and paid attractions are optional. Check live directions: traffic may exceed the usual 30–40 minute range.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "franklin-factory",
+    "name": "The Factory at Franklin",
+    "area": "Franklin",
+    "lat": 35.937,
+    "lng": -86.861,
+    "tags": [
+      "indoor",
+      "shopping",
+      "food",
+      "budget30"
+    ],
+    "source_url": "https://visitfranklin.com/shopping/the-factory-at-franklin/",
+    "address": "230 Franklin Road, Franklin, TN",
+    "requires_purchase": false,
+    "note": "Explore public areas; check current opening hours and closures. Purchases and paid attractions are optional. Check live directions: traffic may exceed the usual 30–40 minute range.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "harlinsdale",
+    "name": "The Park at Harlinsdale Farm",
+    "area": "Franklin",
+    "lat": 35.938,
+    "lng": -86.863,
+    "tags": [
+      "outdoor",
+      "nature",
+      "budget30"
+    ],
+    "source_url": "https://www.franklintn.gov/government/departments-k-z/parks/park-locations/the-park-at-harlinsdale-farm",
+    "address": "The Park at Harlinsdale Farm, Franklin, TN",
+    "requires_purchase": false,
+    "note": "Explore public areas; check current opening hours and closures. Purchases and paid attractions are optional. Check live directions: traffic may exceed the usual 30–40 minute range.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "downtown-franklin",
+    "name": "Historic Downtown Franklin",
+    "area": "Franklin",
+    "lat": 35.925,
+    "lng": -86.869,
+    "tags": [
+      "urban",
+      "shopping",
+      "culture",
+      "budget30"
+    ],
+    "source_url": "https://visitfranklin.com/communities/franklin/",
+    "address": "Public Square, Franklin, TN",
+    "requires_purchase": false,
+    "note": "Explore public areas; check current opening hours and closures. Purchases and paid attractions are optional. Check live directions: traffic may exceed the usual 30–40 minute range.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "historic-nolensville",
+    "name": "Historic Nolensville",
+    "area": "Nolensville",
+    "lat": 35.952,
+    "lng": -86.67,
+    "tags": [
+      "urban",
+      "shopping",
+      "culture",
+      "budget30"
+    ],
+    "source_url": "https://www.nolensvilletn.gov/history",
+    "address": "Historic Nolensville, Nolensville Road, Nolensville, TN",
+    "requires_purchase": false,
+    "note": "Explore public areas; check current opening hours and closures. Purchases and paid attractions are optional. Check live directions: traffic may exceed the usual 30–40 minute range.",
     "verified_on": "2026-10-17",
     "pin_accuracy": "approximate_area"
   }

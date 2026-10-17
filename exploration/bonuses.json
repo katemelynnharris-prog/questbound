@@ -2,7 +2,7 @@
   {
     "key": "three-polaroids",
     "title": "Three Polaroids",
-    "objective": "Take three Polaroids: a place, a detail, and a memory together.",
+    "objective": "Take three Polaroids: a place, a detail, and a memory together. Take photographs only where permitted.",
     "tags": [
       "urban",
       "outdoor"
@@ -16,7 +16,7 @@
   {
     "key": "photo-hunt",
     "title": "Three discoveries",
-    "objective": "Photograph three details you would normally walk past.",
+    "objective": "Photograph three details you would normally walk past. Take photographs only where permitted.",
     "tags": [
       "urban",
       "outdoor",
@@ -75,7 +75,7 @@
   },
   {
     "key": "nature-three",
-    "title": "Nature\u2019s details",
+    "title": "Nature’s details",
     "objective": "Spot three different birds, plants, or natural textures. Observe without collecting.",
     "tags": [
       "nature"
@@ -111,9 +111,7 @@
     "title": "The $30 adventure",
     "objective": "See how much fun you can have within $30 total, including tax and tips; stop before the cap.",
     "tags": [
-      "food",
-      "shopping",
-      "urban"
+      "budget30"
     ],
     "equipment": [],
     "requires_purchase": true,
@@ -176,7 +174,7 @@
   },
   {
     "key": "partner-choice",
-    "title": "Your partner\u2019s pick",
+    "title": "Your partner’s pick",
     "objective": "Let your companion choose the next public stop or detail to investigate.",
     "tags": [
       "urban",
@@ -210,6 +208,17 @@
     "equipment": [
       "hammock"
     ],
+    "requires_purchase": false,
+    "active": true
+  },
+  {
+    "key": "after-show",
+    "title": "The encore conversation",
+    "objective": "After the performance, each share your favorite moment with the other.",
+    "tags": [
+      "event"
+    ],
+    "equipment": [],
     "requires_purchase": false,
     "active": true
   }
