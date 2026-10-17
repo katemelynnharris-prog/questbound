@@ -61,3 +61,11 @@
   :is(#app, #view, dialog, .sync, #tabs) button:not(:where(#mainNav button, .leaflet-container button, .artifact, .text-link, .qb-budget-day)) { border-color: ButtonText !important; color: ButtonText !important; background: ButtonFace !important; }
   :is(#app, #view, dialog, .sync, #tabs) button:not(:where(#mainNav button, .leaflet-container button, .artifact, .text-link, .qb-budget-day)):is(.active, [aria-selected="true"], [aria-pressed="true"]) { border-color: Highlight !important; }
 }
+
+/* The public navigation uses the same display face as the main navigation. */
+nav#tabs button {
+  font-family: var(--display-serif, 'Questbound OSerif', Georgia, serif) !important;
+  font-weight: 400 !important;
+  font-synthesis: none;
+  letter-spacing: .035em !important;
+}
