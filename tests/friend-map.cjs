@@ -20,6 +20,9 @@ async function check(withLeaflet){
  assert.equal(w.document.querySelectorAll('#view script').length,0);
  if(withLeaflet){
   assert.equal(w.document.querySelectorAll('.friend-map-pin').length,2);
+  assert.equal(w.document.querySelector('meta[name=referrer]').content,'no-referrer');
+  assert([...w.document.querySelectorAll('img.leaflet-tile')].every(t=>t.referrerPolicy==='strict-origin'));
+  assert(w.document.querySelectorAll('img.leaflet-tile').length>0);
   assert.equal(w.document.querySelectorAll('.friend-map-fog circle').length,2);
   w.document.querySelector('[data-friend-destination="museum"]').click();assert.match(w.document.querySelector('.leaflet-popup-content').textContent,/Museum/);
   w.document.querySelector('#friendMapRecenter').click();

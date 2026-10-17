@@ -16,7 +16,9 @@
   if(!L){el.innerHTML='<p class="friend-map-fallback">The interactive map could not load. The destination journal below is still available.</p>';document.querySelector('#friendMapRecenter').disabled=true;document.querySelectorAll('[data-friend-destination]').forEach(b=>b.hidden=true);return;}
   const m=L.map(el,{scrollWheelZoom:false,minZoom:9,maxZoom:17,maxBounds:[[35.8,-87.2],[36.5,-86.3]],maxBoundsViscosity:.8});map=m;
   m.setView(view?.center||center,view?.zoom||10);
-  const tiles=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors',maxZoom:19,updateWhenIdle:true,keepBuffer:1}).addTo(m);
+  // Identify the site to the tile provider without disclosing a page path or private data.
+  // This per-image policy overrides the page's no-referrer setting only for map tiles.
+  const tiles=L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a> contributors',maxZoom:19,updateWhenIdle:true,keepBuffer:1,referrerPolicy:'strict-origin'}).addTo(m);
   let tileWarning=null;tiles.on('tileerror',()=>{if(tileWarning)return;tileWarning=document.createElement('p');tileWarning.className='muted';tileWarning.setAttribute('role','status');tileWarning.textContent='Some map tiles could not load. Destination markers and the journal remain available.';el.after(tileWarning);});
   const clearings=ds.filter(d=>d.visited||d.scouted),ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg');svg.classList.add('friend-map-fog');svg.setAttribute('aria-hidden','true');
   svg.innerHTML=`<defs><mask id="friendMapFogMask" maskUnits="userSpaceOnUse"><rect width="100%" height="100%" fill="white"/>${clearings.map(()=>'<circle fill="black"/>').join('')}</mask></defs><rect width="100%" height="100%" fill="#08100c" fill-opacity=".82" mask="url(#friendMapFogMask)"/>`;el.append(svg);
