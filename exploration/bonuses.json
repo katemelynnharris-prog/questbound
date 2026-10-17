@@ -1,0 +1,216 @@
+[
+  {
+    "key": "three-polaroids",
+    "title": "Three Polaroids",
+    "objective": "Take three Polaroids: a place, a detail, and a memory together.",
+    "tags": [
+      "urban",
+      "outdoor"
+    ],
+    "equipment": [
+      "polaroid"
+    ],
+    "requires_purchase": false,
+    "active": true
+  },
+  {
+    "key": "photo-hunt",
+    "title": "Three discoveries",
+    "objective": "Photograph three details you would normally walk past.",
+    "tags": [
+      "urban",
+      "outdoor",
+      "culture"
+    ],
+    "equipment": [],
+    "requires_purchase": false,
+    "active": true
+  },
+  {
+    "key": "free-adventure",
+    "title": "The free adventure",
+    "objective": "See how much you can explore without spending anything (parking excluded).",
+    "tags": [
+      "urban",
+      "outdoor",
+      "shopping",
+      "culture"
+    ],
+    "equipment": [],
+    "requires_purchase": false,
+    "active": true
+  },
+  {
+    "key": "picnic",
+    "title": "Pack a picnic",
+    "objective": "Bring a picnic and enjoy it in a designated picnic area.",
+    "tags": [
+      "picnic"
+    ],
+    "equipment": [],
+    "requires_purchase": false,
+    "active": true
+  },
+  {
+    "key": "read-outside",
+    "title": "A chapter away",
+    "objective": "Spend twenty minutes reading together in a suitable public seating area.",
+    "tags": [
+      "outdoor"
+    ],
+    "equipment": [],
+    "requires_purchase": false,
+    "active": true
+  },
+  {
+    "key": "new-path",
+    "title": "The unfamiliar path",
+    "objective": "Choose a marked public path you have not explored together.",
+    "tags": [
+      "nature"
+    ],
+    "equipment": [],
+    "requires_purchase": false,
+    "active": true
+  },
+  {
+    "key": "nature-three",
+    "title": "Nature\u2019s details",
+    "objective": "Spot three different birds, plants, or natural textures. Observe without collecting.",
+    "tags": [
+      "nature"
+    ],
+    "equipment": [],
+    "requires_purchase": false,
+    "active": true
+  },
+  {
+    "key": "surprising-fact",
+    "title": "Two surprising facts",
+    "objective": "Each discover one surprising fact and share it with the other.",
+    "tags": [
+      "culture"
+    ],
+    "equipment": [],
+    "requires_purchase": false,
+    "active": true
+  },
+  {
+    "key": "new-order",
+    "title": "The unexpected order",
+    "objective": "Order one thing you would not normally choose, within your budget.",
+    "tags": [
+      "food"
+    ],
+    "equipment": [],
+    "requires_purchase": true,
+    "active": true
+  },
+  {
+    "key": "thirty-dollars",
+    "title": "The $30 adventure",
+    "objective": "See how much fun you can have within $30 total, including tax and tips; stop before the cap.",
+    "tags": [
+      "food",
+      "shopping",
+      "urban"
+    ],
+    "equipment": [],
+    "requires_purchase": true,
+    "active": true
+  },
+  {
+    "key": "surprise-picks",
+    "title": "Secret selections",
+    "objective": "Each choose a small surprise for the other within a shared spending cap.",
+    "tags": [
+      "shopping"
+    ],
+    "equipment": [],
+    "requires_purchase": true,
+    "active": true
+  },
+  {
+    "key": "unusual-find",
+    "title": "The unusual find",
+    "objective": "Each find the strangest item you would actually consider owning. Buying is optional.",
+    "tags": [
+      "shopping"
+    ],
+    "equipment": [],
+    "requires_purchase": false,
+    "active": true
+  },
+  {
+    "key": "rps-menu",
+    "title": "Rock-paper-scissors dinner",
+    "objective": "Play to decide who chooses each course you already planned to buy. Stay within your budget.",
+    "tags": [
+      "food"
+    ],
+    "equipment": [],
+    "requires_purchase": true,
+    "active": true
+  },
+  {
+    "key": "favorite-things",
+    "title": "Favorite-things hunt",
+    "objective": "Choose a favorite drink, snack, useful item, or activity for each other within an agreed cap.",
+    "tags": [
+      "shopping"
+    ],
+    "equipment": [],
+    "requires_purchase": true,
+    "active": true
+  },
+  {
+    "key": "architecture",
+    "title": "Look up",
+    "objective": "Find three architectural details and choose your favorite.",
+    "tags": [
+      "urban"
+    ],
+    "equipment": [],
+    "requires_purchase": false,
+    "active": true
+  },
+  {
+    "key": "partner-choice",
+    "title": "Your partner\u2019s pick",
+    "objective": "Let your companion choose the next public stop or detail to investigate.",
+    "tags": [
+      "urban",
+      "shopping",
+      "culture",
+      "outdoor"
+    ],
+    "equipment": [],
+    "requires_purchase": false,
+    "active": true
+  },
+  {
+    "key": "screen-free",
+    "title": "An hour away",
+    "objective": "Spend an hour exploring without recreational screen use; navigation is allowed.",
+    "tags": [
+      "urban",
+      "outdoor"
+    ],
+    "equipment": [],
+    "requires_purchase": false,
+    "active": true
+  },
+  {
+    "key": "hammock",
+    "title": "Hammock pause",
+    "objective": "Relax in your freestanding hammock at the permitted spot you confirmed for this outing. Do not attach it to park trees. Reroll if permission or a suitable spot is unavailable.",
+    "tags": [
+      "picnic"
+    ],
+    "equipment": [
+      "hammock"
+    ],
+    "requires_purchase": false,
+    "active": true
+  }
+]

@@ -1,0 +1,657 @@
+[
+  {
+    "key": "12-south",
+    "name": "12 South",
+    "area": "12 South",
+    "lat": 36.124,
+    "lng": -86.79,
+    "tags": [
+      "urban",
+      "shopping"
+    ],
+    "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/12south",
+    "address": "12th Avenue South and Paris Avenue, Nashville, TN",
+    "requires_purchase": false,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "sevier-park",
+    "name": "Sevier Park",
+    "area": "12 South",
+    "lat": 36.119,
+    "lng": -86.79,
+    "tags": [
+      "outdoor",
+      "nature",
+      "picnic"
+    ],
+    "source_url": "https://www.nashville.gov/departments/parks/permits-rentals-and-reservations/picnic-shelters/sevier",
+    "address": "3021 Lealand Lane, Nashville, TN",
+    "requires_purchase": false,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "belmont",
+    "name": "Belmont Boulevard",
+    "area": "Belmont",
+    "lat": 36.132,
+    "lng": -86.795,
+    "tags": [
+      "urban",
+      "shopping"
+    ],
+    "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/belmont-hillsboro",
+    "address": "Belmont Boulevard and Portland Avenue, Nashville, TN",
+    "requires_purchase": false,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "hillsboro",
+    "name": "Hillsboro Village",
+    "area": "Hillsboro Village",
+    "lat": 36.137,
+    "lng": -86.801,
+    "tags": [
+      "urban",
+      "shopping"
+    ],
+    "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/belmont-hillsboro",
+    "address": "21st Avenue South and Belcourt Avenue, Nashville, TN",
+    "requires_purchase": false,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "five-points",
+    "name": "Five Points",
+    "area": "East Nashville",
+    "lat": 36.177,
+    "lng": -86.749,
+    "tags": [
+      "urban",
+      "shopping"
+    ],
+    "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/east-nashville",
+    "address": "Five Points, Nashville, TN",
+    "requires_purchase": false,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "fatherland",
+    "name": "Shops on Fatherland",
+    "area": "East Nashville",
+    "lat": 36.173,
+    "lng": -86.75,
+    "tags": [
+      "urban",
+      "shopping"
+    ],
+    "source_url": "https://musiccityadventureco.squarespace.com/east-side-guide",
+    "address": "1006 Fatherland Street, Nashville, TN",
+    "requires_purchase": false,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "porter-east",
+    "name": "Shops at Porter East",
+    "area": "East Nashville",
+    "lat": 36.184,
+    "lng": -86.735,
+    "tags": [
+      "urban",
+      "shopping"
+    ],
+    "source_url": "https://musiccityadventureco.squarespace.com/east-side-guide",
+    "address": "Shops at Porter East, Nashville, TN",
+    "requires_purchase": false,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "shelby",
+    "name": "Shelby Park",
+    "area": "East Nashville",
+    "lat": 36.174,
+    "lng": -86.728,
+    "tags": [
+      "outdoor",
+      "nature",
+      "picnic"
+    ],
+    "source_url": "https://www.nashville.gov/departments/parks/parks/shelby-park",
+    "address": "Shelby Park, Nashville, TN",
+    "requires_purchase": false,
+    "note": "Check Metro Parks closures before choosing a trail.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "germantown",
+    "name": "Historic Germantown",
+    "area": "Germantown",
+    "lat": 36.18,
+    "lng": -86.787,
+    "tags": [
+      "urban",
+      "shopping"
+    ],
+    "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/germantown",
+    "address": "5th Avenue North and Monroe Street, Nashville, TN",
+    "requires_purchase": false,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "farmers-market",
+    "name": "Nashville Farmers\u2019 Market",
+    "area": "Germantown area",
+    "lat": 36.173,
+    "lng": -86.789,
+    "tags": [
+      "shopping",
+      "food"
+    ],
+    "source_url": "https://www.nashvillefarmersmarket.org/hours-and-directions",
+    "address": "900 Rosa L Parks Boulevard, Nashville, TN",
+    "requires_purchase": false,
+    "note": "Browsing is free; individual vendors set their hours.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "bicentennial",
+    "name": "Bicentennial Capitol Mall",
+    "area": "Germantown area",
+    "lat": 36.172,
+    "lng": -86.787,
+    "tags": [
+      "outdoor",
+      "culture"
+    ],
+    "source_url": "https://tnstateparks.com/parks/bicentennial-mall",
+    "address": "Bicentennial Capitol Mall State Park, Nashville, TN",
+    "requires_purchase": false,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "state-museum",
+    "name": "Tennessee State Museum",
+    "area": "Germantown area",
+    "lat": 36.176,
+    "lng": -86.791,
+    "tags": [
+      "indoor",
+      "culture"
+    ],
+    "source_url": "https://tnmuseum.org/plan-your-visit",
+    "address": "1000 Rosa L Parks Boulevard, Nashville, TN",
+    "requires_purchase": false,
+    "note": "Free admission; check opening hours.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "weho",
+    "name": "Wedgewood-Houston",
+    "area": "Wedgewood-Houston",
+    "lat": 36.141,
+    "lng": -86.765,
+    "tags": [
+      "urban",
+      "culture"
+    ],
+    "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/wedgewood-houston",
+    "address": "Houston Street and Hagan Street, Nashville, TN",
+    "requires_purchase": false,
+    "note": "Explore public streets; check gallery opening hours before entering.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "fort-negley",
+    "name": "Fort Negley visitor center and open trail",
+    "area": "Wedgewood-Houston area",
+    "lat": 36.146,
+    "lng": -86.776,
+    "tags": [
+      "outdoor",
+      "culture"
+    ],
+    "source_url": "https://www.nashville.gov/departments/parks/historic-sites/fort-negley/about-your-visit",
+    "address": "1100 Fort Negley Boulevard, Nashville, TN",
+    "requires_purchase": false,
+    "note": "Construction: historic fort structure is closed; check current access. Visitor center and half-mile park trail remain open per visitor notice.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "gulch",
+    "name": "The Gulch",
+    "area": "The Gulch",
+    "lat": 36.152,
+    "lng": -86.784,
+    "tags": [
+      "urban",
+      "shopping"
+    ],
+    "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/the-gulch",
+    "address": "11th Avenue South and Pine Street, Nashville, TN",
+    "requires_purchase": false,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "centennial",
+    "name": "Centennial Park grounds",
+    "area": "West End",
+    "lat": 36.149,
+    "lng": -86.813,
+    "tags": [
+      "outdoor",
+      "nature",
+      "picnic",
+      "culture"
+    ],
+    "source_url": "https://www.nashville.gov/departments/parks/parks/centennial-park",
+    "address": "2500 West End Avenue, Nashville, TN",
+    "requires_purchase": false,
+    "note": "Outdoor grounds outing; Parthenon museum admission is separate.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "midtown",
+    "name": "Midtown",
+    "area": "Midtown",
+    "lat": 36.151,
+    "lng": -86.8,
+    "tags": [
+      "urban"
+    ],
+    "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/midtown",
+    "address": "Broadway and 20th Avenue South, Nashville, TN",
+    "requires_purchase": false,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "music-row",
+    "name": "Music Row",
+    "area": "Music Row",
+    "lat": 36.148,
+    "lng": -86.792,
+    "tags": [
+      "urban",
+      "culture"
+    ],
+    "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/music-row-demonbreun",
+    "address": "Music Square East and Division Street, Nashville, TN",
+    "requires_purchase": false,
+    "note": "Public streets only; recording studios are not assumed open to visitors.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "nations",
+    "name": "The Nations",
+    "area": "West Nashville",
+    "lat": 36.165,
+    "lng": -86.853,
+    "tags": [
+      "urban",
+      "shopping"
+    ],
+    "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/the-nations",
+    "address": "51st Avenue North and Indiana Avenue, Nashville, TN",
+    "requires_purchase": false,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "sylvan-park",
+    "name": "Sylvan Park neighborhood center",
+    "area": "West Nashville",
+    "lat": 36.138,
+    "lng": -86.845,
+    "tags": [
+      "urban"
+    ],
+    "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/sylvan-park",
+    "address": "46th Avenue North and Murphy Road, Nashville, TN",
+    "requires_purchase": false,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "ll-market",
+    "name": "L&L Market",
+    "area": "Charlotte corridor",
+    "lat": 36.152,
+    "lng": -86.832,
+    "tags": [
+      "indoor",
+      "shopping",
+      "food"
+    ],
+    "source_url": "https://www.landlmarket.com/",
+    "address": "3820 Charlotte Avenue, Nashville, TN",
+    "requires_purchase": false,
+    "note": "Browsing is free; food purchases are optional.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "richland",
+    "name": "Richland Creek Greenway at McCabe",
+    "area": "Sylvan Park",
+    "lat": 36.144,
+    "lng": -86.848,
+    "tags": [
+      "outdoor",
+      "nature"
+    ],
+    "source_url": "https://www.nashville.gov/departments/parks/greenways-and-open-space",
+    "address": "McCabe Park Community Center, Nashville, TN",
+    "requires_purchase": false,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "percy-warner",
+    "name": "Percy Warner Park",
+    "area": "West Nashville",
+    "lat": 36.076,
+    "lng": -86.899,
+    "tags": [
+      "outdoor",
+      "nature",
+      "picnic"
+    ],
+    "source_url": "https://www.nashville.gov/departments/parks/parks/warner-parks",
+    "address": "Percy Warner Park, Nashville, TN",
+    "requires_purchase": false,
+    "note": "Use an official trailhead and designated picnic area.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "edwin-warner",
+    "name": "Edwin Warner Park Nature Center",
+    "area": "West Nashville",
+    "lat": 36.061,
+    "lng": -86.901,
+    "tags": [
+      "outdoor",
+      "nature",
+      "picnic"
+    ],
+    "source_url": "https://www.nashville.gov/departments/parks/nature-centers-and-natural-areas/warner-park-nature-center",
+    "address": "7311 Highway 100, Nashville, TN",
+    "requires_purchase": false,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "marathon",
+    "name": "Marathon Village",
+    "area": "Marathon Village",
+    "lat": 36.165,
+    "lng": -86.797,
+    "tags": [
+      "indoor",
+      "shopping",
+      "culture"
+    ],
+    "source_url": "https://marathonvillage.net/visit",
+    "address": "1305 Clinton Street, Nashville, TN",
+    "requires_purchase": false,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "parnassus",
+    "name": "Parnassus Books",
+    "area": "Green Hills",
+    "lat": 36.105,
+    "lng": -86.816,
+    "tags": [
+      "indoor",
+      "shopping",
+      "culture"
+    ],
+    "source_url": "https://parnassusbooks.net/location-hours",
+    "address": "3900 Hillsboro Pike, Nashville, TN",
+    "requires_purchase": false,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "berry-hill",
+    "name": "Berry Hill shops",
+    "area": "Berry Hill",
+    "lat": 36.116,
+    "lng": -86.765,
+    "tags": [
+      "urban",
+      "shopping"
+    ],
+    "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/berry-hill",
+    "address": "Bransford Avenue and East Iris Drive, Nashville, TN",
+    "requires_purchase": false,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "melrose",
+    "name": "Melrose / 8th Avenue",
+    "area": "Melrose",
+    "lat": 36.126,
+    "lng": -86.777,
+    "tags": [
+      "urban",
+      "shopping"
+    ],
+    "source_url": "https://www.visitmusiccity.com/nashville-neighborhoods/melrose",
+    "address": "8th Avenue South and Bradford Avenue, Nashville, TN",
+    "requires_purchase": false,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "radnor",
+    "name": "Radnor Lake",
+    "area": "Oak Hill",
+    "lat": 36.064,
+    "lng": -86.809,
+    "tags": [
+      "outdoor",
+      "nature"
+    ],
+    "source_url": "https://tnstateparks.com/parks/radnor-lake",
+    "address": "Radnor Lake Visitor Center, Nashville, TN",
+    "requires_purchase": false,
+    "note": "No food or picnicking; pets are restricted to designated road areas. Stay on marked trails.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "long-hunter",
+    "name": "Long Hunter State Park",
+    "area": "Percy Priest area",
+    "lat": 36.097,
+    "lng": -86.548,
+    "tags": [
+      "outdoor",
+      "nature",
+      "picnic"
+    ],
+    "source_url": "https://tnstateparks.com/parks/long-hunter",
+    "address": "2910 Hobson Pike, Hermitage, TN",
+    "requires_purchase": false,
+    "note": "Outer-range option: check drive time before leaving; picnic only in designated areas.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "noko",
+    "name": "Noko",
+    "area": "East Nashville",
+    "lat": 36.184,
+    "lng": -86.735,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://www.nokonashville.com/location/unnamed/",
+    "address": "701 Porter Road, Nashville, TN",
+    "requires_purchase": true,
+    "note": "Reservation and paid meal; check menu and budget.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "two-ten-jack",
+    "name": "Two Ten Jack \u2014 East Nashville",
+    "area": "East Nashville",
+    "lat": 36.184,
+    "lng": -86.736,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://www.twotenjack.com/location/east-nashville",
+    "address": "1900 Eastland Avenue #105, Nashville, TN",
+    "requires_purchase": true,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "barcelona",
+    "name": "Barcelona Wine Bar \u2014 Edgehill",
+    "area": "Edgehill",
+    "lat": 36.145,
+    "lng": -86.79,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://barcelonawinebar.com/location/nashville/",
+    "address": "1200 Villa Place, Nashville, TN",
+    "requires_purchase": true,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "horn",
+    "name": "The Horn \u2014 HQ",
+    "area": "South Nashville",
+    "lat": 36.145,
+    "lng": -86.751,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://the-horn.com/pages/visit-us",
+    "address": "619 Murfreesboro Pike, Nashville, TN",
+    "requires_purchase": true,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "fatbelly",
+    "name": "Fatbelly Pretzel Bakery & Deli",
+    "area": "East Nashville",
+    "lat": 36.186,
+    "lng": -86.75,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://fatbellypretzel.com/",
+    "address": "921 Gallatin Avenue, Nashville, TN",
+    "requires_purchase": true,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "cafe-roze",
+    "name": "Caf\u00e9 Roze",
+    "area": "East Nashville",
+    "lat": 36.191,
+    "lng": -86.727,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://www.caferoze.com/location/cafe-roze/",
+    "address": "1115 Porter Road, Nashville, TN",
+    "requires_purchase": true,
+    "note": "Jazz-night schedule is not assumed; check current events.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "redheaded",
+    "name": "Redheaded Stranger",
+    "area": "East Nashville",
+    "lat": 36.185,
+    "lng": -86.766,
+    "tags": [
+      "indoor",
+      "food"
+    ],
+    "source_url": "https://www.redheadedstrangertacos.com/",
+    "address": "305 Arrington Street, Nashville, TN",
+    "requires_purchase": true,
+    "note": "",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  },
+  {
+    "key": "rudys",
+    "name": "Rudy\u2019s Jazz Room",
+    "area": "The Gulch",
+    "lat": 36.15,
+    "lng": -86.782,
+    "tags": [
+      "indoor",
+      "culture",
+      "event"
+    ],
+    "source_url": "https://www.rudysjazzroom.com/info",
+    "address": "809 Gleaves Street, Nashville, TN",
+    "requires_purchase": true,
+    "note": "Check showtimes, age rules, ticket availability and total cost before leaving.",
+    "verified_on": "2026-10-17",
+    "pin_accuracy": "approximate_area"
+  }
+]
