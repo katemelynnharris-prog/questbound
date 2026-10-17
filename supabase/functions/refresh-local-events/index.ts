@@ -1,4 +1,4 @@
-import {collect,SOURCES} from './collector.mjs';
+import {collect,SOURCES,excludedEventTheme} from './collector.mjs';
 const cors={'Access-Control-Allow-Origin':'https://katemelynnharris-prog.github.io','Access-Control-Allow-Headers':'authorization, x-client-info, apikey, content-type'};
 const url=Deno.env.get('SUPABASE_URL')!,key=Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
 async function db(path:string,method='GET',body?:unknown){const r=await fetch(url+'/rest/v1/'+path,{method,headers:{apikey:key,Authorization:'Bearer '+key,'Content-Type':'application/json',Prefer:'resolution=merge-duplicates'},body:body===undefined?undefined:JSON.stringify(body)});if(!r.ok)throw Error('Catalog storage failed');const t=await r.text();return t?JSON.parse(t):null;}
@@ -14,6 +14,8 @@ Deno.serve(async(req:Request)=>{
   const items=results.flatMap(r=>r.items),ok=results.some(r=>r.status==='ok');
   // Preserve manually verified entries and their exact end times/cost notes.
   const current=await db('local_map_destinations?select=key,data&data->>event_key=not.is.null');
+  const excluded=(current||[]).filter((x:any)=>excludedEventTheme(x.data.name,[],x.data.note||''));
+  if(excluded.length)await db('local_map_destinations?on_conflict=key','POST',excluded.map((x:any)=>({key:x.key,data:{...x.data,cancelled:true,excluded_from_suggestions:true}})));
   const manual=new Set((current||[]).filter((x:any)=>x.data.curated).map((x:any)=>x.key));
   const incoming=items.filter(x=>!manual.has(x.key));
   if(incoming.length)await db('local_map_destinations?on_conflict=key','POST',incoming);
