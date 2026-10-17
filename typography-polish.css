@@ -1,0 +1,19 @@
+/* OSerif by GGBotNet, CC0 1.0. Display headings only; body and controls retain their existing fonts. */
+@font-face {
+  font-family: 'Questbound OSerif';
+  src: url('./assets/fonts/OSerif-Regular.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+:root { --display-serif: 'Questbound OSerif', Georgia, 'Times New Roman', serif; }
+#app :is(h1,h2,h3,h4,h5,h6),
+#view :is(h1,h2,h3,h4,h5,h6),
+dialog :is(h1,h2,h3,h4,h5,h6) {
+  font-family: var(--display-serif) !important;
+  font-weight: 400 !important;
+  font-synthesis: none;
+  letter-spacing: .005em;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
