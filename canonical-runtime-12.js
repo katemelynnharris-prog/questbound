@@ -16,6 +16,9 @@ function qbJournalMatches(q,query){
   return words.every(word=>text.includes(word));
 }
 function renderJournal(){
+  const previousCategoryBar=screen.querySelector('.qb-quest-category-filters');
+  const categoryScroll=previousCategoryBar?.scrollLeft||0;
+  const focusedCategory=previousCategoryBar?.contains(document.activeElement)?document.activeElement.dataset.filter:null;
   const visible=state.quests.filter(q=>!q.hidden_encounter&&q.key!=='no-overspending-week');
   const archived=visible.filter(q=>qbJournalArchived(q)),active=visible.filter(q=>!qbJournalArchived(q));
   const archiveView=state.questJournalView==='archive',pool=archiveView?archived:active;
@@ -24,9 +27,24 @@ function renderJournal(){
   const search=state.questSearch||'';
   const qs=pool.filter(q=>(state.questFilter==='All'||q.category===state.questFilter)&&qbJournalMatches(q,search));
   const regular=archiveView?qs:qs.filter(q=>!qbIsDailyLedgerQuestV20(q));
-  screen.innerHTML=`<section class="ledger-head"><p class="eyebrow">THE GUILD LEDGER</p><h1>Quest Journal</h1><p>Completed one-time quests move into the archive automatically.</p></section><div class="qb-journal-controls"><div class="filterbar qb-journal-views" aria-label="Journal view"><button data-journal-view="active" class="${!archiveView?'active':''}" aria-pressed="${!archiveView}">Current quests (${active.length})</button><button data-journal-view="archive" class="${archiveView?'active':''}" aria-pressed="${archiveView}">Completed archive (${archived.length})</button></div><label class="qb-journal-search" for="qbJournalSearch">Search quests<input id="qbJournalSearch" type="search" placeholder="Title, category, player, or objective…" value="${esc(search)}" autocomplete="off"></label></div>${!archiveView&&!search.trim()?questWatchCard():''}<div class="filterbar">${cats.map(c=>`<button class="${state.questFilter===c?'active':''}" data-filter="${esc(c)}">${esc(c)}</button>`).join('')}</div><p class="fine" role="status">${qs.length} quest${qs.length===1?'':'s'} shown${archiveView?' · Completed one-time tasks':''}</p>${archiveView?'':qbJournalDailySection(qs)}<div class="quest-list journal-list">${regular.map(q=>questRow(q)).join('')||(!qs.length?`<div class="empty-inline">${search.trim()?'No quests match your search.':archiveView?'No completed one-time quests here yet.':'No quests match this filter.'}</div>`:'')}</div>`;
+  screen.innerHTML=`<section class="ledger-head"><p class="eyebrow">THE GUILD LEDGER</p><h1>Quest Journal</h1><p>Completed one-time quests move into the archive automatically.</p></section><div class="qb-journal-controls"><div class="filterbar qb-journal-views" aria-label="Journal view"><button data-journal-view="active" class="${!archiveView?'active':''}" aria-pressed="${!archiveView}">Current quests (${active.length})</button><button data-journal-view="archive" class="${archiveView?'active':''}" aria-pressed="${archiveView}">Completed archive (${archived.length})</button></div><label class="qb-journal-search" for="qbJournalSearch">Search quests<input id="qbJournalSearch" type="search" placeholder="Title, category, player, or objective…" value="${esc(search)}" autocomplete="off"></label></div>${!archiveView&&!search.trim()?questWatchCard():''}<div class="filterbar qb-quest-category-filters" role="group" aria-label="Quest category">${cats.map(c=>`<button type="button" class="${state.questFilter===c?'active':''}" data-filter="${esc(c)}" aria-pressed="${state.questFilter===c}">${esc(c)}</button>`).join('')}</div><p class="fine" role="status">${esc(state.questFilter)} · ${qs.length} quest${qs.length===1?'':'s'} shown${archiveView?' · Completed one-time tasks':''}</p>${archiveView?'':qbJournalDailySection(qs)}<div class="quest-list journal-list">${regular.map(q=>questRow(q)).join('')||(!qs.length?`<div class="empty-inline">${search.trim()?'No quests match your search.':archiveView?'No completed one-time quests here yet.':'No quests match this filter.'}</div>`:'')}</div>`;
   screen.querySelectorAll('[data-journal-view]').forEach(b=>b.onclick=()=>{state.questJournalView=b.dataset.journalView;state.questFilter='All';renderJournal()});
-  screen.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{state.questFilter=b.dataset.filter;renderJournal()});
+  const categoryBar=screen.querySelector('.qb-quest-category-filters');
+  categoryBar.scrollLeft=categoryScroll;
+  const categoryButtons=[...categoryBar.querySelectorAll('[data-filter]')];
+  categoryButtons.forEach(b=>{
+    const selected=b.dataset.filter===state.questFilter;
+    b.classList.toggle('active',selected);b.setAttribute('aria-pressed',String(selected));
+    b.onclick=()=>{state.questFilter=b.dataset.filter;renderJournal()};
+  });
+  if(focusedCategory)categoryButtons.find(b=>b.dataset.filter===focusedCategory)?.focus({preventScroll:true});
+  requestAnimationFrame(()=>{
+    if(!categoryBar.isConnected)return;
+    const selected=categoryButtons.find(b=>b.dataset.filter===state.questFilter);if(!selected)return;
+    const bar=categoryBar.getBoundingClientRect(),button=selected.getBoundingClientRect();
+    if(button.left<bar.left+8)categoryBar.scrollLeft-=bar.left+8-button.left;
+    else if(button.right>bar.right-8)categoryBar.scrollLeft+=button.right-bar.right+8;
+  });
   screen.querySelector('#qbJournalSearch')?.addEventListener('input',e=>{
     const value=e.currentTarget.value,position=e.currentTarget.selectionStart;
     state.questSearch=value;renderJournal();

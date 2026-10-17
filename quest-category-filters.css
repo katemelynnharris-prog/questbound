@@ -1,0 +1,10 @@
+/* Selection comes from filter state, not hover/focus left behind after a touch redraw. */
+#app #screen .qb-quest-category-filters{scroll-padding-inline:8px;overscroll-behavior-x:contain}
+#app #screen .qb-quest-category-filters button[data-filter]{flex:0 0 auto;white-space:nowrap!important}
+#app #screen .qb-quest-category-filters button[data-filter][aria-pressed="false"]{
+ background:#12160f99!important;border-color:#655c42!important;color:#d4c6a6!important;box-shadow:none!important;transform:none!important
+}
+#app #screen .qb-quest-category-filters button[data-filter][aria-pressed="true"]{
+ background:#3d3320!important;border-color:#d0b171!important;color:#fff0c9!important;box-shadow:inset 0 -2px 0 #d0b171!important;transform:none!important
+}
+#app #screen .qb-quest-category-filters button[data-filter]:focus-visible{outline:2px solid #e5c98a!important;outline-offset:3px}
