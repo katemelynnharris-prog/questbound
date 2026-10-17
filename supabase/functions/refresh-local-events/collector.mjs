@@ -37,8 +37,12 @@ export function excludedEventTheme(title,categories=[],description=''){
  || /\b(?:lgbtq?\w*|queer)[- ]themed\b|celebrat(?:e|ing) (?:lgbtq?\w*|queer|pride)\b/i.test(plain(description))
  || /\bmagic[: ]+(?:the gathering|monday)|\bmtg\b|\bcommander (?:night|tournament|event|league)|\b(?:draft|sealed) (?:magic|mtg)\b/i.test(topic);
 }
+export function eventTime(value){
+ const m=String(value||'').match(/^(20\d{2})-(\d{2})-(\d{2})[T ](\d{2}):(\d{2})(?::\d{2})?$/);
+ return new Date(m?chicagoTime(+m[1],+m[2],+m[3],+m[4],+m[5]):value);
+}
 export async function normalize(raw,source,now=new Date()){
- const title=plain(raw.name||raw.title).slice(0,150),desc=plain(raw.description),start=new Date(raw.startDate||raw.start_date),end=new Date(raw.endDate||raw.end_date||raw.startDate||raw.start_date),url=officialUrl(raw.url,source);
+ const title=plain(raw.name||raw.title).slice(0,150),desc=plain(raw.description),start=eventTime(raw.startDate||raw.start_date),end=eventTime(raw.endDate||raw.end_date||raw.startDate||raw.start_date),url=officialUrl(raw.url,source);
  if(excludedEventTheme(title,raw.categories||[],desc))return null;
  if(!title||!url||!Number.isFinite(+start)||!Number.isFinite(+end)||end<start||end-start>7*864e5||end<now||start>+now+45*864e5)return null;
  if(/cancelled|canceled|postponed|sold out|members.only|homeschool|storytime|teen fest|country music|honky.tonk|30s and 40s|ages? 30/i.test(title+' '+desc))return null;
