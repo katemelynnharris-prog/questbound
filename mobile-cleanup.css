@@ -30,3 +30,20 @@
  #app #screen .players-grid .sprite-wrap img.qb-home-character-art{height:100%!important;width:100%!important;max-width:100%!important;object-fit:contain!important;object-position:center center!important}
 }
 
+
+/* Desktop full-body art needs an inset on its absolute preview container. */
+@media(min-width:681px){
+ #app #screen .players-grid .qb-home-art-preview{
+  inset:24px 8px 12px!important;
+  width:auto!important;
+  height:auto!important;
+ }
+ #app #screen .players-grid .sprite-wrap img.qb-home-character-art{
+  width:100%!important;
+  max-width:100%!important;
+  height:100%!important;
+  margin:0!important;
+  object-fit:contain!important;
+  object-position:center bottom!important;
+ }
+}
