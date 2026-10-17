@@ -13,17 +13,18 @@
  <link rel="stylesheet" href="./friend-map.css?v=59.0">
  <script src="./assets/vendor/leaflet/leaflet.js" defer></script>
  <script src="./friend-map.js?v=59.0" defer></script>
- <script src="./friend-view.js?v=59.0" defer></script>
+ <script src="./friend-view.js?v=60.0" defer></script>
   <link rel="preload" href="./assets/fonts/OSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="./assets/fonts/CrimsonPro-Variable.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="./typography-polish.css?v=56.0" />
   <link rel="stylesheet" href="./button-polish.css?v=58.0" />
+  <link rel="stylesheet" href="./friend-navigation.css?v=60.0" />
 </head>
 <body>
  <header class="top"><a href="./friends.html" aria-label="Questbound live guild view"><img src="./assets/questbound-logo.png?v=19.4" alt="Questbound" width="270" height="90"></a><span class="badge">LIVE · VIEW ONLY</span></header>
  <main>
   <div class="intro"><div><p class="eyebrow">WELCOME TO THE GUILD</p><p class="welcome">Real-life quests. A shared adventure.</p></div><div class="sync"><span id="syncStatus" role="status">Opening the guild…</span><button id="refresh" type="button">Refresh</button></div></div>
-  <nav id="tabs" aria-label="Explore Questbound" hidden></nav>
+  <nav id="tabs" class="friend-nav" aria-label="Explore Questbound" hidden></nav>
   <div id="view" aria-busy="true"><section class="panel loading"><p class="eyebrow">THE GATES ARE OPENING</p><h1>Gathering the latest tales…</h1></section></div>
  </main>
  <footer>Questbound · Live guild view · Browsing never changes the game.</footer>
