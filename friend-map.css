@@ -1,0 +1,15 @@
+.friend-map{position:relative;height:460px;min-height:320px;margin-top:1rem;border:1px solid #655a3b;border-radius:8px;background:#111a12;isolation:isolate;font-family:var(--sans)}
+.friend-map-fog{position:absolute;inset:0;z-index:450;pointer-events:none}
+.friend-map-pin{display:grid;place-items:center;background:#172019;border:1px solid #827453;border-radius:50%;color:#d4c49d;box-shadow:0 2px 7px #0009;font:600 17px/1 var(--sans)}
+.friend-map-pin.visited{background:#6a5228;border-color:#e3c588;color:#fff0c8}.friend-map-pin.scouted{border-color:#93b9be;color:#c0e5e9}
+.friend-map-legend{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;margin:.9rem 0;color:#d5c39c;font-family:var(--sans);font-size:.8rem}
+.friend-map-progress{color:#e5cf9a}.friend-map-progress b{font-size:1.3rem}
+.friend-map .leaflet-popup-content-wrapper,.friend-map .leaflet-popup-tip{background:#172016;color:#eee2c4}.friend-map .leaflet-popup-content{line-height:1.5}
+.friend-map .leaflet-control-attribution{background:#121810e8;color:#c7c4b8}.friend-map .leaflet-control-attribution a{color:#e1c990}
+.friend-map .leaflet-control-zoom a{background:#161c13;color:#e6d5ad;border-color:#6e6245;min-width:40px;min-height:40px;line-height:40px}.friend-map .leaflet-control-zoom a:focus-visible{outline:2px solid #e5c98a;outline-offset:2px}
+.friend-map-fallback{padding:2rem;max-width:32rem;color:#d1c7ae}
+.friend-destinations{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:.8rem;margin-top:1rem}
+.friend-destination{padding:1rem;border:1px solid #514c35;border-radius:6px;background:#11170f;min-width:0}.friend-destination h3{margin:0 0 .35rem}.friend-destination p{margin:0 0 .6rem;color:var(--muted)}.friend-destination button{display:block;margin-top:.8rem;width:100%}
+@media(max-width:680px){.friend-map{height:360px}.friend-destinations{grid-template-columns:1fr}.friend-map-legend{font-size:.75rem;gap:.5rem .8rem}}
+/* Five tabs stay readable and scroll horizontally on narrow screens. */
+nav#tabs button{flex:1 0 auto;white-space:nowrap!important;max-width:none}
