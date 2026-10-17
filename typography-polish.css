@@ -1,4 +1,4 @@
-/* OSerif by GGBotNet, CC0 1.0. Display headings only; body and controls retain their existing fonts. */
+/* OSerif: CC0 1.0. Crimson Pro: SIL OFL 1.1. Self-hosted display/text pairing. */
 @font-face {
   font-family: 'Questbound OSerif';
   src: url('./assets/fonts/OSerif-Regular.woff2') format('woff2');
@@ -6,7 +6,21 @@
   font-weight: 400;
   font-display: swap;
 }
-:root { --display-serif: 'Questbound OSerif', Georgia, 'Times New Roman', serif; }
+@font-face {
+  font-family: 'Questbound Crimson Pro';
+  src: url('./assets/fonts/CrimsonPro-Variable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Questbound Crimson Pro';
+  src: url('./assets/fonts/CrimsonPro-Italic-Variable.woff2') format('woff2');
+  font-style: italic;
+  font-weight: 200 900;
+  font-display: swap;
+}
+:root { --serif: 'Questbound Crimson Pro', Georgia, 'Times New Roman', serif; --display-serif: 'Questbound OSerif', Georgia, 'Times New Roman', serif; }
 #app :is(h1,h2,h3,h4,h5,h6),
 #view :is(h1,h2,h3,h4,h5,h6),
 dialog :is(h1,h2,h3,h4,h5,h6) {
@@ -17,3 +31,17 @@ dialog :is(h1,h2,h3,h4,h5,h6) {
   line-height: 1.15;
   overflow-wrap: anywhere;
 }
+
+/* Sentence-case supporting headings give the larger small-cap titles room to stand out. */
+#app, #view, dialog { font-family: var(--serif); }
+#app :is(h3,h4,h5,h6),
+#view :is(h3,h4,h5,h6),
+dialog :is(h3,h4,h5,h6),
+#app :is(.quest-title,.daily-quest b,.gear-slot b) {
+  font-family: var(--serif) !important;
+  font-weight: 600 !important;
+  letter-spacing: normal;
+  line-height: 1.3;
+}
+#app p, #view p, dialog p { font-family: var(--serif); }
+button, input, select, textarea { font-family: var(--sans, system-ui, sans-serif); }
