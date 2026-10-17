@@ -33,6 +33,7 @@ returns text language sql volatile set search_path='' as $$
  and b.key is distinct from p_exclude
  and exists(select 1 from jsonb_array_elements_text(b.data->'tags') t where d.data->'tags' ? t)
  and (not p_free or not (b.data->>'requires_purchase')::boolean)
+ and (b.key<>'free-adventure' or not (d.data->>'requires_purchase')::boolean)
  and not exists(select 1 from jsonb_array_elements_text(b.data->'equipment') e where not(e=any(coalesce(p_equipment,'{}'))))
  order by (b.key in(select r.bonus_key from public.local_map_runs r where r.guild_id=p_guild order by r.created_at desc limit 3)),random() limit 1;
 $$;
@@ -47,7 +48,7 @@ begin
  return jsonb_build_object(
   'destinations',(select coalesce(jsonb_agg(data order by data->>'name'),'[]') from public.local_map_destinations),
   'bonuses',(select coalesce(jsonb_agg(data),'[]') from public.local_map_bonuses),
-  'runs',(select coalesce(jsonb_agg(to_jsonb(r) order by r.created_at desc),'[]') from public.local_map_runs r where r.guild_id=gid),
+  'runs',(select coalesce(jsonb_agg(to_jsonb(r)||jsonb_build_object('visited_at',coalesce(r.visited_at,case when e.status='complete' then e.completed_at end)) order by r.created_at desc),'[]') from public.local_map_runs r join public.expeditions e on e.id=r.expedition_id where r.guild_id=gid),
   'home',jsonb_build_object('lat',36.0687,'lng',-86.7241,'label','Home region · 37211'));
 end $$;
 
@@ -69,6 +70,10 @@ begin
   if not found then raise exception 'Choose a local destination first';end if;
   if p_action='complete' then
    if r.visited_at is not null then return jsonb_build_object('already_complete',true);end if;
+   if e.status='complete' and e.completed_at is not null then
+    update public.local_map_runs set visited_at=e.completed_at,visited_by=e.drawn_by where expedition_id=e.id;
+    return jsonb_build_object('already_complete',true,'visited',true);
+   end if;
    if e.status<>'active' then raise exception 'Expedition unavailable';end if;
    result:=public.complete_expedition_abilities(e.id);
    update public.local_map_runs set visited_at=now(),visited_by=uid where expedition_id=e.id;
@@ -81,10 +86,10 @@ begin
    end if;
    return result||jsonb_build_object('destination_key',r.destination_key,'visited',true);
   elsif p_action='bonus' then
-   if r.visited_at is null or e.status<>'complete' then raise exception 'Complete the visit before claiming its bonus';end if;
+   if coalesce(r.visited_at,e.completed_at) is null or e.status<>'complete' then raise exception 'Complete the visit before claiming its bonus';end if;
    if r.bonus_key is null then raise exception 'No bonus assigned';end if;
    if r.bonus_completed_at is not null then return jsonb_build_object('already_complete',true);end if;
-   update public.local_map_runs set bonus_completed_at=now(),bonus_completed_by=uid where expedition_id=e.id;
+   update public.local_map_runs set bonus_completed_at=now(),bonus_completed_by=uid,visited_at=coalesce(visited_at,e.completed_at),visited_by=coalesce(visited_by,e.drawn_by) where expedition_id=e.id;
    update public.player_progress_public set personal_xp=personal_xp+50,updated_at=now() where guild_id=gid and user_id=uid returning personal_xp into xp;
    update public.player_progress_public set level=public.qb_level_for_xp(xp),rank_key=public.qb_rank_for_level(public.qb_level_for_xp(xp)) where guild_id=gid and user_id=uid;
    select id into cid from public.campaigns where guild_id=gid and status='active' order by started_at desc limit 1 for update;
