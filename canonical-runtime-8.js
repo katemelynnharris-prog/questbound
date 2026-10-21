@@ -88,6 +88,7 @@ function qbQuestEditor(id){
   const toggleOwner=()=>{const o=document.querySelector('#qeOwner').value;document.querySelector('#qeAssignee').disabled=o!=='individual';document.querySelector('#qeCompletionScope').disabled=o!=='shared'};document.querySelector('#qeOwner').onchange=toggleOwner;toggleOwner();
   document.querySelector('#qeHidden').onchange=e=>{if(e.target.checked)document.querySelector('#qeRandom').checked=true};
   document.querySelector('#qbQuestForm').onsubmit=async e=>{e.preventDefault();const rt=rec.value;let recurrence={type:rt};
+    if(rt==='repeatable'&&r.unlimited_per_day===true)recurrence.unlimited_per_day=true;
     if(rt==='daily')recurrence.count_target=Math.max(1,Number(document.querySelector('#qeCountTarget').value)||1);
     if(rt==='weekly')recurrence.days=[...document.querySelector('#qeWeekDays').selectedOptions].map(x=>x.value);
     if(rt==='monthly_fixed')recurrence.day=Math.max(1,Math.min(31,Number(document.querySelector('#qeMonthDay').value)||1));

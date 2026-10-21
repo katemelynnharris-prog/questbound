@@ -229,16 +229,21 @@ async function qbClaimAbilityReward(ability,button){
  try{const {data,error}=await sb.rpc('claim_ability_milestone',{p_ability:ability});if(error)throw error;document.querySelector('.qb-modal')?.remove();showToast(`${data.item_name} is waiting in Unclaimed Loot${data.personal_xp?` · +${data.personal_xp} Personal XP`:''}`);await qbReloadCore()}
  catch(error){button.disabled=false;alert(error.message)}
 }
+function qbCurrentFocusPins(){
+ return (qbAbilityChoices().pin||[]).filter(id=>{
+  const q=questById(id);return !q||safeMeta(q.recurrence).type!=='once'||!isCompletedForCurrentOccurrence(q);
+ });
+}
 function qbFocusCard(){
  if(!state.abilityControls)return'';
- const pins=qbAbilityChoices().pin||[],qs=pins.map(id=>questById(id)).filter(Boolean);
+ const pins=qbCurrentFocusPins(),qs=pins.map(id=>questById(id)).filter(Boolean);
  return `<section class="card qb-focus-card"><div class="card-head"><div><p class="eyebrow">✦ YOUR FOCUS BOARD</p><h2>${pins.length} / ${state.abilityControls.focus_capacity} pinned quests</h2></div><button class="mini ghost" data-qb-focus-manage>Manage Focus</button></div>${qs.length?`<div class="quest-list">${qs.map(q=>questRow(q,{compact:true})).join('')}</div>`:'<p class="fine">Pin quests you want to keep close at hand.</p>'}</section>`;
 }
 function qbWireFocus(){screen.querySelectorAll('[data-qb-focus-manage]').forEach(b=>b.onclick=qbOpenFocusBoard)}
 async function qbOpenFocusBoard(){
  await loadAbilityControls();const s=state.abilityControls;if(!s)return alert('Focus status unavailable. Please refresh.');
  // Recurring quests remain pinnable between resets; completion eligibility stays with the cycle.
- const pins=qbAbilityChoices().pin||[],available=state.quests.filter(q=>{
+ const pins=qbCurrentFocusPins(),available=state.quests.filter(q=>{
   const c=qbCycle(q),type=safeMeta(q.recurrence).type||'once';
   return canOwnQuest(q)&&q.active!==false&&!q.hidden_encounter&&c?.active&&(c.available||type!=='once')&&!pins.includes(q.id);
  });
@@ -464,6 +469,11 @@ function qbQuestResetNote(q,c){
 const qbQuestRowBeforeCycleDisplay=questRow;
 questRow=function(q,options){
  let html=qbQuestRowBeforeCycleDisplay(q,options);const c=qbCycle(q);
+ if(c?.unlimited&&safeMeta(q.recurrence).unlimited_per_day){
+  html=html.replace('</div><div class="quest-chips">',` <span class="qb-count-progress">${fmt(c.count)} finished today</span></div><div class="quest-chips">`);
+  html=html.replace(/>Complete<\/button>/,'>Log finished book</button>');
+ }
+
  if(c&&!c.available){
   html=html.replace(/(<div class="quest [^"]*")/,'$1 data-qb-cycle-locked="true"');
   html=html.replace(/(<button\b[^>]*\bdata-complete="[^"]*"[^>]*)(>)/,(all,tag,end)=>/\sdisabled(?:\s|=|$)/.test(tag)?all:tag+' disabled'+end);
@@ -472,3 +482,6 @@ questRow=function(q,options){
  }
  return html;
 };
+
+const qbRecurrenceLabelBeforeUnlimitedBooks=recurrenceLabel;
+recurrenceLabel=function(q){return safeMeta(q.recurrence).unlimited_per_day?'Unlimited · daily counter':qbRecurrenceLabelBeforeUnlimitedBooks(q)};
