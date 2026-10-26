@@ -1,0 +1,13 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const {JSDOM}=require(process.env.QB_JSDOM_PATH||'jsdom');const dom=new JSDOM('<main></main>'),document=dom.window.document,screen=document.querySelector('main');
+const state={weekly:{id:'week',title:'The Daily Pages',progress:1,target:10,metadata:{tracking:'daily_checkins',description:'Read on five days each',reward_campaign_xp:475}},weeklyConsistency:{weekly_id:'week',week_key:'2026-10-26',today:'2026-10-28',per_player:true,players:[{user_id:'kate',player:'Kate',days:['2026-10-26']},{user_id:'drew',player:'Drew',days:[]}],days:[],completed:false}};
+const calls=[];let ctx;ctx={state,document,screen,console,safeMeta:x=>x||{},fmt:String,esc:x=>String(x??'').replaceAll('<','&lt;'),progressPct:(n,t)=>n/t*100,ownUserId:()=> 'kate',loadAll:async()=>{},weeklyRoadCard:()=>'<section>Legacy weekly card</section>',renderHome:()=>{screen.innerHTML=ctx.weeklyRoadCard()},qbReloadCore:async()=>{ctx.renderHome()},alert:()=>{},showToast:()=>{},sb:{rpc:async(name,args)=>{calls.push({name,args});return {data:state.weeklyConsistency}}}};
+vm.createContext(ctx);vm.runInContext(fs.readFileSync('weekly-consistency.js','utf8'),ctx);
+(async()=>{
+ ctx.renderHome();const rows=screen.querySelectorAll('.qb-weekly-day-row');assert.equal(rows.length,2);assert.equal(rows[0].querySelectorAll('button').length,7);assert.ok(rows[0].querySelector('[data-weekly-day="2026-10-26"]').disabled);assert.ok(!rows[0].querySelector('[data-weekly-day="2026-10-27"]').disabled);assert.ok(rows[0].querySelector('[data-weekly-day="2026-10-29"]').disabled);assert.ok([...rows[1].querySelectorAll('button')].every(b=>b.disabled));
+ rows[0].querySelector('[data-weekly-day="2026-10-27"]').click();await new Promise(r=>setImmediate(r));assert.equal(calls[0].name,'record_weekly_day');assert.equal(calls[0].args.p_date,'2026-10-27');
+ state.weeklyConsistency.per_player=false;state.weeklyConsistency.days=['2026-10-26'];ctx.renderHome();assert.equal(screen.querySelectorAll('.qb-weekly-day-row').length,1);assert.match(screen.textContent,/Together/);assert.ok(!screen.querySelector('[data-weekly-day="2026-10-27"]').disabled);
+ state.weeklyConsistency.completed=true;ctx.renderHome();assert.ok([...screen.querySelectorAll('[data-weekly-day]')].every(b=>b.disabled));assert.match(screen.textContent,/reward awarded/);
+ state.weekly.metadata.tracking=null;ctx.renderHome();assert.match(screen.textContent,/Legacy weekly card/);
+ console.log('PASS: seven-day controls, own-player permissions, future/duplicate locks, shared tracking, completion state, and legacy card fallback');
+})().catch(e=>{console.error(e);process.exitCode=1});
